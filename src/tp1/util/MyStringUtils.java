@@ -20,10 +20,7 @@ public class MyStringUtils {
 		StringBuilder result = new StringBuilder(x.length() * n);
 
 		
-		for (int i = 0; i < n; i++)
-			result.append(x);
-		
-		//result.repeat(x, n); //puedes reemplazar el bucle anterior por esta línea si usas Java 21
+		result.repeat(x, n); //puedes reemplazar el bucle anterior por esta línea si usas Java 21
 
 		return result.toString();
 	}

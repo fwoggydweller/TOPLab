@@ -23,6 +23,7 @@ public class Controller {
 	 */
 	public void run() {
 		view.showWelcome();
+		view.showGame();
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		view.showEndMessage();
 	}

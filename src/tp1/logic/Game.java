@@ -4,6 +4,7 @@ public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
+	public static final int INITIAL_LEMMING_NUM = 2;
 
 	public Game(int nLevel) {
 		// TODO Auto-generated constructor stub
@@ -35,8 +36,7 @@ public class Game {
 	}
 
 	public String positionToString(int col, int row) {
-		// TODO Auto-generated method stub
-		return null;
+		return ("("+col + "," + row + ")");
 	}
 
 	public boolean playerWins() {
