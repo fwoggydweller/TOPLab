@@ -1,7 +1,7 @@
-package tp1.control;
+package control;
 
-import tp1.logic.Game;
-import tp1.view.GameView;
+import logic.Game;
+import view.GameView;
 
 /**
  *  Accepts user input and coordinates the game execution logic

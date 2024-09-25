@@ -33,7 +33,7 @@ public class ConsoleColorsAnsiCodes {
     public static final String ANSI_GRAY_BACKGROUND   = "\u001B[48;2;176;174;174m";
     public static final String ANSI_ROSE_BACKGROUND   = "\u001B[48;2;255;151;203m";
 
-    // Estos de abajo no funcionan en Eclipse
+    //This do not work on Eclipse
     public static final String ANSI_3FILAS = "\u001B[3B";   
     public static final String ANSI_5COLS = "\u001B[5C";
     
