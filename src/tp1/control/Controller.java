@@ -7,7 +7,7 @@ import tp1.view.GameView;
  *  Accepts user input and coordinates the game execution logic
  */
 public class Controller {
-
+	
 	private Game game;
 	private GameView view;
 
@@ -23,7 +23,9 @@ public class Controller {
 	 */
 	public void run() {
 		view.showWelcome();
-		view.showGame();
+		while(!game.playerLooses() && !game.playerWins()) {
+			view.showGame();
+		}
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		view.showEndMessage();
 	}
