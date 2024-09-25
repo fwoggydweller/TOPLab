@@ -16,12 +16,10 @@ public class Game {
 	}
 
 	public int numLemmingsInBoard() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (INITIAL_LEMMING_NUM - numLemmingsExit());
 	}
 
 	public int numLemmingsDead() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -31,7 +29,6 @@ public class Game {
 	}
 
 	public int numLemmingsToWin() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -40,13 +37,11 @@ public class Game {
 	}
 
 	public boolean playerWins() {
-		// TODO Auto-generated method stub
-		return false;
+		return numLemmingsToWin() == 0;
 	}
 
 	public boolean playerLooses() {
-		// TODO Auto-generated method stub
-		return false;
+		return numLemmingsDead() == INITIAL_LEMMING_NUM;
 	}
 
 	public String help() {
