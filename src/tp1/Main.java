@@ -29,7 +29,6 @@ public class Main {
 			Game game = new Game(nLevel);
 			GameView view = new ConsoleView(game);
 			Controller controller = new Controller(game, view);
-					
 			controller.run();
 		} catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));

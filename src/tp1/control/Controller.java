@@ -1,7 +1,7 @@
-package control;
+package tp1.control;
 
-import logic.Game;
-import view.GameView;
+import tp1.logic.Game;
+import tp1.view.GameView;
 
 /**
  *  Accepts user input and coordinates the game execution logic
@@ -24,7 +24,6 @@ public class Controller {
 	public void run() {
 		view.showWelcome();
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
-		
 		view.showEndMessage();
 	}
 
