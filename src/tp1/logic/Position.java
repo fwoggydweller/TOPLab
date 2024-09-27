@@ -11,5 +11,10 @@ public class Position {
 	private int row;
 
 	//TODO fill your code
-
+	public void setCol(int x) {
+		col = x;
+	}
+	public void setRow(int y) {
+		row = y;
+	}
 }

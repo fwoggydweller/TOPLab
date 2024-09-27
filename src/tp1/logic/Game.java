@@ -1,11 +1,12 @@
 package tp1.logic;
 
+import tp1.logic.GameObjectContainer;
 public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
 	public static final int INITIAL_LEMMING_NUM = 2;
-
+	GameObjectContainer cont;
 	public Game(int nLevel) {
 		// TODO Auto-generated constructor stub
 	}
@@ -33,7 +34,18 @@ public class Game {
 	}
 
 	public String positionToString(int col, int row) {
-		return ("("+col + "," + row + ")");
+		String Elem = whatInPos(col,row);
+		String valueToPrint = "     ";
+		if(Elem == "Lemming") {
+			
+		}
+		else if(Elem == "Wall") {
+			
+		}
+		else {
+			
+		}
+		return valueToPrint;
 	}
 
 	public boolean playerWins() {
@@ -47,6 +59,12 @@ public class Game {
 	public String help() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	//Check what is in that position in order to know what to print
+	private String whatInPos(int col, int row) {
+		String name = "Nothing";
+		
+		return name;
 	}
 
 }

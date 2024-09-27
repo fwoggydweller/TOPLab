@@ -22,7 +22,12 @@ public enum Direction {
 	public int getY() {
 		return y;
 	}
-
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
 
 	//TODO fill your code
 	
