@@ -8,14 +8,13 @@ public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
-	public static final int INITIAL_LEMMING_NUM = 2;
+	public static final int INITIAL_LEMMING_NUM = 1;
 	public static final int NUMBER_OF_WALLS = 10;
 	private GameObjectContainer cont;
 	Messages m;
 	public Game(int nLevel) {
 		cont = new GameObjectContainer();
 		Lemming one = new Lemming(0,0);
-		Lemming two = new Lemming(1,1);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -43,8 +42,6 @@ public class Game {
 
 	public String positionToString(int col, int row) {
 		String Elem = whatInPos(col,row);
-		
-		
 		return Elem;
 	}
 
@@ -64,7 +61,7 @@ public class Game {
 	private String whatInPos(int col, int row) {
 		String name;
 		if(cont.searchLemming(col, row)) {
-			name = m.LEMMING_RIGHT;
+			name = "B";
 		}
 		else if(cont.searchWall(col, row)) {
 			name = m.WALL;

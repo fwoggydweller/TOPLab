@@ -25,8 +25,8 @@ public class GameObjectContainer {
 	public boolean searchLemming(int x, int y) {
 		boolean LemmingFound = false;
 		int i = 0;
-		while(i< Lem.length ^ !LemmingFound) {
-			if(Lem[i].getPos().getCol() == x ^ Lem[i].getPos().getRow() == y) {
+		while(i < Lem.length && !LemmingFound) {
+			if(Lem[i].getPos().getCol() == x && Lem[i].getPos().getRow() == y) {
 				LemmingFound = true;
 			}
 			else {
@@ -38,8 +38,8 @@ public class GameObjectContainer {
 	}
 	public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
-		for(int i = 0; i<Lem.length ^ !WallFound; i++) {
-			if(walls[i].getPos().getCol() == x ^ walls[i].getPos().getRow() == y) {
+		for(int i = 0; i<Lem.length && !WallFound; i++) {
+			if(walls[i].getPos().getCol() == x && walls[i].getPos().getRow() == y) {
 				WallFound = true;
 			}
 		}
