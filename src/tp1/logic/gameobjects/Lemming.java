@@ -8,15 +8,12 @@ import tp1.logic.Direction;
 public class Lemming {
 	private Position pos;
 	private Direction dir;
-	private GameObjectContainer cont;
 	boolean solid = false;
 	int force = 3;
 	//TODO fill your code
 	public Lemming(int x, int y) {
 		pos = new Position(x, y);
 		dir = Direction.NONE;
-		cont = new GameObjectContainer();
-		register();
 	}
 	public void setDir(int x, int y) {
 		dir.setX(x);
@@ -25,10 +22,7 @@ public class Lemming {
 	public Position getPos() {
 		return pos; //I don't know if I should create a new position with pos's col and row values or if this is fine
 	}
-	private void register() {
-		cont.counterOfLemmings(this);
-	}
-	private boolean IsGrounded() {
+	/*private boolean IsGrounded() {
 		return cont.searchWall(pos.getCol(), pos.getRow() + 1); // +1?
 	}
 	private void move() {

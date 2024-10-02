@@ -14,7 +14,7 @@ public class Game {
 	Messages m;
 	public Game(int nLevel) {
 		cont = new GameObjectContainer();
-		Lemming one = new Lemming(0,0);
+		cont.addLemming(new Lemming(0,0));
 		// TODO Auto-generated constructor stub
 	}
 
@@ -49,7 +49,7 @@ public class Game {
 		return numLemmingsToWin() == 0;
 	}
 
-	public boolean playerLooses() {
+	public boolean playerLoses() {
 		return numLemmingsDead() == INITIAL_LEMMING_NUM;
 	}
 
@@ -63,9 +63,9 @@ public class Game {
 		if(cont.searchLemming(col, row)) {
 			name = "B";
 		}
-		else if(cont.searchWall(col, row)) {
+		/*else if(cont.searchWall(col, row)) {
 			name = m.WALL;
-		}
+		}*/
 		else {
 			name = m.EMPTY;
 		}

@@ -9,7 +9,7 @@ public class GameObjectContainer {
 	Wall[] walls = new Wall[g.NUMBER_OF_WALLS];
 	int wallsReg=0;
 	int LemmingsReg = 0;
-	public void counterOfLemmings(Lemming Lemming) {
+	public void addLemming(Lemming Lemming) {
 		if(LemmingsReg < g.INITIAL_LEMMING_NUM) {
 			Lem[LemmingsReg] = Lemming;
 			LemmingsReg++;
@@ -36,7 +36,7 @@ public class GameObjectContainer {
 		System.out.println(LemmingFound);
 		return LemmingFound;
 	}
-	public boolean searchWall(int x, int y) {
+	/*public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
 		for(int i = 0; i<Lem.length && !WallFound; i++) {
 			if(walls[i].getPos().getCol() == x && walls[i].getPos().getRow() == y) {
@@ -45,5 +45,6 @@ public class GameObjectContainer {
 		}
 		return WallFound;
 	}
+	*/
 }
 
