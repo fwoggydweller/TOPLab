@@ -29,11 +29,16 @@ public class Lemming {
 		cont.counterOfLemmings(this);
 	}
 	private boolean IsGrounded() {
-		return cont.searchWall(pos.getCol(), pos.getRow());
+		return cont.searchWall(pos.getCol(), pos.getRow() + 1); // +1?
 	}
 	private void move() {
 		if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
-			
+			if(cont.searchWall(pos.getCol() + dir.getX(), pos.getRow())) { //if lemming encounters wall next to it 
+				this.dir.setX(dir.getX() * -1);
+			}
+			else{
+				this.pos.setCol(pos.getCol() + 1);
+			}
 		}
 		else { //If it's falling down, then the row position will be updated
 			pos.setRow(pos.getRow() + 1); //It´s a +1 because in terms of the console, going don is adding one to the x
