@@ -17,4 +17,10 @@ public class Position {
 	public void setRow(int y) {
 		row = y;
 	}
+	public int getRow() {
+		return row;
+	}
+	public int getCol() {
+		return col;
+	}
 }

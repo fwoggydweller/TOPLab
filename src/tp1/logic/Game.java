@@ -1,12 +1,15 @@
 package tp1.logic;
 
 import tp1.logic.GameObjectContainer;
+import tp1.view.Messages;
 public class Game {
 
 	public static final int DIM_X = 10;
 	public static final int DIM_Y = 10;
 	public static final int INITIAL_LEMMING_NUM = 2;
+	public static final int NUMBER_OF_WALLS = 10;
 	GameObjectContainer cont;
+	Messages m;
 	public Game(int nLevel) {
 		// TODO Auto-generated constructor stub
 	}
@@ -35,12 +38,12 @@ public class Game {
 
 	public String positionToString(int col, int row) {
 		String Elem = whatInPos(col,row);
-		String valueToPrint = "     ";
+		String valueToPrint = m.EMPTY;
 		if(Elem == "Lemming") {
-			
+			valueToPrint = m.LEMMING_RIGHT;
 		}
 		else if(Elem == "Wall") {
-			
+			valueToPrint = m.WALL;
 		}
 		else {
 			
@@ -63,7 +66,15 @@ public class Game {
 	//Check what is in that position in order to know what to print
 	private String whatInPos(int col, int row) {
 		String name = "Nothing";
-		
+		if(cont.searchLemming(col, row)) {
+			name = "Lemming";
+		}
+		else if(cont.searchWall(col, row)) {
+			name = "Wall";
+		}
+		else {
+			
+		}
 		return name;
 	}
 

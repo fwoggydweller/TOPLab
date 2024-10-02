@@ -9,18 +9,35 @@ public class Lemming {
 	Position pos;
 	Direction dir;
 	GameObjectContainer cont;
+	boolean solid = false;
+	int force = 3;
 	//TODO fill your code
 	public Lemming(int x, int y) {
 		pos.setCol(x);
 		pos.setRow(y);
+		
 		register();
 	}
 	public void setDir(int x, int y) {
 		dir.setX(x);
 		dir.setY(y);
 	}
+	public Position getPos() {
+		return pos; //I don't know if I should create a new position with pos's col and row values or if this is fine
+	}
 	private void register() {
 		cont.counterOfLemmings(this);
+	}
+	private boolean IsGrounded() {
+		return cont.searchWall(pos.getCol(), pos.getRow());
+	}
+	private void move() {
+		if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
+			
+		}
+		else { //If it's falling down, then the row position will be updated
+			pos.setRow(pos.getRow() + 1); //It´s a +1 because in terms of the console, going don is adding one to the x
+		}
 	}
 	/**
 	 *  Implements the automatic update	
