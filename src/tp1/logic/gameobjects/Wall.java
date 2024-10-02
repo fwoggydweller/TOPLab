@@ -7,8 +7,7 @@ public class Wall {
 	GameObjectContainer gCont;
 	boolean solid = false;
 	public Wall(int x,int y) {
-		pos.setCol(x);
-		pos.setRow(y);
+		pos = new Position(x,y);
 		gCont.counterOfWalls(this);
 	}
 	public Position getPos() {

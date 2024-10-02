@@ -26,7 +26,7 @@ public class GameObjectContainer {
 		boolean LemmingFound = false;
 		int i = 0;
 		while(i < Lem.length && !LemmingFound) {
-			if(Lem[i].getPos().getCol() == x && Lem[i].getPos().getRow() == y) {
+			if(Lem[i].getPos().Equals(x, y)) {
 				LemmingFound = true;
 			}
 			else {

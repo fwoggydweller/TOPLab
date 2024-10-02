@@ -37,11 +37,13 @@ public class Lemming {
 				this.dir.setX(dir.getX() * -1);
 			}
 			else{
-				this.pos.setCol(pos.getCol() + 1);
+				Position p = new Position (pos.getCol()+1, pos.getRow());
+				this.pos = p;
 			}
 		}
 		else { //If it's falling down, then the row position will be updated
-			pos.setRow(pos.getRow() + 1); //It´s a +1 because in terms of the console, going don is adding one to the x
+			Position p = new Position (pos.getCol(), pos.getRow()+1);
+			this.pos = p;
 		}
 	}
 	/**
