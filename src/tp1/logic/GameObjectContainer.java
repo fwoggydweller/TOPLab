@@ -1,5 +1,6 @@
 package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.Game;
 public class GameObjectContainer {
@@ -7,6 +8,7 @@ public class GameObjectContainer {
 	Game g;
 	Lemming[] Lem = new Lemming[g.INITIAL_LEMMING_NUM];
 	Wall[] walls = new Wall[g.NUMBER_OF_WALLS];
+	private ExitDoor exit;
 	int wallsReg=0;
 	int LemmingsReg = 0;
 	public void counterOfLemmings(Lemming Lemming) {
@@ -21,6 +23,9 @@ public class GameObjectContainer {
 				walls[wallsReg]= wall;
 				wallsReg++;
 			}
+	}
+	public void registerDoor(ExitDoor exit) {
+		this.exit = exit;
 	}
 	public boolean searchLemming(int x, int y) {
 		boolean LemmingFound = false;
@@ -44,6 +49,13 @@ public class GameObjectContainer {
 			}
 		}
 		return WallFound;
+	}
+	public boolean searchExit(int x, int y) {
+		boolean ExitFound = false;
+			if(exit.getPos().getCol() == x && exit.getPos().getRow()== y) {
+				 ExitFound = true;
+		}
+		return ExitFound;
 	}
 }
 
