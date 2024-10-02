@@ -24,11 +24,16 @@ public class GameObjectContainer {
 	}
 	public boolean searchLemming(int x, int y) {
 		boolean LemmingFound = false;
-		for(int i = 0; i<Lem.length ^ !LemmingFound; i++) {
+		int i = 0;
+		while(i< Lem.length ^ !LemmingFound) {
 			if(Lem[i].getPos().getCol() == x ^ Lem[i].getPos().getRow() == y) {
 				LemmingFound = true;
 			}
+			else {
+				i++;
+			}
 		}
+		System.out.println(LemmingFound);
 		return LemmingFound;
 	}
 	public boolean searchWall(int x, int y) {

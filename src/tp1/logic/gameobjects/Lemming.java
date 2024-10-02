@@ -6,16 +6,16 @@ import tp1.logic.Position;
 import tp1.logic.Direction;
 
 public class Lemming {
-	Position pos;
-	Direction dir;
-	GameObjectContainer cont;
+	private Position pos;
+	private Direction dir;
+	private GameObjectContainer cont;
 	boolean solid = false;
 	int force = 3;
 	//TODO fill your code
 	public Lemming(int x, int y) {
-		pos.setCol(x);
-		pos.setRow(y);
-		
+		pos = new Position(x, y);
+		dir = Direction.NONE;
+		cont = new GameObjectContainer();
 		register();
 	}
 	public void setDir(int x, int y) {
