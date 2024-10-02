@@ -38,7 +38,6 @@ public class GameObjectContainer {
 				i++;
 			}
 		}
-		System.out.println(LemmingFound);
 		return LemmingFound;
 	}
 	/*public boolean searchWall(int x, int y) {
