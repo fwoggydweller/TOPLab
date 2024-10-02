@@ -3,7 +3,9 @@ package tp1.logic;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
+import tp1.logic.gameobjects.ExitDoor;
 import tp1.view.Messages;
+
 public class Game {
 
 	public static final int DIM_X = 10;
@@ -13,8 +15,12 @@ public class Game {
 	private GameObjectContainer cont;
 	Messages m;
 	public Game(int nLevel) {
-		cont = new GameObjectContainer();
-		cont.addLemming(new Lemming(0,0));
+		if(nLevel == 1) { //adds 1 of each type
+			cont = new GameObjectContainer();
+			cont.registerDoor(new ExitDoor(1,1));
+			cont.addLemming(new Lemming(0,0));
+			cont.addWall(new Wall(2,2));
+		}
 		// TODO Auto-generated constructor stub
 	}
 

@@ -10,7 +10,6 @@ public class ExitDoor {
 	
 	public ExitDoor(int x, int y) { //costructor
 		this.pos = new Position(x,y);
-		cont.registerDoor(this);
 	}
 	
 	public Position getPos() {

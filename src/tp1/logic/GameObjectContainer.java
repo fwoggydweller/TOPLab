@@ -18,7 +18,7 @@ public class GameObjectContainer {
 		}
 		
 	}
-	public void counterOfWalls(Wall wall) {
+	public void addWall(Wall wall) {
 			if(wallsReg < g.NUMBER_OF_WALLS) {
 				walls[wallsReg]= wall;
 				wallsReg++;
