@@ -2,7 +2,6 @@ package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.Wall;
-import tp1.logic.gameobjects.WalkerRole;
 import tp1.logic.Game;
 import tp1.view.Messages;
 public class GameObjectContainer {
