@@ -6,7 +6,6 @@ import tp1.logic.Position;
 
 public class ExitDoor {
 	private Position pos;
-	private GameObjectContainer cont;
 	
 	public ExitDoor(int x, int y) { //costructor
 		this.pos = new Position(x,y);

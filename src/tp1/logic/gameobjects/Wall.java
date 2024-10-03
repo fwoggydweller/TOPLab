@@ -4,7 +4,6 @@ import tp1.logic.GameObjectContainer;
 import tp1.logic.Position;
 public class Wall {
 	Position pos;
-	GameObjectContainer gCont;
 	boolean solid = false;
 	public Wall(int x,int y) {
 		pos = new Position(x,y);

@@ -17,8 +17,8 @@ public class Game {
 	public Game(int nLevel) {
 		if(nLevel == 1) { //adds 1 of each type
 			cont = new GameObjectContainer();
-			cont.registerDoor(new ExitDoor(1,1));
-			cont.addLemming(new Lemming(0,0));
+			cont.registerDoor(new ExitDoor(9,9));
+			cont.addLemming(0, 0);
 			cont.addWall(new Wall(2,2));
 		}
 		// TODO Auto-generated constructor stub
@@ -47,8 +47,7 @@ public class Game {
 	}
 
 	public String positionToString(int col, int row) {
-		String Elem = whatInPos(col,row);
-		return Elem;
+		return cont.whatInPos(col,row);
 	}
 
 	public boolean playerWins() {
@@ -63,19 +62,4 @@ public class Game {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	//Check what is in that position in order to know what to print
-	private String whatInPos(int col, int row) {
-		String name;
-		if(cont.searchLemming(col, row)) {
-			name = "B";
-		}
-		/*else if(cont.searchWall(col, row)) {
-			name = m.WALL;
-		}*/
-		else {
-			name = m.EMPTY;
-		}
-		return name;
-	}
-
 }
