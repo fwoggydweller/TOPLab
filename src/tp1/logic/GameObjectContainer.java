@@ -12,13 +12,11 @@ public class GameObjectContainer {
 	private Lemming[] Lem = new Lemming[g.INITIAL_LEMMING_NUM];
 	private Wall[] walls = new Wall[g.NUMBER_OF_WALLS];
 	private ExitDoor exit;
-	private WalkerRole w = new WalkerRole();
 	
 	int wallsReg=0;
 	int LemmingsReg = 0;
-	public void addLemming(int col, int row) {
+	public void addLemming(Lemming Lemming) {
 		if(LemmingsReg < g.INITIAL_LEMMING_NUM) {
-			Lemming Lemming = new Lemming(col,row, w, this);
 			Lem[LemmingsReg] = Lemming;
 			LemmingsReg++;
 		}

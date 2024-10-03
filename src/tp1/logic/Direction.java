@@ -22,13 +22,9 @@ public enum Direction {
 	public int getY() {
 		return y;
 	}
-	public void setX(int x) {
-		this.x = x;
+	public boolean isEqual(Direction d) {
+		return d.getX() == this.x && d.getY() == this.y;
 	}
-	public void setY(int y) {
-		this.y = y;
-	}
-
 	//TODO fill your code
 	
 	
