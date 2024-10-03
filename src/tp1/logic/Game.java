@@ -28,22 +28,29 @@ public class Game {
 	public boolean searchWall(int col, int row) {
 		return cont.searchWall(col, row);
 	}
+	public boolean searchExit(int col, int row) {
+		return cont.searchExit(col, row);
+	}
 	public int getCycle() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int numLemmingsInBoard() {
-		return (INITIAL_LEMMING_NUM - numLemmingsExit());
+		return (INITIAL_LEMMING_NUM - numLemmingsExit() -numLemmingsDead());
 	}
 
 	public int numLemmingsDead() {
+		int n = 0;
+		n = cont.numLemmingsDead();
 		return 0;
 	}
 
 	public int numLemmingsExit() {
+		int n = 0;
 		// TODO Auto-generated method stub
-		return 0;
+		n = cont.numLemmingsExit(); 
+		return n;
 	}
 
 	public int numLemmingsToWin() {

@@ -44,7 +44,7 @@ public class GameObjectContainer {
 	}
 	public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
-		for(int i = 0; i<Lem.length && !WallFound; i++) {
+		for(int i = 0; i<walls.length && !WallFound; i++) {
 			if(walls[i].getPos().getCol() == x && walls[i].getPos().getRow() == y) {
 				WallFound = true;
 			}
@@ -76,6 +76,23 @@ public class GameObjectContainer {
 			name = m.EMPTY;
 		}
 		return name;
+	}
+	public int numLemmingsDead() {
+		int n = 0;
+		for(int i = 0; i<Lem.length; i++) {
+			if(!Lem[i].isAlive()) {
+				n++;
+			}
+		}
+		return n;
+	}
+	public int numLemmingsExit() {
+		int n = 0;
+		for(int i = 0; i<Lem.length; i++) {
+			if(Lem[i].isExit()) {
+				n++;
+			}
+		return n;
 	}
 	
 }
