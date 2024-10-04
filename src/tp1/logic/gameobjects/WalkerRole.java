@@ -12,11 +12,11 @@ public class WalkerRole {
 	    	if(lemmy.getDir() == Direction.LEFT) { //if it's going left, print left
 	    		return m.LEMMING_LEFT;
 	    	}
-	    	else if(lemmy.getDir() == Direction.RIGHT) { //if it goes right, print right
+	    	else if(lemmy.getDir() == Direction.RIGHT || lemmy.getDir() == Direction.NONE) { //if it goes right, print right
 	    		return m.LEMMING_RIGHT;
 	    	}
 	    	else { //lemming is dead, so print dead
-	    		return m.DEAD_LEMMINGS;
+	    		return m.EMPTY;
 	    	}
 	 }
 }

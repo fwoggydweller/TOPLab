@@ -29,7 +29,7 @@ public class GameObjectContainer {
 	public void registerDoor(ExitDoor exit) {
 		this.exit = exit;
 	}
-	public boolean searchLemming(int x, int y) {
+	public int searchLemming(int x, int y) {
 		boolean LemmingFound = false;
 		int i = 0;
 		while(i < Lem.length && !LemmingFound) {
@@ -40,7 +40,10 @@ public class GameObjectContainer {
 				i++;
 			}
 		}
-		return LemmingFound;
+		if(!LemmingFound) {
+			i = -1;
+		}
+		return i;
 	}
 	public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
@@ -63,8 +66,8 @@ public class GameObjectContainer {
 	}
 	private String searchElems(int col, int row) {
 		String name;
-		if(searchLemming(col, row)) {
-			name = m.LEMMING_RIGHT;
+		if(searchLemming(col, row) != -1) {
+			name = Lem[searchLemming(col,row)].toString();
 		}
 		else if(searchWall(col, row)) {
 			name = m.WALL;

@@ -82,6 +82,9 @@ public class Lemming {
 	public boolean isAlive() {
 		return alive;
 	}
+	public String toString() {
+		return w.getIcon(this);
+	}
 	public void update() {
 		if(isAlive()) {
 			w.advance(this);
