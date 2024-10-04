@@ -1,7 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
-import tp1.logic.GameObjectContainer;
+//import tp1.logic.GameObjectContainer;
 import tp1.logic.Position;
 import tp1.logic.Direction;
 
@@ -13,6 +13,7 @@ public class Lemming {
 	private WalkerRole w;
 	boolean alive;
 	boolean solid;
+	boolean exit;
 	int force = 3;
 	int currFall = 0;
 	//TODO fill your code
@@ -77,7 +78,10 @@ public class Lemming {
 		}
 	}
 	private boolean IsGrounded() { //This must check if there's a wall below the lemming
-		return true;
+		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
+			return true;
+		}	
+		return false;
 	}
 	public boolean isAlive() {
 		return alive;
@@ -89,5 +93,11 @@ public class Lemming {
 		if(isAlive()) {
 			w.advance(this);
 		}
+	}
+	public boolean isExit() { // checks if it is in exit
+		if(game.searchExit(this.pos.getCol(), this.pos.getRow())) {
+			return true;
+		}
+		return false;
 	}
 }
