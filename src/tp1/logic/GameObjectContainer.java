@@ -95,8 +95,9 @@ public class GameObjectContainer {
 			if(Lem[i].isExit()) {
 				n++;
 			}
+		}
 		return n;
-	}
 	
+	}
 }
 
