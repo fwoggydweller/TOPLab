@@ -21,10 +21,10 @@ public class GameObjectContainer {
 		}
 	}
 	public void addWall(Wall wall) {
-			if(wallsReg < g.NUMBER_OF_WALLS) {
+		if(wallsReg < g.NUMBER_OF_WALLS) {
 				walls[wallsReg]= wall;
 				wallsReg++;
-			}
+		}
 	}
 	public void registerDoor(ExitDoor exit) {
 		this.exit = exit;
@@ -32,7 +32,7 @@ public class GameObjectContainer {
 	public int searchLemming(int x, int y) {
 		boolean LemmingFound = false;
 		int i = 0;
-		while(i < Lem.length && !LemmingFound) {
+		while(i < LemmingsReg && !LemmingFound) {
 			if(Lem[i].getPos().Equals(x, y)) {
 				LemmingFound = true;
 			}
@@ -47,7 +47,7 @@ public class GameObjectContainer {
 	}
 	public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
-		for(int i = 0; i<walls.length && !WallFound; i++) {
+		for(int i = 0; i < wallsReg && !WallFound; i++) {
 			if(walls[i].getPos().getCol() == x && walls[i].getPos().getRow() == y) {
 				WallFound = true;
 			}
@@ -82,7 +82,7 @@ public class GameObjectContainer {
 	}
 	public int numLemmingsDead() {
 		int n = 0;
-		for(int i = 0; i<Lem.length; i++) {
+		for(int i = 0; i<LemmingsReg; i++) {
 			if(!Lem[i].isAlive()) {
 				n++;
 			}
@@ -91,13 +91,20 @@ public class GameObjectContainer {
 	}
 	public int numLemmingsExit() {
 		int n = 0;
-		for(int i = 0; i<Lem.length; i++) {
+		for(int i = 0; i<LemmingsReg; i++) {
 			if(Lem[i].isExit()) {
 				n++;
 			}
 		}
 		return n;
 	
+	}
+	public void moveLemmings() {
+		for(int i = 0; i < LemmingsReg; i++) {
+			if(Lem[i].isAlive() && !Lem[i].isExit()) {
+				Lem[i].update();
+			}
+		}
 	}
 }
 

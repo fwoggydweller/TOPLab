@@ -19,7 +19,7 @@ public class Lemming {
 	//TODO fill your code
 	public Lemming(int x, int y, WalkerRole role, Game g) {
 		pos = new Position(x, y);
-		dir = Direction.NONE;
+		dir = Direction.RIGHT;
 		w = role;
 		alive = true;
 		solid = false;
@@ -63,9 +63,10 @@ public class Lemming {
 					else if(this.dir.equals(Direction.RIGHT)) {
 						this.dir = Direction.LEFT;
 					}
+					
 				}
 				else{
-					Position p = new Position (pos.getCol()+1, pos.getRow());
+					Position p = new Position (pos.getCol() + dir.getX(), pos.getRow());
 					this.pos = p;
 				}
 			}

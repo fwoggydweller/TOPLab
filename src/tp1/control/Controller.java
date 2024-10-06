@@ -10,7 +10,6 @@ public class Controller {
 	
 	private Game game;
 	private GameView view;
-
 	public Controller(Game game, GameView view) {
 		this.game = game;
 		this.view = view;
@@ -23,7 +22,10 @@ public class Controller {
 	 */
 	public void run() {
 		view.showWelcome();
-		view.showGame();
+		while(!game.playerLoses() && !game.playerWins()) {
+			view.showGame();
+			game.update();
+		}
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		view.showEndMessage();
 	}

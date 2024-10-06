@@ -2,7 +2,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Direction;
 import tp1.view.Messages;
 public class WalkerRole {
-	Messages m = new Messages();
+	 private Messages m = new Messages(); // here?
 	 public void advance(Lemming lemmy) {
 		 lemmy.Move();
 	 }
