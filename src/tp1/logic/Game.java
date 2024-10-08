@@ -12,7 +12,7 @@ public class Game {
 	public static final int DIM_Y = 10;
 	public static final int INITIAL_LEMMING_NUM = 1;
 	public static final int NUMBER_OF_WALLS = 10;
-	public static final int LEMMING_EXIT_TO_WIN = 1; 
+	private int LEMMING_EXIT = 0; 
 	private GameObjectContainer cont;
 	private WalkerRole w = new WalkerRole();
 	private Messages m;
@@ -50,7 +50,7 @@ public class Game {
 	}
 
 	public int numLemmingsToWin() {
-		return LEMMING_EXIT_TO_WIN - numLemmingsExit();
+		return INITIAL_LEMMING_NUM - numLemmingsExit();
 	}
 
 	public String positionToString(int col, int row) {
@@ -66,8 +66,7 @@ public class Game {
 	}
 
 	public String help() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.COMMAND_HELP_DETAILS;
 	}
 	public void update() {
 		cont.moveLemmings();
