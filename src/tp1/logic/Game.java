@@ -66,7 +66,7 @@ public class Game {
 	}
 
 	public String help() {
-		return Messages.COMMAND_HELP_DETAILS;
+		return Messages.HELP_LINES[0] + "\n" + Messages.HELP_LINES[1] + "\n" + Messages.HELP_LINES[2] + "\n" + Messages.HELP_LINES[3] + "\n" + Messages.HELP_LINES[4];
 	}
 	public void update() {
 		cont.moveLemmings();

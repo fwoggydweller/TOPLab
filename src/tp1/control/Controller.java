@@ -27,10 +27,11 @@ public class Controller {
         String command;
 		view.showWelcome();
 		while(!game.playerLoses() && !game.playerWins() && !playerExits) {
-			command = scanner.nextLine().trim().toLowerCase();
 			view.showGame();
-			if(command == "help" || command == "h") {
+			command = scanner.nextLine().trim().toLowerCase();
+			if(command.equals("help") || command.equals("h")) {
 				System.out.println(game.help());
+				command = scanner.nextLine().trim().toLowerCase();
 				if(command == "reset" || command == "r") {
 					run(); //Can I do this in order to reset the game?? Or do I have to make a new method?
 				}
@@ -47,9 +48,7 @@ public class Controller {
 					view.showMessage("Please, insert a valid input");
 				}
 			}
-			else {
-				game.update();
-			}
+			game.update();
 		}
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		view.showEndMessage();
