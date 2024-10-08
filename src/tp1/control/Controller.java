@@ -32,16 +32,16 @@ public class Controller {
 			if(command.equals("help") || command.equals("h")) {
 				System.out.println(game.help());
 				command = scanner.nextLine().trim().toLowerCase();
-				if(command == "reset" || command == "r") {
+				if(command.equals("reset") || command.equals("r")) { //Works (I guess?)
 					run(); //Can I do this in order to reset the game?? Or do I have to make a new method?
 				}
-				else if(command == "help" || command == "h") {
-					game.help();
+				else if(command.equals("help") || command.equals("h")) { //Works (I guess?)
+					System.out.println(game.help()); //I do not get why we should do this (???
 				}
-				else if(command == "exit" || command == "e") {
+				else if(command.equals("exit") || command.equals("e")) { //Works
 					playerExits = true;
 				}
-				else if(command == "none" || command == "n") {
+				else if(command.equals("none") || command.equals("n")) {
 					
 				}
 				else {
