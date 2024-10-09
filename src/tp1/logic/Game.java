@@ -18,8 +18,8 @@ public class Game {
 	private Messages m;
 	private int cycle = 0;
 	public Game(int nLevel) {
-		if(nLevel == 1) { //adds 1 of each type
-			cont = new GameObjectContainer();
+		cont = new GameObjectContainer();
+		if(nLevel == 1) { //adds 1 of each type	
 			cont.registerDoor(new ExitDoor(9,9));
 			cont.addLemming(new Lemming(1, 1, w, this));
 			cont.addWall(new Wall(1,6));		
