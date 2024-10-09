@@ -22,7 +22,7 @@ public class Game {
 			cont = new GameObjectContainer();
 			cont.registerDoor(new ExitDoor(9,9));
 			cont.addLemming(new Lemming(1, 1, w, this));
-			cont.addWall(new Wall(1,6));		
+			cont.addWall(new Wall(1,2));		
 		}
 		// TODO Auto-generated constructor stub
 	}
