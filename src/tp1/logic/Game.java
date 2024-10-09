@@ -1,9 +1,9 @@
 package tp1.logic;
 
 import tp1.logic.GameObjectContainer;
-import tp1.logic.gameobjects.WalkerRole;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
+import tp1.logic.gameobjects.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.view.Messages;
 public class Game {
@@ -21,8 +21,8 @@ public class Game {
 		if(nLevel == 1) { //adds 1 of each type
 			cont = new GameObjectContainer();
 			cont.registerDoor(new ExitDoor(9,9));
-			cont.addLemming(new Lemming(0, 0, w, this));
-			cont.addWall(new Wall(2,2));		
+			cont.addLemming(new Lemming(1, 1, w, this));
+			cont.addWall(new Wall(1,6));		
 		}
 		// TODO Auto-generated constructor stub
 	}
@@ -65,7 +65,7 @@ public class Game {
 		return numLemmingsDead() == INITIAL_LEMMING_NUM;
 	}
 
-	public String help() {
+	public String help() { //Is this okay? Make a loop
 		return Messages.HELP_LINES[0] + "\n" + Messages.HELP_LINES[1] + "\n" + Messages.HELP_LINES[2] + "\n" + Messages.HELP_LINES[3] + "\n" + Messages.HELP_LINES[4];
 	}
 	public void update() {
