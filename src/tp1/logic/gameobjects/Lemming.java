@@ -50,32 +50,37 @@ public class Lemming {
 		return pos;
 	}
 	public void Move() {
-		if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
-			if(currFall >= force) {
-				alive = false;
-			}
-			else {
-				currFall = 0;
-				if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow())) { //if lemming encounters wall next to it 
-					if(this.dir.equals(Direction.LEFT)) {
-						this.dir = Direction.RIGHT;
-					}
-					else if(this.dir.equals(Direction.RIGHT)) {
-						this.dir = Direction.LEFT;
-					}
-					
+		if(!IsVoid()) {
+			if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
+				if(currFall >= force) {
+					alive = false;
 				}
-				else{
-					Position p = new Position (pos.getCol() + dir.getX(), pos.getRow());
-					this.pos = p;
+				else {
+					currFall = 0;
+					if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow())) { //if lemming encounters wall next to it 
+						if(this.dir.equals(Direction.LEFT)) {
+							this.dir = Direction.RIGHT;
+						}
+						else if(this.dir.equals(Direction.RIGHT)) {
+							this.dir = Direction.LEFT;
+						}
+						
+					}
+					else{
+						Position p = new Position (pos.getCol() + dir.getX(), pos.getRow());
+						this.pos = p;
+					}
 				}
+				
 			}
-			
+			else { //If it's falling down, then the row position will be updated
+				Position p = new Position (pos.getCol(), pos.getRow()+1);
+				this.pos = p;
+				currFall++;
+			}
 		}
-		else { //If it's falling down, then the row position will be updated
-			Position p = new Position (pos.getCol(), pos.getRow()+1);
-			this.pos = p;
-			currFall++;
+		else {
+			alive = false;
 		}
 	}
 	private boolean IsGrounded() { //This must check if there's a wall below the lemming
@@ -83,6 +88,14 @@ public class Lemming {
 			return true;
 		}	
 		return false;
+	}
+	private boolean IsVoid() { //returns if lemming is falling off the board
+		boolean is = false;
+		
+		if (this.pos.getRow() >= 11) {
+			is = true;
+		}	
+		return is;
 	}
 	public boolean isAlive() {
 		return alive;

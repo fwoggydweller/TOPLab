@@ -8,7 +8,7 @@ import tp1.logic.gameobjects.ExitDoor;
 import tp1.view.Messages;
 public class Game {
 
-	public static final int DIM_X = 10; // mabye should access with getter (for all)
+	public static final int DIM_X = 10; 
 	public static final int DIM_Y = 10;
 	public static final int INITIAL_LEMMING_NUM = 1;
 	public static final int NUMBER_OF_WALLS = 10;
