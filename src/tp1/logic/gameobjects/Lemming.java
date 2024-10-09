@@ -58,7 +58,7 @@ public class Lemming {
 				}
 				else {
 					currFall = 0;
-					if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow())) { //if lemming encounters wall next to it 
+					if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow()) || pos.getCol() + dir.getX() >= game.DIM_X  || pos.getCol() + dir.getX() < 0) { //if lemming encounters wall next to it 
 						if(this.dir.equals(Direction.LEFT)) {
 							this.dir = Direction.RIGHT;
 						}
@@ -93,7 +93,7 @@ public class Lemming {
 	private boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
-		if (this.pos.getRow() >= 11) {
+		if (this.pos.getRow() >= game.DIM_Y) {
 			is = true;
 		}	
 		return is;
