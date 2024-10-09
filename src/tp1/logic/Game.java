@@ -12,7 +12,7 @@ public class Game {
 	public static final int DIM_Y = 10;
 	public static final int INITIAL_LEMMING_NUM = 4;
 	public static final int NUMBER_OF_WALLS = 15;
-	private int LEMMING_EXIT = 0; 
+	public static final int LEMMING_THRESHOLD = 3;
 	private GameObjectContainer cont;
 	private WalkerRole w = new WalkerRole();
 	private Messages m;
@@ -67,7 +67,7 @@ public class Game {
 	}
 
 	public int numLemmingsToWin() {
-		return INITIAL_LEMMING_NUM - numLemmingsExit();
+		return  LEMMING_THRESHOLD - numLemmingsExit();
 	}
 
 	public String positionToString(int col, int row) {
@@ -79,7 +79,7 @@ public class Game {
 	}
 
 	public boolean playerLoses() {
-		return numLemmingsDead() == INITIAL_LEMMING_NUM;
+		return numLemmingsDead() > INITIAL_LEMMING_NUM - LEMMING_THRESHOLD;
 	}
 
 	public String help() { //Is this okay? Make a loop
