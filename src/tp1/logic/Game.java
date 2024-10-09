@@ -79,7 +79,7 @@ public class Game {
 	}
 
 	public boolean playerLoses() {
-		return numLemmingsDead() == INITIAL_LEMMING_NUM;
+		return numLemmingsDead() + numLemmingsExit() == INITIAL_LEMMING_NUM && numLemmingsDead()>0;
 	}
 
 	public String help() { //Is this okay? Make a loop

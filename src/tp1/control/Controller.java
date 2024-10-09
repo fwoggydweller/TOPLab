@@ -48,6 +48,7 @@ public class Controller {
 			game.update();
 		}
 		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
+		view.showGame();
 		view.showEndMessage();
 		scanner.close();
 	}
