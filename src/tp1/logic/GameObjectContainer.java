@@ -33,7 +33,7 @@ public class GameObjectContainer {
 		boolean LemmingFound = false;
 		int i = 0;
 		while(i < LemmingsReg && !LemmingFound) {
-			if(Lem[i].getPos().Equals(x, y)) {
+			if(Lem[i] != null && Lem[i].getPos().Equals(x, y)) {
 				LemmingFound = true;
 			}
 			else {
@@ -83,7 +83,7 @@ public class GameObjectContainer {
 	public int numLemmingsDead() {
 		int n = 0;
 		for(int i = 0; i<LemmingsReg; i++) {
-			if(!Lem[i].isAlive()) {
+			if(Lem[i] != null && !Lem[i].isAlive()) {
 				n++;
 			}
 		}
@@ -92,7 +92,7 @@ public class GameObjectContainer {
 	public int numLemmingsExit() {
 		int n = 0;
 		for(int i = 0; i<LemmingsReg; i++) {
-			if(Lem[i].isExit()) {
+			if(Lem[i] != null && Lem[i].isExit()) {
 				n++;
 			}
 		}
@@ -101,10 +101,19 @@ public class GameObjectContainer {
 	}
 	public void moveLemmings() {
 		for(int i = 0; i < LemmingsReg; i++) {
-			if(Lem[i].isAlive() && !Lem[i].isExit()) {
+			if(Lem[i] != null && Lem[i].isAlive() && !Lem[i].isExit()) {
 				Lem[i].update();
 			}
 		}
 	}
+	public void reset() {
+		LemmingsReg = 0;
+		removeLemmings();
+	}
+	private void removeLemmings() {
+		Lemming[] L = new Lemming[g.INITIAL_LEMMING_NUM];
+		this.Lem = L;
+	}
 }
+
 

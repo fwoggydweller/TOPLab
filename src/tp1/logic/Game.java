@@ -89,4 +89,15 @@ public class Game {
 		cont.moveLemmings();
 		cycle++;
 	}
+	public void reset() {
+		cycle = 0;
+		cont.reset();
+		resetLemmings();
+	}
+	private void resetLemmings() {
+		cont.addLemming(new Lemming(9, 0, w, this));
+		cont.addLemming(new Lemming(3, 3, w, this));
+		cont.addLemming(new Lemming(2, 3, w, this));
+		cont.addLemming(new Lemming(0, 8, w, this));
+	}
 }

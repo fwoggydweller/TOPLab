@@ -27,11 +27,11 @@ public class Controller {
 		Scanner scanner = new Scanner(System.in);
         String command;
 		view.showWelcome();
-		while(!game.playerLoses() && !game.playerWins() && !playerExits) {
+		while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
 			view.showGame();
 			command = scanner.nextLine().trim().toLowerCase();
 			if(command.equals("reset") || command.equals("r")) { 
-				
+				game.reset();
 			}
 			else if(command.equals("help") || command.equals("h")) { //Works (I guess?)
 				System.out.println(game.help()); //I do not get why we should do this (???
