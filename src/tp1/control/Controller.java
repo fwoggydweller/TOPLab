@@ -19,38 +19,31 @@ public class Controller {
 	}
 
 
-	/**
-	 * Runs the game logic, coordinate Model(game) and View(view)
-	 * 
-	 */
+
 	public void run() {
-		Scanner scanner = new Scanner(System.in);
         String command;
 		view.showWelcome();
 		while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
 			view.showGame();
-			command = scanner.nextLine().trim().toLowerCase();
+			command = game.concatenateAString(view.getPrompt());
 			if(command.equals("reset") || command.equals("r")) { 
 				game.reset();
 			}
-			else if(command.equals("help") || command.equals("h")) { //Works (I guess?)
-				System.out.println(game.help()); //I do not get why we should do this (???
+			else if(command.equals("help") || command.equals("h")) { 
+				System.out.println(game.help()); 
 			}
-			else if(command.equals("exit") || command.equals("e")) { //Works
+			else if(command.equals("exit") || command.equals("e")) { 
 				playerExits = true;
 			}
-			else if(command.equals("none") || command.equals("n")) { //Works (it adds 1 to cycle and all that)
-				
+			else if(command.equals("none") || command.equals("n")) { 
+				game.update();
 			}
 			else {
 				view.showMessage("Please, insert a valid input"); //We should add an exception here so that this is repeated until a correct input is inserted
 			}
-			game.update();
 		}
-		//TODO fill your code: The main loop that displays the game, asks the user for input, and executes the action.
 		view.showGame();
 		view.showEndMessage();
-		scanner.close();
 	}
 
 }

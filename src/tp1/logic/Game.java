@@ -21,27 +21,33 @@ public class Game {
 		cont = new GameObjectContainer();
 		if(nLevel == 1) { //adds 1 of each type	
 			cont.registerDoor(new ExitDoor(4,5));
-			cont.addLemming(new Lemming(9, 0, w, this));
-			cont.addLemming(new Lemming(3, 3, w, this));
-			cont.addLemming(new Lemming(2, 3, w, this));
-			cont.addLemming(new Lemming(0, 8, w, this));
-			cont.addWall(new Wall(9,1));	
-			cont.addWall(new Wall(8,1));	
-			cont.addWall(new Wall(2,4));
-			cont.addWall(new Wall(3,4));	
-			cont.addWall(new Wall(4,4));	
-			cont.addWall(new Wall(7,5));
-			cont.addWall(new Wall(7,6));	
-			cont.addWall(new Wall(6,6));	
-			cont.addWall(new Wall(5,6));
-			cont.addWall(new Wall(4,6));	
-			cont.addWall(new Wall(8,8));	
-			cont.addWall(new Wall(9,9));
-			cont.addWall(new Wall(8,9));	
-			cont.addWall(new Wall(0,9));	
-			cont.addWall(new Wall(1,9));
+			Init1();
+			Init2();
 		}
 		// TODO Auto-generated constructor stub
+	}
+	private void Init1() {
+		cont.addLemming(new Lemming(9, 0, w, this));
+		cont.addLemming(new Lemming(3, 3, w, this));
+		cont.addLemming(new Lemming(2, 3, w, this));
+		cont.addLemming(new Lemming(0, 8, w, this));
+	}
+	private void Init2() {
+		cont.addWall(new Wall(9,1));	
+		cont.addWall(new Wall(8,1));	
+		cont.addWall(new Wall(2,4));
+		cont.addWall(new Wall(3,4));	
+		cont.addWall(new Wall(4,4));	
+		cont.addWall(new Wall(7,5));
+		cont.addWall(new Wall(7,6));	
+		cont.addWall(new Wall(6,6));	
+		cont.addWall(new Wall(5,6));
+		cont.addWall(new Wall(4,6));	
+		cont.addWall(new Wall(8,8));	
+		cont.addWall(new Wall(9,9));
+		cont.addWall(new Wall(8,9));	
+		cont.addWall(new Wall(0,9));	
+		cont.addWall(new Wall(1,9));
 	}
 	public boolean searchWall(int col, int row) {
 		return (cont.searchWall(col, row));
@@ -78,12 +84,22 @@ public class Game {
 		return numLemmingsToWin() == 0;
 	}
 
-	public boolean playerLoses() {
+	public boolean playerLoses() { //The game will stop when it's impossible for the player to win
 		return numLemmingsDead() > INITIAL_LEMMING_NUM - LEMMING_THRESHOLD;
 	}
 
 	public String help() { //Is this okay? Make a loop
-		return Messages.HELP_LINES[0] + "\n" + Messages.HELP_LINES[1] + "\n" + Messages.HELP_LINES[2] + "\n" + Messages.HELP_LINES[3] + "\n" + Messages.HELP_LINES[4];
+		return concatenateAString(Messages.HELP_LINES);
+	}
+	public String concatenateAString(String[] m) {
+		String conc = "";
+		for(int i = 0; i<m.length; i++) {
+			conc += m[i];
+			if(m.length > 1) {
+				conc += "\n";
+			}
+		}
+		return conc;
 	}
 	public void update() {
 		cont.moveLemmings();
@@ -92,12 +108,6 @@ public class Game {
 	public void reset() {
 		cycle = 0;
 		cont.reset();
-		resetLemmings();
-	}
-	private void resetLemmings() {
-		cont.addLemming(new Lemming(9, 0, w, this));
-		cont.addLemming(new Lemming(3, 3, w, this));
-		cont.addLemming(new Lemming(2, 3, w, this));
-		cont.addLemming(new Lemming(0, 8, w, this));
+		Init1();
 	}
 }
