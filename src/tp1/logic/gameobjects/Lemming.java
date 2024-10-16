@@ -11,7 +11,7 @@ public class Lemming {
 	private Game game;
 	private Position pos;
 	private Direction dir;
-	private WalkerRole w;
+	private LemmingRole w;
 	boolean alive;
 	boolean solid;
 	boolean exit;
