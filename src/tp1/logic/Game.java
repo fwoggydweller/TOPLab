@@ -3,7 +3,8 @@ package tp1.logic;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
-import tp1.logic.gameobjects.roles.WalkerRole;
+import tp1.logic.roles.ParachuterRole;
+import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.view.Messages;
 public class Game {
@@ -14,7 +15,8 @@ public class Game {
 	public static final int NUMBER_OF_WALLS = 15;
 	public static final int LEMMING_THRESHOLD = 3;
 	private GameObjectContainer cont;
-	private WalkerRole w = new WalkerRole();
+	private ParachuterRole pR = new ParachuterRole();
+	private WalkerRole wR = new WalkerRole();
 	private Messages m;
 	private int cycle = 0;
 	public Game(int nLevel) {
@@ -27,10 +29,10 @@ public class Game {
 		// TODO Auto-generated constructor stub
 	}
 	private void Init1() {
-		cont.addLemming(new Lemming(9, 0, w, this));
-		cont.addLemming(new Lemming(3, 3, w, this));
-		cont.addLemming(new Lemming(2, 3, w, this));
-		cont.addLemming(new Lemming(0, 8, w, this));
+		cont.addLemming(new Lemming(9, 0, wR, this));
+		cont.addLemming(new Lemming(3, 3, wR, this));
+		cont.addLemming(new Lemming(2, 3, wR, this));
+		cont.addLemming(new Lemming(0, 8, wR, this));
 	}
 	private void Init2() {
 		cont.addWall(new Wall(9,1));	

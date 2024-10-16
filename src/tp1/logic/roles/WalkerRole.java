@@ -1,10 +1,12 @@
-package tp1.logic.gameobjects.roles;
+package tp1.logic.roles;
+
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
-public class WalkerRole extend LemmingRole{
+public class WalkerRole implements LemmingRole{
 	 private Messages m = new Messages(); // here?
-	 public void advance(Lemming lemmy) {
+	 @Override
+	 public void play(Lemming lemmy) {
 		 lemmy.Move();
 	 }
 
@@ -22,4 +24,10 @@ public class WalkerRole extend LemmingRole{
 	    }
 		return icon;
 	 }
+
+		@Override
+		public void start(Lemming lemming) {
+			// TODO Auto-generated method stub
+			
+		}
 }

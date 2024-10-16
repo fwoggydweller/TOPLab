@@ -3,7 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Game;
 //import tp1.logic.GameObjectContainer;
 import tp1.logic.Position;
-import tp1.logic.gameobjects.roles.WalkerRole;
+import tp1.logic.roles.LemmingRole;
 import tp1.logic.Direction;
 
 
@@ -18,7 +18,7 @@ public class Lemming {
 	int force = 3;
 	int currFall = 0;
 	//TODO fill your code
-	public Lemming(int x, int y, WalkerRole role, Game g) {
+	public Lemming(int x, int y, LemmingRole role, Game g) {
 		pos = new Position(x, y);
 		dir = Direction.RIGHT;
 		w = role;
@@ -106,7 +106,7 @@ public class Lemming {
 	}
 	public void update() {
 		if(isAlive()) {
-			w.advance(this);
+			w.play(this);
 		}
 	}
 	public boolean isExit() { // checks if it is in exit
