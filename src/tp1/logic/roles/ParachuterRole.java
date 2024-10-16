@@ -21,11 +21,9 @@ public class ParachuterRole implements LemmingRole{
 	@Override
 	public void start(Lemming lemming) {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void play(Lemming lemming) {
 		// TODO Auto-generated method stub
-		
 	}
 }

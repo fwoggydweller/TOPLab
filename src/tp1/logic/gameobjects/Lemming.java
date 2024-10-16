@@ -12,11 +12,11 @@ public class Lemming {
 	private Position pos;
 	private Direction dir;
 	private LemmingRole w;
-	boolean alive;
-	boolean solid;
-	boolean exit;
-	int force = 3;
-	int currFall = 0;
+	private boolean alive;
+	private boolean solid;
+	private boolean exit;
+	private int force = 3;
+	private int currFall = 0;
 	//TODO fill your code
 	public Lemming(int x, int y, LemmingRole role, Game g) {
 		pos = new Position(x, y);
@@ -50,6 +50,14 @@ public class Lemming {
 	public Position getPos() {
 		return pos;
 	}
+	public void Fall(int n) { //We need to call a Role method that mannages this
+		if(n== 1) {
+			currFall++;
+		}
+		else if(n==0) {
+			currFall = 0;
+		}
+	}
 	public void Move() {
 		if(!IsVoid()) {
 			if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
@@ -77,7 +85,6 @@ public class Lemming {
 			else { //If it's falling down, then the row position will be updated
 				Position p = new Position (pos.getCol(), pos.getRow()+1);
 				this.pos = p;
-				currFall++;
 			}
 		}
 		else {
