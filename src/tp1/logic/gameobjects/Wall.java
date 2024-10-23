@@ -7,7 +7,6 @@ public class Wall extends GameObject{
 	WalkerRole w;
 	public Wall(int x,int y) {
 		pos = new Position(x,y);
-		//gCont.counterOfWalls(this);
 	}
 	public Position getPos() {
 		return pos;

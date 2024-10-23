@@ -1,11 +1,13 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
 
 public class GameObject implements GameItem{
-	Position pos;
-	boolean solid;
+	protected Game game;
+	protected Position pos;
+	protected boolean solid;
 	@Override
 	public boolean receiveInteraction(GameItem other) {
 		return false;

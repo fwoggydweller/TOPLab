@@ -8,12 +8,9 @@ import tp1.logic.Direction;
 
 
 public class Lemming extends GameObject{
-	private Game game;
-	private Position pos;
 	private Direction dir;
 	private LemmingRole w;
 	private boolean alive;
-	private boolean solid;
 	private boolean exit;
 	private int force = 3;
 	private int currFall = 0;
