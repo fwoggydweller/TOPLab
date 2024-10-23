@@ -11,10 +11,6 @@ public abstract class LemmingRole {
     		moveX(lemming);
     	}
     }
-    private boolean willDie(Lemming lemming) { // overwrite in parachute
-    	
-    	return true;
-    }
     private void moveX(Lemming lemming) {
     	if(lemming.getPos().getCol() + lemming.getDir().getX() >= game.DIM_X  || lemming.getPos().getCol() + lemming.getDir().getX() < 0) { //if lemming encounters wall next to it 
 			if(lemming.getDir().equals(Direction.LEFT)) {
@@ -30,8 +26,11 @@ public abstract class LemmingRole {
 			lemming.setPos(p);
 		}
     }
-    private boolean moveY(Lemming lemming) { 
+    private boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
     	boolean ok = true;
+    	if(lemming.IsGrounded()) {
+    		
+    	}
     	
     	return ok;
     }

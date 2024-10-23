@@ -135,4 +135,19 @@ public class Lemming extends GameObject{
 	public boolean GetRole(LemmingRole role) {
 		return w.equals(role);
 	}
+	public int getCurrFall() {
+		return currFall;
+	}
+	public int getForce() {
+		return force;
+	}
+	public void setCurrFall(int fall) {
+		this.currFall = fall;
+	}
+	public void setForce(int force) {
+		this.force = force;
+	}
+	public void setAlive() {
+		this.alive = force - currFall > 0;
+	}
 }
