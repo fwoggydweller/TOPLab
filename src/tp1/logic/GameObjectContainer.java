@@ -1,6 +1,7 @@
 package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.ExitDoor;
+import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.Game;
 import tp1.view.Messages;
@@ -8,26 +9,27 @@ public class GameObjectContainer {
 	//TODO fill your code
 	private Game g;
 	private Messages m;
-	private Lemming[] Lem = new Lemming[g.INITIAL_LEMMING_NUM];
-	private Wall[] walls = new Wall[g.NUMBER_OF_WALLS];
-	private ExitDoor exit;
-	
+	private GameObject[] obj = new GameObject[g.INITIAL_LEMMING_NUM+g.NUMBER_OF_WALLS+ 1]; // the 1 is equal to the exit
+	int globalReg = 0;
 	int wallsReg=0;
 	int LemmingsReg = 0;
 	public void addLemming(Lemming Lemming) {
 		if(LemmingsReg < g.INITIAL_LEMMING_NUM) {
-			Lem[LemmingsReg] = Lemming;
+			obj[globalReg] = Lemming;
 			LemmingsReg++;
+			globalReg++;
 		}
 	}
 	public void addWall(Wall wall) {
 		if(wallsReg < g.NUMBER_OF_WALLS) {
-				walls[wallsReg]= wall;
+				obj[globalReg]= wall;
 				wallsReg++;
+				globalReg++;
 		}
 	}
 	public void registerDoor(ExitDoor exit) {
-		this.exit = exit;
+		obj[globalReg] = exit;
+		globalReg++;
 	}
 	public int searchLemming(int x, int y) {
 		boolean LemmingFound = false;
@@ -82,12 +84,12 @@ public class GameObjectContainer {
 	}
 	public int numLemmingsDead() {
 		int n = 0;
-		for(int i = 0; i<LemmingsReg; i++) {
-			if(Lem[i] != null && !Lem[i].isAlive()) {
+		for(int i = 0; i<globalReg; i++) {
+			if(obj[i] != null && obj[i].isAlive()) {
 				n++;
 			}
 		}
-		return n;
+		return LemmingsReg - n;
 	}
 	public int numLemmingsExit() {
 		int n = 0;
