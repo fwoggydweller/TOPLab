@@ -66,16 +66,17 @@ public class GameObjectContainer {
 	}
 	private String searchElems(int col, int row) {
 		String name;
-		if(searchLemming(col, row) != -1) {
-			name = Lem[searchLemming(col,row)].toString();
-		}
-		else if(searchWall(col, row)) {
-			name = m.WALL;
-		}
-		else if(searchExit(col, row)) {
+		
+		if(searchExit(col, row)) { // new (not submitted)  // print the toString of wall, not the direct msg
 			name = m.EXIT_DOOR;
 		}
-		else {
+		else if(searchLemming(col, row) != -1) { // call searchLem once
+			name = Lem[searchLemming(col,row)].toString();
+		}
+		else if(searchWall(col, row)) { // print the toString of wall, not the direct msg (all gameobjects need a toString)
+			name = m.WALL;
+		}
+		else { // the toStrings all return the icon or empty so this case will not be needed
 			name = m.EMPTY;
 		}
 		return name;

@@ -3,7 +3,7 @@ import tp1.logic.roles.LemmingRole;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.Direction;
-public class ParachuterRole implements LemmingRole{
+public class ParachuterRole extends LemmingRole{
 	private Messages m = new Messages();
 	@Override
 	public String getIcon(Lemming lemmy) {

@@ -27,8 +27,8 @@ public class Lemming extends GameObject{
 		game = g;
 	}
 	//LEFT(-1,0), RIGHT(1,0), DOWN(0,1), UP(0,-1), NONE(0,0);
-	public void setDir(int x, int y) {
-		if(x == 0 && y == 0) {
+	public void setDir(Direction direction) {
+		/*if(x == 0 && y == 0) {
 			dir = Direction.NONE;
 		}
 		else if(x == 0 && y == 1) {
@@ -42,10 +42,14 @@ public class Lemming extends GameObject{
 		}
 		else{
 			dir = Direction.UP;
-		}
+		}*/
+		dir = direction;
 	}
 	public Direction getDir() {
 		return dir;
+	}
+	public void setPos(Position position) {
+		this.pos = position;
 	}
 	public Position getPos() {
 		return pos;
@@ -91,8 +95,8 @@ public class Lemming extends GameObject{
 			alive = false;
 		}
 	}
-	private boolean IsGrounded() { //This must check if there's a wall below the lemming
-		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
+	private boolean IsGrounded() { //This must check if there's a solid gameObject below lemming
+		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) { 
 			return true;
 		}	
 		return false;
@@ -113,7 +117,7 @@ public class Lemming extends GameObject{
 	}
 	public void update() {
 		if(isAlive()) {
-			w.play(this);
+			w.move(this);
 		}
 	}
 	public boolean isExit() { // checks if it is in exit
