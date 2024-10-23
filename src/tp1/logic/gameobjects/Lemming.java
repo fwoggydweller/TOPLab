@@ -7,7 +7,7 @@ import tp1.logic.roles.LemmingRole;
 import tp1.logic.Direction;
 
 
-public class Lemming {
+public class Lemming extends GameObject{
 	private Game game;
 	private Position pos;
 	private Direction dir;

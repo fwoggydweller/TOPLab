@@ -2,7 +2,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Game;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.Position;
-public class Wall {
+public class Wall extends GameObject{
 	Position pos;
 	boolean solid = false;
 	public Wall(int x,int y) {
