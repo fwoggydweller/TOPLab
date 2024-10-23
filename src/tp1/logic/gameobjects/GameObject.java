@@ -1,56 +1,51 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
 
 public class GameObject implements GameItem{
-
+	protected Game game;
+	protected Position pos;
+	protected boolean solid;
 	@Override
 	public boolean receiveInteraction(GameItem other) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean interactWith(Lemming lemming) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean interactWith(Wall wall) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean interactWith(ExitDoor door) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isSolid() {
-		// TODO Auto-generated method stub
-		return false;
+		return solid;
 	}
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isExit() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean isInPosition(Position pos) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.pos.Equals(pos.getCol(), pos.getRow());
 	}
 	
 	public boolean setRole(LemmingRole role) {
