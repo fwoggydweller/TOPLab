@@ -48,7 +48,7 @@ public class Lemming extends GameObject{
 		return dir;
 	}
 	public Position getPos() {
-		return pos;
+		return this.pos;
 	}
 	public void Fall(int n) { //We need to call a Role method that mannages this
 		if(n== 1) {
@@ -105,6 +105,7 @@ public class Lemming extends GameObject{
 		}	
 		return is;
 	}
+	@Override
 	public boolean isAlive() {
 		return alive;
 	}
@@ -116,10 +117,21 @@ public class Lemming extends GameObject{
 			w.play(this);
 		}
 	}
-	public boolean isExit() { // checks if it is in exit
+	private boolean isThisExit() { // checks if it is in exit
 		if(game.searchExit(this.pos.getCol(), this.pos.getRow())) {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public boolean interactWith(ExitDoor exit) {
+		return isThisExit();
+	}
+	@Override
+	public boolean interactWith(Wall wall) {//TODO
+		return false;
+	}
+	public boolean GetRole(LemmingRole role) {
+		return w.equals(role);
 	}
 }

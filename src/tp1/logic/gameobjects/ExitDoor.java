@@ -22,4 +22,8 @@ public class ExitDoor extends GameObject{
 	public boolean isExit(){
 		return true;
 	}
+	@Override
+	public boolean interactWith(Lemming lem){ //TODO
+		return false;
+	}
 }
