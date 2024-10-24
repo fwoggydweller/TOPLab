@@ -9,5 +9,5 @@ public class CaveDigger extends LemmingRole{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	// overwrite move wyhen interactions is done to destroy wall below but not if metalwall
 }

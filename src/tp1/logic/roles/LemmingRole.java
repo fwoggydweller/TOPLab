@@ -3,6 +3,7 @@ import tp1.logic.Game;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
+import tp1.view.Messages;
 public abstract class LemmingRole {
 	private Game game;
 	static ParachuterRole pR;
@@ -24,6 +25,8 @@ public abstract class LemmingRole {
 		return role;
 	}
 
+
+	protected Messages m = new Messages(); // esto se puede hacer?? y si no, no hereda esto los hijos?
     public abstract String getIcon( Lemming lemming );
     public void move(Lemming lemming) {
     	if(!moveY(lemming)) {
@@ -47,12 +50,19 @@ public abstract class LemmingRole {
 		}
     }
 
-    private boolean moveY(Lemming lemming) { 
+    public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
     	boolean ok = true;
     	if(lemming.IsGrounded()) {
-    		
+    		lemming.setAlive();
+    		lemming.setCurrFall(0);	
+    		ok = false;
+    	}
+    	else {
+    		Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
+			lemming.setPosition(p);
     	}
     	
     	return ok;
     }
+    public void play(Lemming lem) {}
 }
