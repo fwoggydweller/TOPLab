@@ -8,6 +8,13 @@ public class GameObject implements GameItem{
 	protected Game game;
 	protected Position pos;
 	protected boolean solid;
+	//Global set position for each class that extends GameObjects
+	public void setPosition(Position p) {
+		this.pos = p;
+	}
+	public Position getPos() {
+		return this.pos;
+	}
 	@Override
 	public boolean receiveInteraction(GameItem other) {
 		return false;
@@ -53,5 +60,6 @@ public class GameObject implements GameItem{
 		//ERROR: Unknown Role
 		return false;
 	}
-
+	public void ToString() {
+	}
 }

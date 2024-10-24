@@ -3,6 +3,7 @@ package tp1.logic;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
+import tp1.logic.roles.CaveDigger;
 import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
@@ -17,6 +18,7 @@ public class Game {
 	private GameObjectContainer cont;
 	private ParachuterRole pR = new ParachuterRole();
 	private WalkerRole wR = new WalkerRole();
+	private CaveDigger cD = new CaveDigger();
 	private Messages m;
 	private int cycle = 0;
 	public Game(int nLevel) {
