@@ -9,7 +9,7 @@ import tp1.logic.Direction;
 
 public class Lemming extends GameObject{
 	private Direction dir;
-	private LemmingRole w;
+	private LemmingRole role;
 	private boolean alive;
 	private boolean exit;
 	private int force = 3;
@@ -18,7 +18,7 @@ public class Lemming extends GameObject{
 	public Lemming(int x, int y, LemmingRole role, Game g) {
 		pos = new Position(x, y);
 		dir = Direction.RIGHT;
-		w = role;
+		this.role = role;
 		alive = true;
 		solid = false;
 		game = g;
@@ -43,9 +43,6 @@ public class Lemming extends GameObject{
 	}
 	public Direction getDir() {
 		return dir;
-	}
-	public Position getPos() {
-		return this.pos;
 	}
 	public void Fall(int n) { //We need to call a Role method that mannages this
 		if(n== 1) {
@@ -88,7 +85,7 @@ public class Lemming extends GameObject{
 			alive = false;
 		}
 	}
-	private boolean IsGrounded() { //This must check if there's a wall below the lemming
+	public boolean IsGrounded() { //This must check if there's a wall below the lemming
 		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
 			return true;
 		}	
@@ -107,11 +104,11 @@ public class Lemming extends GameObject{
 		return alive;
 	}
 	public String toString() {
-		return w.getIcon(this);
+		return role.getIcon(this);
 	}
 	public void update() {
 		if(isAlive()) {
-			w.play(this);
+			role.play(this);
 		}
 	}
 	public boolean isThisExit() { // checks if it is in exit
@@ -129,6 +126,15 @@ public class Lemming extends GameObject{
 		return false;
 	}
 	public boolean GetRole(LemmingRole role) {
-		return w.equals(role);
+		return role.equals(role);
+	}
+	public boolean setRole(LemmingRole role) {
+		return true;
+	}
+	public void disableRole() {
+		
+	}
+	public void setCurrFall(int f) {
+		currFall = 0;
 	}
 }

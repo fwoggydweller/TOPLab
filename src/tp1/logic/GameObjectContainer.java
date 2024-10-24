@@ -34,8 +34,8 @@ public class GameObjectContainer {
 	public int searchLemming(int x, int y) {
 		boolean LemmingFound = false;
 		int i = 0;
-		while(i < LemmingsReg && !LemmingFound) {
-			if(Lem[i] != null && Lem[i].getPos().Equals(x, y)) {
+		while(i < globalReg && !LemmingFound) {
+			if(obj[i] != null && obj[i].isInPosition(new Position(x,y)) && obj[i].isAlive()) {
 				LemmingFound = true;
 			}
 			else {
@@ -49,8 +49,8 @@ public class GameObjectContainer {
 	}
 	public boolean searchWall(int x, int y) {
 		boolean WallFound = false;
-		for(int i = 0; i < wallsReg && !WallFound; i++) {
-			if(walls[i].getPos().getCol() == x && walls[i].getPos().getRow() == y) {
+		for(int i = 0; i < globalReg && !WallFound; i++) {
+			if(obj[i].isInPosition(new Position(x,y)) && obj[i].isSolid()) {
 				WallFound = true;
 			}
 		}
@@ -58,18 +58,20 @@ public class GameObjectContainer {
 	}
 	public boolean searchExit(int x, int y) {
 		boolean ExitFound = false;
-			if(exit.getPos().getCol() == x && exit.getPos().getRow()== y) {
+		for(int i = 0; i < globalReg && !ExitFound; i++) {
+			if(obj[i].isInPosition(new Position(x,y)) && obj[i].isExit()) {
 				 ExitFound = true;
+			}
 		}
 		return ExitFound;
 	}
 	public String whatInPos(int col, int row) {
 		return searchElems(col, row);
 	}
-	private String searchElems(int col, int row) {
-		String name;
+	private String searchElems(int col, int row) { //idk how to make this anymore
+		String name = "";
 		if(searchLemming(col, row) != -1) {
-			name = Lem[searchLemming(col,row)].toString();
+			//name = Lem[searchLemming(col,row)].toString();
 		}
 		else if(searchWall(col, row)) {
 			name = m.WALL;
@@ -93,8 +95,8 @@ public class GameObjectContainer {
 	}
 	public int numLemmingsExit() { //TODO
 		int n = 0;
-		for(int i = 0; i<LemmingsReg; i++) {
-			if(obj[i] != null && obj[i].isAlive() && obj[i].isThisExit()) {
+		for(int i = 0; i<globalReg; i++) {
+			if(obj[i] != null && obj[i].isAlive()) { //How can I differenciate between lemmings that are alive and lemmings that exited
 				n++;
 			}
 		}
@@ -102,19 +104,22 @@ public class GameObjectContainer {
 	
 	}
 	public void moveLemmings() {
-		for(int i = 0; i < LemmingsReg; i++) {
-			if(Lem[i] != null && Lem[i].isAlive() && !Lem[i].isExit()) {
-				Lem[i].update();
+		for(int i = 0; i < globalReg; i++) {
+			if(obj[i] != null && obj[i].isAlive()) {
+				g.update();
 			}
 		}
 	}
 	public void reset() {
 		LemmingsReg = 0;
-		removeLemmings();
+		resetLemmings();
 	}
-	private void removeLemmings() {
-		Lemming[] L = new Lemming[g.INITIAL_LEMMING_NUM];
-		this.Lem = L;
+	private void resetLemmings() {
+		for(int i = 0; i < globalReg; i++) {
+			if(!obj[i].isExit() && !obj[i].isSolid()) {
+				
+			}
+		}
 	}
 }
 

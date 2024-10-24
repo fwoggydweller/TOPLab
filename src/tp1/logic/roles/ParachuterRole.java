@@ -7,15 +7,10 @@ public class ParachuterRole extends LemmingRole{
 	private Messages m = new Messages();
 	@Override
 	public String getIcon(Lemming lemmy) {
-		 String icon = m.EMPTY;
-		 
-		 if(lemmy.isAlive()){
-	    	if(lemmy.getDir() == Direction.LEFT) { //if it's going left, print left
-	    	}
-	    	else if(lemmy.getDir() == Direction.RIGHT || lemmy.getDir() == Direction.NONE) { //if it goes right, print right
-	    		icon = m.LEMMING_RIGHT;
-	    	}
-	    }
+		String icon = m.EMPTY;
+		if(!lemmy.IsGrounded()) { //there's no parachutter icon
+		
+		}
 		return icon;
 	 }
 	@Override
@@ -23,7 +18,12 @@ public class ParachuterRole extends LemmingRole{
 		// TODO Auto-generated method stub
 	}
 	@Override
-	public void play(Lemming lemming) {
-		// TODO Auto-generated method stub
+	public void play(Lemming lemming) { //I think it's like this
+		if(lemming.IsGrounded()) {
+			lemming.disableRole();
+		}
+		else {
+			lemming.setCurrFall(0);
+		}
 	}
 }

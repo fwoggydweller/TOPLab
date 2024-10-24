@@ -8,9 +8,6 @@ public class Wall extends GameObject{
 	public Wall(int x,int y) {
 		pos = new Position(x,y);
 	}
-	public Position getPos() {
-		return pos;
-	}
 	@Override
 	public boolean interactWith(Lemming lem) {
 		return lem.GetRole(w);
