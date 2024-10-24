@@ -25,9 +25,4 @@ public class WalkerRole extends LemmingRole{
 		return icon;
 	 }
 
-		@Override
-		public void start(Lemming lemming) {
-			// TODO Auto-generated method stub
-			
-		}
 }

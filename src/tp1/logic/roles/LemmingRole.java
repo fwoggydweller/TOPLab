@@ -64,5 +64,8 @@ public abstract class LemmingRole {
     	
     	return ok;
     }
-    public void play(Lemming lem) {}
+    public void play(Lemming lem) {
+    	move(lem);
+    	getIcon(lem);
+    }
 }
