@@ -46,7 +46,7 @@ public class GameObject implements GameItem{
 	}
 
 	@Override
-	public boolean isExit() {
+	public boolean isExit() { // esto debe comprobar si el objeto ha salido?
 		return false;
 	}
 
