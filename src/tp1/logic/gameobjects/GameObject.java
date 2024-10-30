@@ -60,6 +60,7 @@ public class GameObject implements GameItem{
 		//ERROR: Unknown Role
 		return false;
 	}
-	public void ToString() {
+	public void update() {
+		
 	}
 }

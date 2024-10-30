@@ -83,6 +83,7 @@ public class Lemming extends GameObject{
 		}
 		else {
 			alive = false;
+			game.numLemmingsDead();
 		}
 	}
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
