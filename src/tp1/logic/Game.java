@@ -74,7 +74,6 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 
 	public int numLemmingsExit() {
-		// TODO Auto-generated method stub
 		return numLemmingsExit;
 	}
 

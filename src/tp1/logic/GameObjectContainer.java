@@ -72,9 +72,6 @@ public class GameObjectContainer {
 		return ExitFound;
 	}*/
 	public String whatInPos(int col, int row) {
-		return searchElems(col, row);
-	}
-	private String searchElems(int col, int row) {
 		String name = m.EMPTY;
 		int pos = 0;
 		//Make a loop for searching the gO of the given pos

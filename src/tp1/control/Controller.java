@@ -23,9 +23,9 @@ public class Controller {
 	public void run() {
         String command;
 		view.showWelcome();
-		while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
+		//while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
 			view.showGame();
-			command = game.concatenateAString(view.getPrompt());
+			/*command = game.concatenateAString(view.getPrompt());
 			if(command.equals("reset") || command.equals("r")) { 
 				game.reset();
 			}
@@ -42,7 +42,7 @@ public class Controller {
 				view.showMessage("Please, insert a valid input"); //We should add an exception here so that this is repeated until a correct input is inserted
 			}
 		}
-		view.showGame();
+		view.showGame();*/
 		view.showEndMessage();
 	}
 
