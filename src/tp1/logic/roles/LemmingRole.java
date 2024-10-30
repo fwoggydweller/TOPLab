@@ -4,7 +4,7 @@ import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
-public abstract class LemmingRole {
+public abstract class LemmingRole { // change into interface with default method
 	private Game game;
 	static ParachuterRole pR;
 	static WalkerRole wR;
