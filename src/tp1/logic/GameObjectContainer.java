@@ -65,7 +65,8 @@ public class GameObjectContainer {
 	}
 	public boolean searchExit(int x, int y) {
 		boolean ExitFound = false;
-			if(exit.getPos().getCol() == x && exit.getPos().getRow()== y) {
+		for(int i = 0; i < globalReg && !ExitFound; i++) {
+			if(obj[i].isInPosition(new Position(x,y)) && obj[i].isExit()) { 
 				 ExitFound = true;
 		}
 		return ExitFound;

@@ -86,12 +86,15 @@ public class Lemming extends GameObject{
 			game.numLemmingsDead();
 		}
 	}
+
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
 		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
+
 			return true;
 		}	
 		return false;
 	}
+	
 	private boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
@@ -135,7 +138,19 @@ public class Lemming extends GameObject{
 	public void disableRole() {
 		
 	}
-	public void setCurrFall(int f) {
-		currFall = 0;
+	public int getCurrFall() {
+		return currFall;
+	}
+	public int getForce() {
+		return force;
+	}
+	public void setCurrFall(int fall) {
+		this.currFall = fall;
+	}
+	public void setForce(int force) {
+		this.force = force;
+	}
+	public void setAlive() {
+		this.alive = currFall >= force;
 	}
 }
