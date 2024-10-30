@@ -117,6 +117,7 @@ public class Lemming extends GameObject{
 	}
 	public boolean isThisExit() { // checks if it is in exit
 		if(game.searchExit(this.pos.getCol(), this.pos.getRow())) {
+			game.numLemmingsExit();
 			return true;
 		}
 		return false;
