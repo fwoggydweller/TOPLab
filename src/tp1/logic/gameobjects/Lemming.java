@@ -153,4 +153,14 @@ public class Lemming extends GameObject{
 	public void setAlive() {
 		this.alive = currFall >= force;
 	}
+	@Override
+	public void onExit() {
+		// call remove function 
+		game.updateExitLemmings();
+	}
+	@Override
+	public void onDeath() {
+		// call remove function 
+		game.updateDeadLemmings();
+	}
 }

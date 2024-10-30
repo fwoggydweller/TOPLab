@@ -63,4 +63,10 @@ public class GameObject implements GameItem{
 	public void update() {
 		
 	}
+	public void onExit() {
+		
+	}
+	public void onDeath() {
+		
+	}
 }
