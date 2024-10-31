@@ -25,8 +25,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	private int numLemmingsExit = 0;
 	public Game(int nLevel) {
 		cont = new GameObjectContainer();
-		if(nLevel == 1) { //adds 1 of each type	
-			cont.add(new ExitDoor(4,5));
+		if(nLevel == 1) { //adds 1 of each type
 			Init1();
 			Init2();
 		}
@@ -54,6 +53,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cont.add(new Wall(8,9));	
 		cont.add(new Wall(0,9));	
 		cont.add(new Wall(1,9));
+		cont.add(new ExitDoor(4,5));
 	}
 	public boolean searchWall(int col, int row) {
 		return (cont.whatInPos(col, row)) == m.WALL;
@@ -112,8 +112,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	public void reset() {
 		cycle = 0;
+		numLemmingsDead = 0;
+		numLemmingsExit = 0;
 		cont.reset();
 		Init1();
+		Init2();
 	}
 	public void updateDeadLemmings() {
 		numLemmingsDead++;

@@ -79,6 +79,7 @@ public class GameObjectContainer {
 			if(gO[pos].isInPosition(new Position(col,row))) {
 				name = gO[pos].toString(); //All of the game objects must have an overwritten toString method
 				}
+			pos++;
 			}
 		
 		return name;
