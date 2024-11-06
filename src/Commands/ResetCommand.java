@@ -25,6 +25,6 @@ public class ResetCommand extends NoParamsCommand{
 		}
 	}
 	public void execute(Game game, GameView view) { //it should call the reset method
-		
+		game.reset();
 	}
 }
