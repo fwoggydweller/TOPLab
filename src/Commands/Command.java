@@ -22,7 +22,8 @@ public abstract class Command {
 	public String getDetails(String details) {
 		return this.details;
 	}
-	public String getHelp(String help) {
+	public String getHelp() {
 		return this.help;
 	}
+	public abstract Command parse(String[] name);
 }

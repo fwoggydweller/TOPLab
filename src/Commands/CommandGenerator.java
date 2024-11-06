@@ -17,20 +17,20 @@ public class CommandGenerator {
     );
 
     public static Command parse(String[] commandWords){
-    	Command aux;
+    	Command aux = null;
     	
     	for(int i = 0; i < AVAILABLE_COMMANDS.size() && aux == null; i++) {
-    		aux = AVAILABLE_COMMANDS[i].parse;
+    		aux = AVAILABLE_COMMANDS.get(i).parse(commandWords);
     	}
     	
     	return aux;
     }
 
     public static String commandHelp(){
-    	String conc;
+    	String conc = "";
     	
     	for(int i = 0; i<AVAILABLE_COMMANDS.size(); i++) {
-			conc += AVAILABLE_COMMANDS[i].helpText;
+			conc += AVAILABLE_COMMANDS.get(i).getHelp();
 			if(AVAILABLE_COMMANDS.size() > 1) {
 				conc += "\n";
 			}

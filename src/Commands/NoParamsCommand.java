@@ -15,4 +15,15 @@ public abstract class NoParamsCommand extends Command{
 		this.details = details;
 		this.help = help;
 	}
+	protected boolean matchCommand(String name){
+		return this.name.equals(name) || this.shortcut.equals(name);
+	}
+	public Command parse(String[] name) {
+		if(matchCommand(name[0].toLowerCase())) {
+			return this;
+		}
+		else {
+			return null;
+		}
+	}
 }
