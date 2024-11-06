@@ -7,6 +7,7 @@ import tp1.logic.roles.LemmingRole;
 import tp1.logic.Direction;
 
 
+
 public class Lemming extends GameObject{
 	private Direction dir;
 	private LemmingRole role;
@@ -44,7 +45,7 @@ public class Lemming extends GameObject{
 	public Direction getDir() {
 		return dir;
 	}
-	public void Fall(int n) { //We need to call a Role method that mannages this
+	public void Fall(int n) { //We need to call a Role method that manages this
 		if(n== 1) {
 			currFall++;
 		}
@@ -111,6 +112,7 @@ public class Lemming extends GameObject{
 	}
 	public void update() {
 		if(isAlive()) {
+			
 			role.play(this);
 		}
 	}
@@ -126,7 +128,7 @@ public class Lemming extends GameObject{
 		return isThisExit();
 	}
 	@Override
-	public boolean interactWith(Wall wall) {//TODO
+	public boolean interactWith(Wall wall) {//TODO porbably after adding wall types
 		return false;
 	}
 	public boolean GetRole(LemmingRole role) {
@@ -162,5 +164,21 @@ public class Lemming extends GameObject{
 	public void onDeath() {
 		// call remove function 
 		game.updateDeadLemmings();
+	}
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return other.interactWith(this);
+	}
+	public boolean askInteraction(GameItem other) {
+		return other.receiveInteraction(this);
+	}
+	public GameObject posToObject (Position pos) {
+		return game.posToObject(pos);
+	}
+	private void checkSurround() {
+		askInteraction(posToObject(this.pos));
+		askInteraction(posToObject(this.pos));
+		askInteraction(posToObject(this.pos));
+		askInteraction(posToObject(this.pos));
 	}
 }

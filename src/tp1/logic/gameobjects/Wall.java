@@ -17,4 +17,8 @@ public class Wall extends GameObject{
 	public String toString() {
 		return m.WALL;
 	}
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return other.interactWith(this);
+	}
 }
