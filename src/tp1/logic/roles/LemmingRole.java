@@ -6,9 +6,9 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 public abstract class LemmingRole { // change into interface with default method
 	private Game game;
-	static ParachuterRole pR;
-	static WalkerRole wR;
-	static CaveDigger dR;
+	//static ParachuterRole pR;
+	//static WalkerRole wR;
+	//static CaveDigger dR;
 
 
 	/*public static LemmingRole parse(String input) { // como se haria?
@@ -65,4 +65,7 @@ public abstract class LemmingRole { // change into interface with default method
     	move(lem);
     	getIcon(lem);
     }
+    
+    
+    
 }

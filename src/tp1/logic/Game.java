@@ -7,6 +7,7 @@ import tp1.logic.roles.CaveDigger;
 import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
+import tp1.logic.gameobjects.GameObject;
 import tp1.view.Messages;
 public class Game implements GameModel, GameStatus,GameWorld{
 
@@ -123,5 +124,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	public void updateExitLemmings() {
 		numLemmingsExit++;
+	}
+	public GameObject posToObject (Position pos) {
+		return cont.posToObject(pos);
 	}
 }

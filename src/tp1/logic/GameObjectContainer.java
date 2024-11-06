@@ -123,5 +123,13 @@ public class GameObjectContainer {
 		Lemming[] L = new Lemming[g.INITIAL_LEMMING_NUM];
 		this.Lem = L;
 	}*/
+	public GameObject posToObject (Position pos) {
+		for(int i = 0; i<objCount; i++) {
+			if(gO[i].getPos() == pos) {
+				 return gO[i];
+				}
+			}
+		return null;
+	}
 }
 
