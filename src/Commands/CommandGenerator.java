@@ -29,7 +29,7 @@ public class CommandGenerator {
     public static String commandHelp(){
     	String conc;
     	
-    	for(int i = 0; i<m.length; i++) {
+    	for(int i = 0; i<AVAILABLE_COMMANDS.size(); i++) {
 			conc += AVAILABLE_COMMANDS[i].helpText;
 			if(AVAILABLE_COMMANDS.size() > 1) {
 				conc += "\n";
