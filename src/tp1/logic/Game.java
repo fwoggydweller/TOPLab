@@ -94,7 +94,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return numLemmingsDead() > INITIAL_LEMMING_NUM - LEMMING_THRESHOLD;
 	}
 
-	public String help() { //Is this okay? Make a loop
+	public String help() {
 		return concatenateAString(Messages.HELP_LINES);
 	}
 	public String concatenateAString(String[] m) {
@@ -128,4 +128,5 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public GameObject posToObject (Position pos) {
 		return cont.posToObject(pos);
 	}
+	public 
 }

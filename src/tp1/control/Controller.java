@@ -2,7 +2,12 @@ package tp1.control;
 
 import tp1.logic.Game;
 import tp1.view.GameView;
+import tp1.view.Messages;
+
 import java.util.Scanner;
+
+import Commands.Command;
+import Commands.CommandGenerator;
 
 /**
  *  Accepts user input and coordinates the game execution logic
@@ -21,11 +26,10 @@ public class Controller {
 
 
 	public void run() {
-        String command;
 		view.showWelcome();
 		while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
 			view.showGame();
-			command = game.concatenateAString(view.getPrompt());
+			/*command = game.concatenateAString(view.getPrompt());
 			if(command.equals("reset") || command.equals("r")) { 
 				game.reset();
 			}
@@ -40,7 +44,14 @@ public class Controller {
 			}
 			else {
 				view.showMessage("Please, insert a valid input"); //We should add an exception here so that this is repeated until a correct input is inserted
-			}
+			}*/
+			String[] userWords = view.getPrompt();
+		    Command command = CommandGenerator.parse(userWords);
+
+		    if (command != null) 
+		        command.execute(game, view);
+		    else 
+		        view.showError(Messages.UNKNOWN_COMMAND);
 		}
 		view.showGame();
 		view.showEndMessage();
