@@ -83,7 +83,7 @@ public class Lemming extends GameObject{
 		}
 		else {
 			alive = false;
-			game.numLemmingsDead();
+			game.updateDeadLemmings();
 		}
 	}
 
@@ -97,9 +97,9 @@ public class Lemming extends GameObject{
 	private boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
-		if (this.pos.getRow() >= game.DIM_Y) {
+		if (this.pos.getRow() >= game.DIM_Y - 1) {
 			is = true;
-		}	
+		}
 		return is;
 	}
 	@Override
@@ -155,12 +155,12 @@ public class Lemming extends GameObject{
 	}
 	@Override
 	public void onExit() {
-		// call remove function 
+		// call remove function
 		game.updateExitLemmings();
 	}
 	@Override
 	public void onDeath() {
-		// call remove function 
+		// call remove function
 		game.updateDeadLemmings();
 	}
 }
