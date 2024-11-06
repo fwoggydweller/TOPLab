@@ -77,6 +77,11 @@ public class Messages {
 	public static final String COMMAND_NONE_DETAILS = "[n]one | \"\"";
 	public static final String COMMAND_NONE_HELP = "user does not perform any action";
 	
+	public static final String COMMAND_RESET_NAME = "reset";
+	public static final String COMMAND_RESET_SHORTCUT = "r";
+	public static final String COMMAND_RESET_DETAILS = "[r]eset | \"\"";
+	public static final String COMMAND_RESET_HELP = "start a new game";
+	
 	public static final String COMMAND_EXIT_NAME = "exit";
 	public static final String COMMAND_EXIT_SHORTCUT = "e";
 	public static final String COMMAND_EXIT_DETAILS = "[e]xit";
