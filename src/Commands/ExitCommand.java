@@ -13,8 +13,8 @@ public class ExitCommand extends NoParamsCommand{
 	public ExitCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(Game game, GameView view) { //it should call the help method
-		
+	public void execute(Game game, GameView view) { 
+		game.playerExits();
 	}
 }
 

@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import Commands.CommandGenerator;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
@@ -24,6 +25,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
 	private int numLemmingsExit = 0;
+	private boolean playerExit = false;
 	public Game(int nLevel) {
 		cont = new GameObjectContainer();
 		if(nLevel == 1) { //adds 1 of each type
@@ -93,9 +95,14 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public boolean playerLoses() { //The game will stop when it's impossible for the player to win
 		return numLemmingsDead() > INITIAL_LEMMING_NUM - LEMMING_THRESHOLD;
 	}
-
+	public void playerExits() {
+		playerExit=true;
+	}
+	public boolean getExit() {
+		return playerExit;
+	}
 	public String help() {
-		return concatenateAString(Messages.HELP_LINES);
+		return CommandGenerator.commandHelp();
 	}
 	public String concatenateAString(String[] m) {
 		String conc = "";
@@ -128,5 +135,4 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public GameObject posToObject (Position pos) {
 		return cont.posToObject(pos);
 	}
-	public 
 }

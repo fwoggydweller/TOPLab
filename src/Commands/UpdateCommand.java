@@ -5,11 +5,15 @@ import tp1.view.GameView;
 import tp1.view.Messages;
 
 public class UpdateCommand extends NoParamsCommand{
+	private static final String NAME = Messages.COMMAND_NONE_NAME;
+	private static final String SHORTCUT = Messages.COMMAND_NONE_SHORTCUT;
+	private static final String DETAILS = Messages.COMMAND_NONE_DETAILS;
+	private static final String HELP = Messages.COMMAND_NONE_HELP;
 
 	public UpdateCommand(){
-		super();
+		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(Game game, GameView view) { //it should call the help method
-		
+	public void execute(Game game, GameView view) {
+		game.update();
 	}
 }

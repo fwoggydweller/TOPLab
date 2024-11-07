@@ -17,7 +17,6 @@ public class Controller {
 	private Game game;
 	private GameView view;
 	private boolean playerExits = false;
-	private boolean playerResets = false;
 	public Controller(Game game, GameView view) {
 		this.game = game;
 		this.view = view;
@@ -27,7 +26,7 @@ public class Controller {
 
 	public void run() {
 		view.showWelcome();
-		while(!game.playerLoses() && !game.playerWins() && !playerExits && !playerResets) {
+		while(!game.playerLoses() && !game.playerWins() && !game.getExit()) {
 			view.showGame();
 			/*command = game.concatenateAString(view.getPrompt());
 			if(command.equals("reset") || command.equals("r")) { 
@@ -48,8 +47,9 @@ public class Controller {
 			String[] userWords = view.getPrompt();
 		    Command command = CommandGenerator.parse(userWords);
 
-		    if (command != null) 
-		        command.execute(game, view);
+		    if (command != null) {
+		    	command.execute(game, view);
+		    }
 		    else 
 		        view.showError(Messages.UNKNOWN_COMMAND);
 		}

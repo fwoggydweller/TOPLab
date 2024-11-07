@@ -15,7 +15,6 @@ public class CommandGenerator {
         new ExitCommand()
         // ...
     );
-
     public static Command parse(String[] commandWords){
     	Command aux = null;
     	
@@ -30,12 +29,12 @@ public class CommandGenerator {
     	String conc = "";
     	
     	for(int i = 0; i<AVAILABLE_COMMANDS.size(); i++) {
-			conc += AVAILABLE_COMMANDS.get(i).getHelp();
+			conc += AVAILABLE_COMMANDS.get(i).getDetails(conc) + AVAILABLE_COMMANDS.get(i).getHelp();
 			if(AVAILABLE_COMMANDS.size() > 1) {
 				conc += "\n";
 			}
 		}
-    	
+    	System.out.print(conc);
     	return conc;
     }
 
