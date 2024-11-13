@@ -33,6 +33,7 @@ public abstract class LemmingRole { // change into interface with default method
     	else {
     		Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
 			lemming.setPosition(p);
+			lemming.setCurrFall(lemming.getCurrFall() + 1);	
     	}
     	
     	return ok;
@@ -53,8 +54,7 @@ public abstract class LemmingRole { // change into interface with default method
 	    	if(lemming.getPos().getCol() + lemming.getDir().getX() < 0 || lemming.getPos().getCol() + lemming.getDir().getX() >= game.DIM_X) { //must include interaction with solid obkject
 	    		flip(lemming);
 	    	}
-    	}
-    	
+    	}	
     } 
     public boolean interactWith(Wall wall, Lemming lem) {// have to check if it is in fron or below
     	
