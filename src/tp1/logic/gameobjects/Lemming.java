@@ -97,7 +97,7 @@ public class Lemming extends GameObject{
 		return false;
 	}
 	
-	private boolean IsVoid() { //returns if lemming is falling off the board
+	public boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
 		if (this.pos.getRow() >= game.DIM_Y - 1) {
@@ -152,8 +152,8 @@ public class Lemming extends GameObject{
 	public void setForce(int force) {
 		this.force = force;
 	}
-	public void setAlive() {
-		this.alive = currFall < force;
+	public void setAlive(boolean value) {
+		this.alive = value;
 		if(!this.alive) {
 			this.alive = false;
 			onDeath();

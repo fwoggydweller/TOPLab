@@ -26,14 +26,19 @@ public abstract class LemmingRole { // change into interface with default method
     public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
     	boolean ok = true;
     	if(lemming.IsGrounded()) {
-    		lemming.setAlive();
+    		lemming.setAlive(lemming.getForce() > lemming.getCurrFall());
     		lemming.setCurrFall(0);	
     		ok = false;
     	}
     	else {
-    		Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
-			lemming.setPosition(p);
-			lemming.setCurrFall(lemming.getCurrFall() + 1);	
+    		if(lemming.IsVoid()) {
+    			lemming.setAlive(false);
+    		}
+    		else {
+    			Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
+    			lemming.setPosition(p);
+    			lemming.setCurrFall(lemming.getCurrFall() + 1);	
+    		}
     	}
     	
     	return ok;
