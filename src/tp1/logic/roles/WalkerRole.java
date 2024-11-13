@@ -4,11 +4,7 @@ import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 public class WalkerRole extends LemmingRole{
-	 private Messages m = new Messages(); // here?
-	 @Override
-	 public void play(Lemming lemmy) {
-		 lemmy.Move();
-	 }
+	 private Messages m = new Messages(); 
 
 	    @Override
 	 public String getIcon(Lemming lemmy) {

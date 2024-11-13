@@ -31,5 +31,5 @@ public class ParachuterRole extends LemmingRole{
 	    	}
 	    	
 	    	return ok;
-	    }
 	}
+}

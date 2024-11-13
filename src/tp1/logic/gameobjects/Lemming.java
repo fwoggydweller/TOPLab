@@ -5,6 +5,8 @@ import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
 import tp1.logic.Direction;
+import tp1.logic.gameobjects.MetalWall;
+import tp1.logic.gameobjects.Wall;
 
 
 
@@ -53,6 +55,7 @@ public class Lemming extends GameObject{
 			currFall = 0;
 		}
 	}
+	/*
 	public void Move() {
 		if(!IsVoid()) {
 			if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
@@ -87,7 +90,7 @@ public class Lemming extends GameObject{
 			game.updateDeadLemmings();
 		}
 	}
-
+*/
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
 		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
 			return true;
@@ -121,14 +124,6 @@ public class Lemming extends GameObject{
 			game.numLemmingsExit();
 			return true;
 		}
-		return false;
-	}
-	@Override
-	public boolean interactWith(ExitDoor exit) {
-		return isThisExit();
-	}
-	@Override
-	public boolean interactWith(Wall wall) {//TODO porbably after adding wall types
 		return false;
 	}
 	public boolean GetRole(LemmingRole role) {
@@ -175,10 +170,23 @@ public class Lemming extends GameObject{
 	public GameObject posToObject (Position pos) {
 		return game.posToObject(pos);
 	}
-	private void checkSurround() {
+	public void checkSurround() {
+		Position p = new Position(this.pos.getCol() + this.dir.getX(), this.pos.getRow());
+		askInteraction(posToObject(p));
+		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
+		askInteraction(posToObject(p));
 		askInteraction(posToObject(this.pos));
-		askInteraction(posToObject(this.pos));
-		askInteraction(posToObject(this.pos));
-		askInteraction(posToObject(this.pos));
+	}
+	@Override
+	public boolean interactWith(ExitDoor exit) {
+		return isThisExit();
+	}
+	@Override
+	public boolean interactWith(Wall wall) {//TODO porbably after adding wall types
+		return role.interactWith(wall, this);
+	}
+	@Override
+	public boolean interactWith(MetalWall mWall) {//TODO porbably after adding wall types
+		return role.interactWith(mWall, this);
 	}
 }
