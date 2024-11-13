@@ -1,7 +1,6 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
-//import tp1.logic.GameObjectContainer;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
 import tp1.logic.Direction;
@@ -15,7 +14,7 @@ public class Lemming extends GameObject{
 	private boolean exit;
 	private int force = 3;
 	private int currFall = 0;
-	//TODO fill your code
+
 	public Lemming(int x, int y, LemmingRole role, Game g) {
 		pos = new Position(x, y);
 		dir = Direction.RIGHT;
@@ -24,7 +23,7 @@ public class Lemming extends GameObject{
 		solid = false;
 		game = g;
 	}
-	//LEFT(-1,0), RIGHT(1,0), DOWN(0,1), UP(0,-1), NONE(0,0);
+	
 	public void setDir(int x, int y) {
 		if(x == 0 && y == 0) {
 			dir = Direction.NONE;
@@ -112,7 +111,6 @@ public class Lemming extends GameObject{
 	}
 	public void update() {
 		if(isAlive()) {
-			
 			role.play(this);
 		}
 	}
@@ -134,8 +132,15 @@ public class Lemming extends GameObject{
 	public boolean GetRole(LemmingRole role) {
 		return role.equals(role);
 	}
-	public boolean setRole(LemmingRole role) {
-		return true;
+	@Override
+	public boolean setRole(LemmingRole role) { 
+		if(role.equals(this.role)) {
+			return false;
+		}
+		else {
+			this.role = role;
+			return true;
+		}
 	}
 	public void disableRole() {
 		

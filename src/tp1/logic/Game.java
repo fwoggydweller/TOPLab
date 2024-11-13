@@ -5,6 +5,7 @@ import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.roles.CaveDigger;
+import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
@@ -18,9 +19,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public static final int NUMBER_OF_WALLS = 15;
 	public static final int LEMMING_THRESHOLD = 3;
 	private GameObjectContainer cont;
-	private ParachuterRole pR = new ParachuterRole();
-	private WalkerRole wR = new WalkerRole();
-	private CaveDigger cD = new CaveDigger();
+	private LemmingRoleFactory roles;
 	private Messages m;
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
@@ -35,10 +34,10 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		// TODO Auto-generated constructor stub
 	}
 	private void Init1() {
-		cont.add(new Lemming(9, 0, wR, this));
-		cont.add(new Lemming(3, 3, wR, this));
-		cont.add(new Lemming(2, 3, wR, this));
-		cont.add(new Lemming(0, 8, wR, this));
+		cont.add(new Lemming(9, 0, roles.parse("w"), this));
+		cont.add(new Lemming(3, 3, roles.parse("w"), this));
+		cont.add(new Lemming(2, 3, roles.parse("w"), this));
+		cont.add(new Lemming(0, 8, roles.parse("w"), this));
 	}
 	private void Init2() {
 		cont.add(new Wall(9,1));	
@@ -137,5 +136,16 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
+	}
+	public void setRole(Position pos, String role) {
+		GameObject a;
+		a = cont.posToObject(pos);
+		if(a != null && a.isAlive()) {
+			a.setRole(roles.parse(role));
+		}
+		else {
+			System.out.println("AA");
+		}
+		
 	}
 }

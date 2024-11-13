@@ -13,6 +13,6 @@ public class MetalWall extends GameObject{
 		return true;
 	}
 	public String toString() {
-		return m.WALL;
+		return m.METAL_WALL;
 	}
 }

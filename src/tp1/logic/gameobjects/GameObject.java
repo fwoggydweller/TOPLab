@@ -56,8 +56,6 @@ public class GameObject implements GameItem{
 	}
 	
 	public boolean setRole(LemmingRole role) {
-		//ERROR: SetRoleCommand error (Incorrect position or no object in that position admits that role)
-		//ERROR: Unknown Role
 		return false;
 	}
 	public void update() {
