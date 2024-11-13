@@ -6,6 +6,7 @@ public interface GameItem {
 
 	public boolean interactWith(Lemming lemming);
 	public boolean interactWith(Wall wall);
+	public boolean interactWith(MetalWall mWall);
 	public boolean interactWith(ExitDoor door);
 
 	public boolean isSolid();

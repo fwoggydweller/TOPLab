@@ -3,7 +3,6 @@ package Commands;
 import tp1.logic.Game;
 import tp1.view.GameView;
 import tp1.view.Messages;
-import Commands.CommandGenerator;
 
 public class HelpCommand extends NoParamsCommand{
 	private static final String NAME = Messages.COMMAND_HELP_NAME;
