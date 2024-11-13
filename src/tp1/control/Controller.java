@@ -16,7 +16,6 @@ public class Controller {
 	
 	private Game game;
 	private GameView view;
-	private boolean playerExits = false;
 	public Controller(Game game, GameView view) {
 		this.game = game;
 		this.view = view;
@@ -26,24 +25,8 @@ public class Controller {
 
 	public void run() {
 		view.showWelcome();
-		while(!game.playerLoses() && !game.playerWins() && !game.getExit()) {
+		while(!game.isFinished()) {
 			view.showGame();
-			/*command = game.concatenateAString(view.getPrompt());
-			if(command.equals("reset") || command.equals("r")) { 
-				game.reset();
-			}
-			else if(command.equals("help") || command.equals("h")) { 
-				System.out.println(game.help()); 
-			}
-			else if(command.equals("exit") || command.equals("e")) { 
-				playerExits = true;
-			}
-			else if(command.equals("none") || command.equals("n")) { 
-				game.update();
-			}
-			else {
-				view.showMessage("Please, insert a valid input"); //We should add an exception here so that this is repeated until a correct input is inserted
-			}*/
 			String[] userWords = view.getPrompt();
 		    Command command = CommandGenerator.parse(userWords);
 

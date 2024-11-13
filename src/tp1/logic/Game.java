@@ -135,4 +135,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public GameObject posToObject (Position pos) {
 		return cont.posToObject(pos);
 	}
+	public boolean isFinished() {
+		return playerLoses() || playerWins() || getExit();
+	}
 }
