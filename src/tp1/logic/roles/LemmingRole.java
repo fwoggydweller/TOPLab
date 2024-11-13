@@ -41,7 +41,7 @@ public abstract class LemmingRole { // change into interface with default method
     
     public void flip(Lemming lemming) {
     	
-    	if(lemming.getDir().isEqual(Direction.RIGHT))lemming.setDir(Direction.RIGHT.getX(), Direction.RIGHT.getY());
+    	if(lemming.getDir().isEqual(Direction.LEFT))lemming.setDir(Direction.RIGHT.getX(), Direction.RIGHT.getY());
     	else lemming.setDir(Direction.LEFT.getX(), Direction.LEFT.getY());
     }
     
