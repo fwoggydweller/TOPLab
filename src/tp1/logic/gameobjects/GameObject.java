@@ -29,6 +29,10 @@ public class GameObject implements GameItem{
 	public boolean interactWith(Wall wall) {
 		return false;
 	}
+	
+	public boolean interactWith(MetalWall mWall) {
+		return true;
+	}
 
 	@Override
 	public boolean interactWith(ExitDoor door) {
