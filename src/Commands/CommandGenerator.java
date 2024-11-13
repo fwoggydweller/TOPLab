@@ -35,7 +35,7 @@ public class CommandGenerator {
 				conc += "\n";
 			}
 		}
-    	System.out.print(conc);
+    	System.out.print(conc + "\n");
     	return conc;
     }
 
