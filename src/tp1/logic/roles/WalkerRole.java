@@ -9,7 +9,6 @@ public class WalkerRole extends LemmingRole{
 	    @Override
 	 public String getIcon(Lemming lemmy) {
 		 String icon = m.EMPTY;
-		 
 		 if(lemmy.isAlive()){
 	    	if(lemmy.getDir() == Direction.LEFT) { //if it's going left, print left
 	    		icon = m.LEMMING_LEFT;

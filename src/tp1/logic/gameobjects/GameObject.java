@@ -71,4 +71,9 @@ public class GameObject implements GameItem{
 	public void onDeath() {
 		
 	}
+	@Override
+	public boolean interactWith(MetalWall mWall) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
