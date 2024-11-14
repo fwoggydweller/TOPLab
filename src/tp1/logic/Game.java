@@ -10,6 +10,7 @@ import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.gameobjects.GameItem;
 import tp1.view.Messages;
 public class Game implements GameModel, GameStatus,GameWorld{
 
@@ -131,13 +132,13 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void updateExitLemmings() {
 		numLemmingsExit++;
 	}
-	public GameObject posToObject (Position pos) {
+	public GameItem posToObject (Position pos) {
 		return cont.posToObject(pos);
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	public void setRole(Position pos, String role) {
+	public void setRole(Position pos, String role) { // eto tamal
 		GameObject a;
 		a = cont.posToObject(pos);
 		if(a != null && a.isAlive()) {

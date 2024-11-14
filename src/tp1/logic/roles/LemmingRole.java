@@ -61,13 +61,24 @@ public abstract class LemmingRole { // change into interface with default method
 	    	}
     	}	
     } 
-    public boolean interactWith(Wall wall, Lemming lem) {// have to check if it is in fron or below
+    public boolean interactWith(Wall wall, Lemming lem) {
+    	  	
+    	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
+    	 uDir(lem, true);
+    	}
     	
-    	uDir(lem, true);
+    	else lem.setGrounded(true);// it is below
     	
 		return true;
 	}
-    public boolean interactWith(MetalWall mWall, Lemming lem) {//TODO porbably after adding wall types
+    public boolean interactWith(MetalWall mWall, Lemming lem) {
+    	
+    	if(mWall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
+       	 uDir(lem, true);
+       	}
+       	
+       	else lem.setGrounded(true); 
+    	
 		return true;
 	}
     public void play(Lemming lem) {

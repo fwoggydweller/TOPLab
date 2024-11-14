@@ -10,7 +10,7 @@ public class SetRoleCommand extends Command{
 	String X = "";
 	String Y = "";
 	Position pos;
-	public SetRoleCommand() {
+	public SetRoleCommand() { // ponerlo desde messages?
 		this.name = "setrole";
 		this.details = "[s]et[R]ole ROLE ROW COL";
 		this.shortcut = "sr";

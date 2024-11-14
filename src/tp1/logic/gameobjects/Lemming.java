@@ -14,6 +14,7 @@ public class Lemming extends GameObject{
 	private LemmingRole role;
 	private boolean alive;
 	private boolean exit;
+	private boolean grounded;
 	private int force = 3;
 	private int currFall = 0;
 
@@ -91,10 +92,16 @@ public class Lemming extends GameObject{
 	}
 */
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
-		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
+		/*if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
 			return true;
-		}	
-		return false;
+		}*/	
+		return this.grounded;
+	}
+	public void setGrounded(boolean a) {
+		this.grounded = a;
+	}
+	public boolean getGrounded() {
+		return this.grounded;
 	}
 	
 	public boolean IsVoid() { //returns if lemming is falling off the board
@@ -114,11 +121,13 @@ public class Lemming extends GameObject{
 	}
 	public void update() {
 		if(isAlive()) {
+			this.grounded = false;
+			this.checkSurround();
 			role.play(this);
 		}
 	}
-	public boolean isThisExit() { // checks if it is in exit
-		if(game.searchExit(this.pos.getCol(), this.pos.getRow())) {
+	public boolean isThisExit(ExitDoor exit) { // checks if it is in exit
+		if(exit.isInPosition(this.pos)) {
 			game.numLemmingsExit();
 			return true;
 		}
@@ -181,21 +190,21 @@ public class Lemming extends GameObject{
 	}
 	public void checkSurround() {
 		Position p = new Position(this.pos.getCol() + this.dir.getX(), this.pos.getRow());
-		askInteraction(posToObject(p));
+		if (posToObject(p) != null) askInteraction(posToObject(p));
 		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
-		askInteraction(posToObject(p));
-		askInteraction(posToObject(this.pos));
+		if (posToObject(p) != null) askInteraction(posToObject(p));
+		askInteraction(posToObject(this.pos)); // if the lemming is found before exitdoor it may never exit (could make sure exitdoor is always at beggining of gameobject array)
 	}
 	@Override
 	public boolean interactWith(ExitDoor exit) {
-		return isThisExit();
+		return isThisExit(exit);
 	}
 	@Override
-	public boolean interactWith(Wall wall) {//TODO porbably after adding wall types
+	public boolean interactWith(Wall wall) {
 		return role.interactWith(wall, this);
 	}
 	@Override
-	public boolean interactWith(MetalWall mWall) {//TODO porbably after adding wall types
+	public boolean interactWith(MetalWall mWall) {
 		return role.interactWith(mWall, this);
 	}
 }
