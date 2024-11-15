@@ -5,10 +5,10 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 public class ParachuterRole extends LemmingRole{
-	private static final String NAME = "parachuter";
-	private static final String SHORTCUT = "p";
-	private static final String DETAILS = "[P]arachuter";
-	private static final String HELP = "Lemming that falls with a parachute";
+	private static final String NAME = Messages.ROLE_PARACHUTER_NAME;
+	private static final String SHORTCUT = Messages.ROLE_PARACHUTER_SHORTCUT;
+	private static final String DETAILS = Messages.ROLE_PARACHUTER_DETAILS;
+	private static final String HELP = Messages.ROLE_PARACHUTER_HELP;
 	public ParachuterRole() {
 		this.name = NAME;
 		this.shortcut = SHORTCUT;
@@ -17,7 +17,7 @@ public class ParachuterRole extends LemmingRole{
 	}
 	@Override
 	public String getIcon(Lemming lemmy) {
-		 return "P";
+		 return Messages.ROLE_PARACHUTER_SHORTCUT;
 	 }
 	@Override
 	 public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)

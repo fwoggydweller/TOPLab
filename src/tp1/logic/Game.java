@@ -138,20 +138,17 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	/*public void setRole(Position pos, String role) { // eto tamal?
-		GameItem a;
-		a = cont.posToObject(pos);
-		if(a != null && a.isAlive()) {
-			a.setRole(roles.parse(role));
-		}
-		else {
-			System.out.println("AA");
-		}
-		
-	}*/
 	@Override
 	public void setRole(Position pos, String role) {
-		// TODO Auto-generated method stub
-		
+		GameItem a;
+		a = cont.posToObject(pos);
+		if(a == null) {
+			System.out.println(Messages.POSITION_ADMISSION_ERROR);
+		}
+		if(a != null && a.isAlive()) {
+			if(!a.setRole(roles.parse(role))) {
+				System.out.println(Messages.POSITION_ADMISSION_ERROR);
+			}
+		}
 	}
 }

@@ -9,6 +9,7 @@ import Commands.HelpCommand;
 import Commands.ResetCommand;
 import Commands.SetRoleCommand;
 import Commands.UpdateCommand;
+import tp1.view.Messages;
 
 public class LemmingRoleFactory {
 	private static final List<LemmingRole> AVAILABLE_ROLES = Arrays.asList(
@@ -23,6 +24,9 @@ public class LemmingRoleFactory {
 		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++) {
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
+		if(role== null) {
+			System.out.println(Messages.UNKNOWN_ROLE_ERROR);
+		}
 		return role;
 	}
 	public static String commandHelp(){
@@ -35,7 +39,6 @@ public class LemmingRoleFactory {
 				conc += "\n";
 			}
 		}
-    	
     	return conc;
     }
 }

@@ -6,10 +6,10 @@ import tp1.view.Messages;
 import tp1.logic.gameobjects.Wall;
 
 public class CaveDigger extends LemmingRole{
-	private static final String NAME = "digger";
-	private static final String SHORTCUT = "d";
-	private static final String DETAILS = "[D]igger";
-	private static final String HELP = "Lemming that diggs";
+	private static final String NAME = Messages.ROLE_DIGGER_NAME;
+	private static final String SHORTCUT = Messages.ROLE_DIGGER_SHORTCUT;
+	private static final String DETAILS = Messages.ROLE_DIGGER_DETAILS;
+	private static final String HELP = Messages.ROLE_DIGGER_HELP;
 	public CaveDigger() {
 		this.name = NAME;
 		this.shortcut = SHORTCUT;
@@ -18,8 +18,7 @@ public class CaveDigger extends LemmingRole{
 	}
 	@Override
 	public String getIcon(Lemming lemming) {
-		// TODO Auto-generated method stub
-		return "D";
+		return Messages.ROLE_DIGGER_SHORTCUT;
 	}
 	@Override 
     public boolean interactWith(Wall wall, Lemming lem) {

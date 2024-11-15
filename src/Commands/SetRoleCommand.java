@@ -11,11 +11,15 @@ public class SetRoleCommand extends Command{
 	String X = "";
 	String Y = "";
 	Position pos;
-	public SetRoleCommand() { // ponerlo desde messages?
-		this.name = "setrole";
-		this.details = "[s]et[R]ole ROLE ROW COL";
-		this.shortcut = "sr";
-		this.help = "sets the lemming in position (ROW,COL) to role ROLE\n";
+	private static final String NAME = Messages.COMMAND_SETROLE_NAME;
+	private static final String SHORTCUT = Messages.COMMAND_SETROLE_SHORTCUT;
+	private static final String DETAILS = Messages.COMMAND_SETROLE_DETAILS;
+	private static final String HELP = Messages.COMMAND_SETROLE_HELP;
+	public SetRoleCommand() {
+		this.name = NAME;
+		this.details = DETAILS;
+		this.shortcut = SHORTCUT;
+		this.help = HELP;
 	}
 	@Override
 	public Command parse(String[] name) {

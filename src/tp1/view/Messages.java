@@ -70,8 +70,10 @@ public class Messages {
 	public static final String PLAYER_LOOSES = "Player loses...";
 
 	public static final String POSITION = "(%s,%s)";
-
-//Commands
+//Errors
+	public static final String POSITION_ADMISSION_ERROR= "[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)";
+	public static final String UNKNOWN_ROLE_ERROR = "[ERROR] Error: Unknown Role";
+	//Commands
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";
 	public static final String COMMAND_NONE_DETAILS = "[n]one | \"\"";
@@ -91,7 +93,26 @@ public class Messages {
 	public static final String COMMAND_HELP_SHORTCUT = "h";
 	public static final String COMMAND_HELP_DETAILS = "[h]elp";
 	public static final String COMMAND_HELP_HELP = "shows this help";
-
+	
+	public static final String COMMAND_SETROLE_NAME = "setrole";
+	public static final String COMMAND_SETROLE_SHORTCUT = "sr";
+	public static final String COMMAND_SETROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
+	public static final String COMMAND_SETROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\n";
+//Roles
+	public static final String ROLE_DIGGER_NAME = "digger";
+	public static final String ROLE_DIGGER_SHORTCUT = "d";
+	public static final String ROLE_DIGGER_DETAILS = "[D]igger";
+	public static final String ROLE_DIGGER_HELP = "Lemming that diggs";
+	
+	public static final String ROLE_PARACHUTER_NAME = "parachuter";
+	public static final String ROLE_PARACHUTER_SHORTCUT = "p";
+	public static final String ROLE_PARACHUTER_DETAILS = "[P]arachuter";
+	public static final String ROLE_PARACHUTER_HELP = "Lemming that falls with a parachute";
+	
+	public static final String ROLE_WALKER_NAME = "walker";
+	public static final String ROLE_WALKER_SHORTCUT = "w";
+	public static final String ROLE_WALKER_DETAILS = "[W]alker";
+	public static final String ROLE_WALKER_HELP = "Lemming that walks";
 //Symbols
 	public static final String EMPTY = "";
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
