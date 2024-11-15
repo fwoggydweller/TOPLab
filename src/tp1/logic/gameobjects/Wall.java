@@ -6,7 +6,6 @@ import tp1.logic.Position;
 import tp1.logic.roles.WalkerRole;
 public class Wall extends GameObject{
 	WalkerRole w;
-	Messages m;
 	public Wall(int x,int y) {
 		pos = new Position(x,y);
 	}
@@ -15,7 +14,7 @@ public class Wall extends GameObject{
 		return lem.GetRole(w);
 	}
 	public String toString() {
-		return m.WALL;
+			return Messages.WALL;
 	}
 	@Override
 	public boolean receiveInteraction(GameItem other) {

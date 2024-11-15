@@ -4,7 +4,6 @@ import tp1.logic.Position;
 import tp1.view.Messages;
 
 public class MetalWall extends GameObject{
-	Messages m;
 	public MetalWall(int x,int y) {
 		pos = new Position(x,y);
 	}
@@ -13,6 +12,6 @@ public class MetalWall extends GameObject{
 		return true;
 	}
 	public String toString() {
-		return m.METAL_WALL;
+		return Messages.METAL_WALL;
 	}
 }
