@@ -102,7 +102,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return playerExit;
 	}
 	public String help() {
-		return CommandGenerator.commandHelp() + roles.commandHelp();
+		return CommandGenerator.commandHelp();
 	}
 	public String concatenateAString(String[] m) {
 		String conc = "";

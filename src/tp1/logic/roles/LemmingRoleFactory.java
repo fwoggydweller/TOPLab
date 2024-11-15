@@ -31,10 +31,11 @@ public class LemmingRoleFactory {
     	for(int i = 0; i<AVAILABLE_ROLES.size(); i++) {
 			conc += "   " + AVAILABLE_ROLES.get(i).getDetails(conc) + ": " + AVAILABLE_ROLES.get(i).getHelp();
 			if(AVAILABLE_ROLES.size() > 1) {
+				if(i < AVAILABLE_ROLES.size() - 1)
 				conc += "\n";
 			}
 		}
-    	System.out.print(conc + "\n");
+    	
     	return conc;
     }
 }

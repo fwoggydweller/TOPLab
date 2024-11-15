@@ -2,6 +2,7 @@ package Commands;
 
 import tp1.logic.GameModel;
 import tp1.logic.Position;
+import tp1.logic.roles.LemmingRoleFactory;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -36,5 +37,8 @@ public class SetRoleCommand extends Command{
 	public void execute(GameModel game, GameView view) {
 		game.setRole(pos, type);
 	}
-	
+	@Override
+	public String getHelp() {
+		return super.getHelp() + LemmingRoleFactory.commandHelp();
+	}
 }

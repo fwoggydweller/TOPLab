@@ -8,11 +8,11 @@ import java.util.List;
 public class CommandGenerator {
 
     private static final List<Command> AVAILABLE_COMMANDS = Arrays.asList(
+    	new SetRoleCommand(),
     	new UpdateCommand(),
         new ResetCommand(),
         new HelpCommand(),
-        new ExitCommand(),
-        new SetRoleCommand()
+        new ExitCommand()
         // ...
     );
     public static Command parse(String[] commandWords){
