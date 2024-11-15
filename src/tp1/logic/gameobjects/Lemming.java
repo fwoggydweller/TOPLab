@@ -14,6 +14,7 @@ public class Lemming extends GameObject{
 	private LemmingRole role;
 	private boolean alive;
 	private boolean exit;
+	private boolean grounded;
 	private int force = 3;
 	private int currFall = 0;
 
@@ -54,53 +55,23 @@ public class Lemming extends GameObject{
 			currFall = 0;
 		}
 	}
-	/*
-	public void Move() {
-		if(!IsVoid()) {
-			if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
-				if(currFall >= force) {
-					alive = false;
-				}
-				else {
-					currFall = 0;
-					if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow()) || pos.getCol() + dir.getX() >= game.DIM_X  || pos.getCol() + dir.getX() < 0) { //if lemming encounters wall next to it 
-						if(this.dir.equals(Direction.LEFT)) {
-							this.dir = Direction.RIGHT;
-						}
-						else if(this.dir.equals(Direction.RIGHT)) {
-							this.dir = Direction.LEFT;
-						}
-						
-					}
-					else{
-						Position p = new Position (pos.getCol() + dir.getX(), pos.getRow());
-						this.pos = p;
-					}
-				}
-				
-			}
-			else { //If it's falling down, then the row position will be updated
-				Position p = new Position (pos.getCol(), pos.getRow()+1);
-				this.pos = p;
-			}
-		}
-		else {
-			alive = false;
-			game.updateDeadLemmings();
-		}
-	}
-*/
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
-		if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
+		/*if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
 			return true;
-		}	
-		return false;
+		}*/	
+		return this.grounded;
+	}
+	public void setGrounded(boolean a) {
+		this.grounded = a;
+	}
+	public boolean getGrounded() {
+		return this.grounded;
 	}
 	
 	public boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
-		if (this.pos.getRow() >= game.DIM_Y - 1) {
+		if (this.pos.getRow() >= Game.DIM_Y - 1) {
 			is = true;
 		}
 		return is;
@@ -114,15 +85,16 @@ public class Lemming extends GameObject{
 	}
 	public void update() {
 		if(isAlive()) {
+			this.grounded = false;
+			this.checkSurround();
 			role.play(this);
 		}
 	}
-	public boolean isThisExit() { // checks if it is in exit
-		if(game.searchExit(this.pos.getCol(), this.pos.getRow())) {
+	public boolean isThisExit(ExitDoor exit) {
+		
 			game.numLemmingsExit();
 			return true;
-		}
-		return false;
+
 	}
 	public boolean GetRole(LemmingRole role) {
 		return role.equals(role);
@@ -176,26 +148,25 @@ public class Lemming extends GameObject{
 	public boolean askInteraction(GameItem other) {
 		return other.receiveInteraction(this);
 	}
-	public GameObject posToObject (Position pos) {
+	public GameItem posToObject (Position pos) {
 		return game.posToObject(pos);
 	}
 	public void checkSurround() {
 		Position p = new Position(this.pos.getCol() + this.dir.getX(), this.pos.getRow());
-		askInteraction(posToObject(p));
+		if (posToObject(p) != null) askInteraction(posToObject(p));
 		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
-		askInteraction(posToObject(p));
-		askInteraction(posToObject(this.pos));
+		if (posToObject(p) != null) askInteraction(posToObject(p));
 	}
 	@Override
 	public boolean interactWith(ExitDoor exit) {
-		return isThisExit();
+		return isThisExit(exit);
 	}
 	@Override
-	public boolean interactWith(Wall wall) {//TODO porbably after adding wall types
+	public boolean interactWith(Wall wall) {
 		return role.interactWith(wall, this);
 	}
 	@Override
-	public boolean interactWith(MetalWall mWall) {//TODO porbably after adding wall types
+	public boolean interactWith(MetalWall mWall) {
 		return role.interactWith(mWall, this);
 	}
 }

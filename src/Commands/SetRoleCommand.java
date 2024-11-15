@@ -1,6 +1,6 @@
 package Commands;
 
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.logic.Position;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -10,7 +10,7 @@ public class SetRoleCommand extends Command{
 	String X = "";
 	String Y = "";
 	Position pos;
-	public SetRoleCommand() {
+	public SetRoleCommand() { // ponerlo desde messages?
 		this.name = "setrole";
 		this.details = "[s]et[R]ole ROLE ROW COL";
 		this.shortcut = "sr";
@@ -34,7 +34,7 @@ public class SetRoleCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	@Override
-	public void execute(Game game, GameView view) {
+	public void execute(GameModel game, GameView view) {
 		game.setRole(pos, type);
 	}
 	

@@ -1,5 +1,6 @@
 package tp1.logic;
 import tp1.logic.gameobjects.Lemming;
+import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.Wall;
@@ -7,9 +8,8 @@ import tp1.logic.Game;
 import tp1.view.Messages;
 public class GameObjectContainer {
 	//TODO fill your code
-	private Game g;
 	private Messages m;
-	private GameObject[] gO = new GameObject[g.INITIAL_LEMMING_NUM+g.NUMBER_OF_WALLS+1];
+	private GameObject[] gO = new GameObject[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1]; // game Items?
 	private int objCount = 0;
 	
 	public void add(GameObject go) {
@@ -19,7 +19,7 @@ public class GameObjectContainer {
 		}
 	}
 	
-	public String whatInPos(int col, int row) {
+	public String whatInPos(int col, int row) { // should this be removed? as to not break the interactions structure
 		String name = m.EMPTY;
 		int pos = 0;
 		//Make a loop for searching the gO of the given pos
@@ -42,7 +42,7 @@ public class GameObjectContainer {
 		objCount = 0;
 	}
 
-	public GameObject posToObject (Position pos) {
+	public GameItem posToObject (Position pos) {
 		for(int i = 0; i<objCount; i++) {
 			if(gO[i].getPos().getCol() == pos.getCol() && gO[i].getPos().getRow() == pos.getRow()) {
 				 return gO[i];

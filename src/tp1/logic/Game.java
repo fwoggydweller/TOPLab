@@ -10,6 +10,7 @@ import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
 import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.gameobjects.GameItem;
 import tp1.view.Messages;
 public class Game implements GameModel, GameStatus,GameWorld{
 
@@ -57,12 +58,12 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cont.add(new Wall(1,9));
 		cont.add(new ExitDoor(4,5));
 	}
-	public boolean searchWall(int col, int row) {
+	/*public boolean searchWall(int col, int row) {
 		return (cont.whatInPos(col, row)) == m.WALL;
 	}
 	public boolean searchExit(int col, int row) {
 		return cont.whatInPos(col, row) == m.EXIT_DOOR;
-	}
+	}*/
 	public int getCycle() {
 		return cycle;
 	}
@@ -131,14 +132,14 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void updateExitLemmings() {
 		numLemmingsExit++;
 	}
-	public GameObject posToObject (Position pos) {
+	public GameItem posToObject (Position pos) {
 		return cont.posToObject(pos);
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	public void setRole(Position pos, String role) {
-		GameObject a;
+	public void setRole(Position pos, String role) { // eto tamal?
+		GameItem a;
 		a = cont.posToObject(pos);
 		if(a != null && a.isAlive()) {
 			a.setRole(roles.parse(role));

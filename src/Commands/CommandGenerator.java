@@ -1,7 +1,6 @@
 package Commands;
 
 import Commands.Command;
-
 import java.util.Arrays;
 import java.util.List;
 
