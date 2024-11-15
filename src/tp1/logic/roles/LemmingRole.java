@@ -8,7 +8,16 @@ import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 public abstract class LemmingRole { // change into interface with default method
 	private Game game;
-
+	protected String name;
+	protected String shortcut;
+	protected String details;
+	protected String help;
+	public LemmingRole() {
+		this.name = Messages.COMMAND_NONE_NAME;
+		this.details = Messages.COMMAND_NONE_DETAILS;
+		this.help = Messages.COMMAND_NONE_HELP;
+		this.shortcut = Messages.COMMAND_NONE_SHORTCUT;
+	}
 	protected Messages m = new Messages();
     public abstract String getIcon( Lemming lemming );
     public void move(Lemming lemming) {
@@ -74,7 +83,18 @@ public abstract class LemmingRole { // change into interface with default method
     	move(lem);
     	getIcon(lem);
     }
-    
+    public String getName(String name) {
+		return this.name;
+	}
+	public String getShortcut(String shortcut) {
+		return this.shortcut;
+	}
+	public String getDetails(String details) {
+		return this.details;
+	}
+	public String getHelp() {
+		return this.help;
+	}
     
     
 }
