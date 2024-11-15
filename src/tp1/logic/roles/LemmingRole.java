@@ -1,5 +1,6 @@
 package tp1.logic.roles;
 import tp1.logic.Game;
+import Commands.Command;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
@@ -106,6 +107,15 @@ public abstract class LemmingRole { // change into interface with default method
 	public String getHelp() {
 		return this.help;
 	}
-    
-    
+	protected boolean matchRole(String name){
+		return this.name.equals(name) || this.shortcut.equals(name);
+	}
+	public LemmingRole parse(String name) {
+		if(matchRole(name.toLowerCase())) {
+			return this;
+		}
+		else {
+			return null;
+		}
+	}
 }

@@ -6,10 +6,16 @@ import tp1.view.Messages;
 import tp1.logic.gameobjects.Wall;
 
 public class CaveDigger extends LemmingRole{
-	private static final String NAME = Messages.COMMAND_RESET_NAME;
-	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
-	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
-	private static final String HELP = Messages.COMMAND_RESET_HELP;
+	private static final String NAME = "digger";
+	private static final String SHORTCUT = "d";
+	private static final String DETAILS = "[D]igger";
+	private static final String HELP = "Lemming that diggs";
+	public CaveDigger() {
+		this.name = NAME;
+		this.shortcut = SHORTCUT;
+		this.details = DETAILS;
+		this.help = HELP;
+	}
 	@Override
 	public String getIcon(Lemming lemming) {
 		// TODO Auto-generated method stub

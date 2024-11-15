@@ -4,11 +4,17 @@ import tp1.logic.Direction;
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 public class WalkerRole extends LemmingRole{
-	private static final String NAME = Messages.COMMAND_RESET_NAME;
-	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
-	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
-	private static final String HELP = Messages.COMMAND_RESET_HELP;
+	private static final String NAME = "walker";
+	private static final String SHORTCUT = "w";
+	private static final String DETAILS = "[W]alker";
+	private static final String HELP = "Lemming that walks";
 	 private Messages m = new Messages(); 
+	 public WalkerRole() {
+			this.name = NAME;
+			this.shortcut = SHORTCUT;
+			this.details = DETAILS;
+			this.help = HELP;
+		}
 
 	    @Override
 	 public String getIcon(Lemming lemmy) {

@@ -11,28 +11,30 @@ import Commands.SetRoleCommand;
 import Commands.UpdateCommand;
 
 public class LemmingRoleFactory {
-	static ParachuterRole pR = new ParachuterRole();
-	static WalkerRole wR = new WalkerRole();
-	static CaveDigger dR = new CaveDigger();
 	private static final List<LemmingRole> AVAILABLE_ROLES = Arrays.asList(
-			pR,
-			wR,
-			dR
+			new ParachuterRole(),
+			new WalkerRole(),
+			new CaveDigger()
 	        // ...
 	    );
-
+	
 	public static LemmingRole parse(String input) {
-		LemmingRole role;
-		if(input.toLowerCase().equals("p") || input.toLowerCase().equals("parachuter")){
-			role = pR;
-		}
-		else if(input.toLowerCase().equals("d") || input.toLowerCase().equals("digger")) {
-			role = dR;
-		}
-		else{
-			role = wR;
-		}
+		LemmingRole role = null;
+		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++) {
+    		role = AVAILABLE_ROLES.get(i).parse(input);
+    	}
 		return role;
 	}
-
+	public static String commandHelp(){
+    	String conc = "";
+    	
+    	for(int i = 0; i<AVAILABLE_ROLES.size(); i++) {
+			conc += "   " + AVAILABLE_ROLES.get(i).getDetails(conc) + ": " + AVAILABLE_ROLES.get(i).getHelp();
+			if(AVAILABLE_ROLES.size() > 1) {
+				conc += "\n";
+			}
+		}
+    	System.out.print(conc + "\n");
+    	return conc;
+    }
 }

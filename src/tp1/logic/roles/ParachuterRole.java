@@ -5,10 +5,16 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 public class ParachuterRole extends LemmingRole{
-	private static final String NAME = Messages.COMMAND_RESET_NAME;
-	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
-	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
-	private static final String HELP = Messages.COMMAND_RESET_HELP;
+	private static final String NAME = "parachuter";
+	private static final String SHORTCUT = "p";
+	private static final String DETAILS = "[P]arachuter";
+	private static final String HELP = "Lemming that falls with a parachute";
+	public ParachuterRole() {
+		this.name = NAME;
+		this.shortcut = SHORTCUT;
+		this.details = DETAILS;
+		this.help = HELP;
+	}
 	@Override
 	public String getIcon(Lemming lemmy) {
 		 return "P";

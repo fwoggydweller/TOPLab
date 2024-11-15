@@ -14,8 +14,7 @@ public class SetRoleCommand extends Command{
 		this.name = "setrole";
 		this.details = "[s]et[R]ole ROLE ROW COL";
 		this.shortcut = "sr";
-		this.help = "sets the lemming in position (ROW,COL) to role ROLE\n" + "      [P]arachuter: Lemming falls with a parachute\n"
-				+ "      [W]alker: Lemming that walks\n" + "      [D]igger: Lemming that diggs if the floor is not made out of metal";
+		this.help = "sets the lemming in position (ROW,COL) to role ROLE\n";
 	}
 	@Override
 	public Command parse(String[] name) {

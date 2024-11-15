@@ -102,7 +102,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return playerExit;
 	}
 	public String help() {
-		return CommandGenerator.commandHelp();
+		return CommandGenerator.commandHelp() + roles.commandHelp();
 	}
 	public String concatenateAString(String[] m) {
 		String conc = "";
@@ -138,7 +138,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	public void setRole(Position pos, String role) { // eto tamal?
+	/*public void setRole(Position pos, String role) { // eto tamal?
 		GameItem a;
 		a = cont.posToObject(pos);
 		if(a != null && a.isAlive()) {
@@ -147,6 +147,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		else {
 			System.out.println("AA");
 		}
+		
+	}*/
+	@Override
+	public void setRole(Position pos, String role) {
+		// TODO Auto-generated method stub
 		
 	}
 }
