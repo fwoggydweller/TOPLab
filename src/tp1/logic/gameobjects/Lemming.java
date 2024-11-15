@@ -55,42 +55,6 @@ public class Lemming extends GameObject{
 			currFall = 0;
 		}
 	}
-	/*
-	public void Move() {
-		if(!IsVoid()) {
-			if(IsGrounded()) { //If the Lemming is touching the ground, then it can move normally
-				if(currFall >= force) {
-					alive = false;
-				}
-				else {
-					currFall = 0;
-					if(game.searchWall(pos.getCol() + dir.getX(), pos.getRow()) || pos.getCol() + dir.getX() >= game.DIM_X  || pos.getCol() + dir.getX() < 0) { //if lemming encounters wall next to it 
-						if(this.dir.equals(Direction.LEFT)) {
-							this.dir = Direction.RIGHT;
-						}
-						else if(this.dir.equals(Direction.RIGHT)) {
-							this.dir = Direction.LEFT;
-						}
-						
-					}
-					else{
-						Position p = new Position (pos.getCol() + dir.getX(), pos.getRow());
-						this.pos = p;
-					}
-				}
-				
-			}
-			else { //If it's falling down, then the row position will be updated
-				Position p = new Position (pos.getCol(), pos.getRow()+1);
-				this.pos = p;
-			}
-		}
-		else {
-			alive = false;
-			game.updateDeadLemmings();
-		}
-	}
-*/
 	public boolean IsGrounded() { //This must check if there's a wall below the lemming
 		/*if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
 			return true;
@@ -107,7 +71,7 @@ public class Lemming extends GameObject{
 	public boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
-		if (this.pos.getRow() >= game.DIM_Y - 1) {
+		if (this.pos.getRow() >= Game.DIM_Y - 1) {
 			is = true;
 		}
 		return is;
@@ -126,12 +90,11 @@ public class Lemming extends GameObject{
 			role.play(this);
 		}
 	}
-	public boolean isThisExit(ExitDoor exit) { // checks if it is in exit
-		if(exit.isInPosition(this.pos)) {
+	public boolean isThisExit(ExitDoor exit) {
+		
 			game.numLemmingsExit();
 			return true;
-		}
-		return false;
+
 	}
 	public boolean GetRole(LemmingRole role) {
 		return role.equals(role);
@@ -185,7 +148,7 @@ public class Lemming extends GameObject{
 	public boolean askInteraction(GameItem other) {
 		return other.receiveInteraction(this);
 	}
-	public GameObject posToObject (Position pos) {
+	public GameItem posToObject (Position pos) {
 		return game.posToObject(pos);
 	}
 	public void checkSurround() {
@@ -193,7 +156,6 @@ public class Lemming extends GameObject{
 		if (posToObject(p) != null) askInteraction(posToObject(p));
 		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
 		if (posToObject(p) != null) askInteraction(posToObject(p));
-		askInteraction(posToObject(this.pos)); // if the lemming is found before exitdoor it may never exit (could make sure exitdoor is always at beggining of gameobject array)
 	}
 	@Override
 	public boolean interactWith(ExitDoor exit) {

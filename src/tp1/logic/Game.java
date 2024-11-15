@@ -58,12 +58,12 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cont.add(new Wall(1,9));
 		cont.add(new ExitDoor(4,5));
 	}
-	public boolean searchWall(int col, int row) {
+	/*public boolean searchWall(int col, int row) {
 		return (cont.whatInPos(col, row)) == m.WALL;
 	}
 	public boolean searchExit(int col, int row) {
 		return cont.whatInPos(col, row) == m.EXIT_DOOR;
-	}
+	}*/
 	public int getCycle() {
 		return cycle;
 	}
@@ -138,8 +138,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	public void setRole(Position pos, String role) { // eto tamal
-		GameObject a;
+	public void setRole(Position pos, String role) { // eto tamal?
+		GameItem a;
 		a = cont.posToObject(pos);
 		if(a != null && a.isAlive()) {
 			a.setRole(roles.parse(role));

@@ -1,6 +1,6 @@
 package Commands;
 
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
 
@@ -13,7 +13,7 @@ public class HelpCommand extends NoParamsCommand{
 	public HelpCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(Game game, GameView view) { //it should call the help method
+	public void execute(GameModel game, GameView view) { //it should call the help method
 		game.help();
 	}
 }

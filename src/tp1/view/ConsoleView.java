@@ -2,9 +2,11 @@ package tp1.view;
 
 import static tp1.util.MyStringUtils.repeat;
 
+
 import java.util.Scanner;
 
 import tp1.logic.Game;
+import tp1.logic.GameStatus;
 import tp1.util.MyStringUtils;
 
 public class ConsoleView extends GameView {
@@ -34,7 +36,7 @@ public class ConsoleView extends GameView {
 
 	Scanner scanner;
 
-	public ConsoleView(Game game) {
+	public ConsoleView(GameStatus game) {
 		super(game);
 		scanner = new Scanner(System.in);
 	}

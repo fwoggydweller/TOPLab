@@ -1,11 +1,11 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
 
 public class GameObject implements GameItem{
-	protected Game game;
+	protected GameWorld game;
 	protected Position pos;
 	protected boolean solid;
 	//Global set position for each class that extends GameObjects
@@ -15,17 +15,17 @@ public class GameObject implements GameItem{
 	public Position getPos() {
 		return this.pos;
 	}
-	@Override
+	
 	public boolean receiveInteraction(GameItem other) {
 		return false;
 	}
 
-	@Override
+
 	public boolean interactWith(Lemming lemming) {
 		return false;
 	}
 
-	@Override
+
 	public boolean interactWith(Wall wall) {
 		return false;
 	}
@@ -34,27 +34,27 @@ public class GameObject implements GameItem{
 		return true;
 	}
 
-	@Override
+
 	public boolean interactWith(ExitDoor door) {
 		return false;
 	}
 
-	@Override
+
 	public boolean isSolid() {
 		return solid;
 	}
 
-	@Override
+
 	public boolean isAlive() {
 		return false;
 	}
 
-	@Override
+
 	public boolean isExit() { // esto debe comprobar si el objeto ha salido?
 		return false;
 	}
 
-	@Override
+
 	public boolean isInPosition(Position pos) {
 		return this.pos.Equals(pos.getCol(), pos.getRow());
 	}
@@ -65,10 +65,10 @@ public class GameObject implements GameItem{
 	public void update() {
 		
 	}
-	public void onExit() {
+	public void onExit() { // in lemming?
 		
 	}
-	public void onDeath() {
+	public void onDeath() { // in lemming?
 		
 	}
 }

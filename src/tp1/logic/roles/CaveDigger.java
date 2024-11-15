@@ -19,7 +19,7 @@ public class CaveDigger extends LemmingRole{
     	}
     	
     	else{
-    		lem.setAlive(lem.getForce() > lem.getCurrFall()); //chapuza?
+    		lem.setAlive(lem.getForce() > lem.getCurrFall());
     		lem.setCurrFall(0);
     	}
     	
