@@ -6,6 +6,7 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 import tp1.logic.roles.CaveDigger;
+import tp1.logic.roles.LemmingRoleInterface;
 import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.ParachuterRole;
 import tp1.logic.roles.WalkerRole;
@@ -174,13 +175,18 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return playerLoses() || playerWins() || getExit();
 	}
 	@Override
-	public void setRole(Position pos, String role) {
-		GameItem a;
-		a = cont.posToObject(pos);
-		if(a != null && a.isAlive()) {
-			if(!a.setRole(roles.parse(role))) {
-				System.out.println(Messages.POSITION_ADMISSION_ERROR); //This should not be called from here, but I don't know how to do call it from the view
+	public boolean setRole(LemmingRoleInterface r, Position pos) {
+		if(cont.posToObject(pos) != null) {
+			boolean res = cont.posToObject(pos).setRole(r);
+			if(res) {
+				return true;
 			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
 		}
 	}
 }

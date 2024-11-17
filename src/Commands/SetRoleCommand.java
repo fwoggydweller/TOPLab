@@ -48,7 +48,9 @@ public class SetRoleCommand extends Command{
 				view.showError(Messages.UNKNOWN_ROLE_ERROR);
 			}
 			else {
-				game.setRole(pos, type);
+				if(!game.setRole(LemmingRoleFactory.parse(type), pos)) {
+					view.showError(Messages.POSITION_ADMISSION_ERROR);
+				}
 			}
 		}
 	}

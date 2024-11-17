@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.logic.roles.LemmingRoleInterface;
+
 public interface GameModel {
 	public void update();
 	public void reset(int n);
@@ -7,5 +9,5 @@ public interface GameModel {
 	public boolean isFinished();
 	public boolean getExit();
 	public String help();
-	public void setRole(Position pos, String role);
+	public boolean setRole(LemmingRoleInterface r, Position pos);
 }

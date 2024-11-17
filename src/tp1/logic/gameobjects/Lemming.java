@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.GameWorld;
 import tp1.logic.Game;
 import tp1.logic.Position;
+import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 import tp1.logic.Direction;
@@ -104,7 +105,7 @@ public class Lemming extends GameObject{
 		}
 	}
 	public void disableRole() {
-		
+		LemmingRoleFactory.parse("w");
 	}
 	public int getCurrFall() {
 		return currFall;
