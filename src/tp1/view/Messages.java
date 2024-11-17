@@ -116,9 +116,12 @@ public class Messages {
 //Symbols
 	public static final String EMPTY = "";
 	public static final String WALL = MyStringUtils.repeat("▓",ConsoleView.CELL_SIZE);
-	public static final String METAL_WALL = "X";
+	public static final String METAL_WALL = "XXXXX";
 	public static final String EXIT_DOOR = "🚪";
 	public static final String LEMMING_RIGHT = "B";
 	public static final String LEMMING_LEFT = "ᗺ";
+	public static final String PARACHUTER = "🪂";
+	public static final String DIGGER_RIGHT = "b";
+	public static final String DIGGER_LEFT = "d";
 
 }

@@ -15,17 +15,17 @@ public class WalkerRole extends LemmingRole{
 			this.help = HELP;
 		}
 
-	    @Override
+	 @Override
 	 public String getIcon(Lemming lemmy) {
-		 String icon = Messages.EMPTY;
-		 if(lemmy.isAlive()){
+		 String icon;
+		 
 	    	if(lemmy.getDir() == Direction.LEFT) { //if it's going left, print left
 	    		icon = Messages.LEMMING_LEFT;
 	    	}
-	    	else if(lemmy.getDir() == Direction.RIGHT || lemmy.getDir() == Direction.NONE) { //if it goes right, print right
+	    	else { //if it goes right, print right
 	    		icon = Messages.LEMMING_RIGHT;
 	    	}	
-	    }
+	    
 		return icon;
 	 }
 

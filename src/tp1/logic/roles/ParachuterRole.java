@@ -17,7 +17,12 @@ public class ParachuterRole extends LemmingRole{
 	}
 	@Override
 	public String getIcon(Lemming lemmy) {
-		 return Messages.ROLE_PARACHUTER_SHORTCUT;
+		 String icon;
+		
+	    icon = Messages.PARACHUTER;
+	    	
+		return icon;
+	 
 	 }
 	@Override
 	 public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)

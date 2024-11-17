@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.Game;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
+import tp1.view.Messages;
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
@@ -54,19 +55,12 @@ public class Lemming extends GameObject{
 			currFall = 0;
 		}
 	}
-	public boolean IsGrounded() { //This must check if there's a wall below the lemming
-		/*if(game.searchWall(this.pos.getCol(), this.pos.getRow() + 1)) {
-			return true;
-		}*/	
+	public boolean IsGrounded() {
 		return this.grounded;
 	}
 	public void setGrounded(boolean a) {
 		this.grounded = a;
 	}
-	public boolean getGrounded() {
-		return this.grounded;
-	}
-	
 	public boolean IsVoid() { //returns if lemming is falling off the board
 		boolean is = false;
 		
@@ -77,7 +71,8 @@ public class Lemming extends GameObject{
 	}
 	@Override
 	public String toString() {
-		return role.getIcon(this);
+		if(this.alive) return role.getIcon(this);
+		else return Messages.EMPTY;
 	}
 	public void update() {
 		if(isAlive()) {
@@ -126,7 +121,6 @@ public class Lemming extends GameObject{
 	public void setAlive(boolean value) {
 		this.alive = value;
 		if(!this.alive) {
-			this.alive = false;
 			onDeath();
 		}
 	}

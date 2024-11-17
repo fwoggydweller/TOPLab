@@ -20,8 +20,10 @@ public abstract class LemmingRole { // change into interface with default method
 	protected Messages m = new Messages();
     public abstract String getIcon( Lemming lemming );
     public void move(Lemming lemming) {
-    	if(!moveY(lemming)) {
-    		moveX(lemming);
+    	if(lemming.isAlive()) {
+	    	if(!moveY(lemming)) {
+	    		moveX(lemming);
+	    	}
     	}
     }
     private void moveX(Lemming lemming) {

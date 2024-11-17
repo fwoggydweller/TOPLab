@@ -1,5 +1,6 @@
 package tp1.logic.roles;
 
+import tp1.logic.Direction;
 import tp1.logic.Position;
 
 import tp1.logic.gameobjects.Lemming;
@@ -19,7 +20,16 @@ public class CaveDigger extends LemmingRole{
 	}
 	@Override
 	public String getIcon(Lemming lemming) {
-		return Messages.ROLE_DIGGER_SHORTCUT;
+		 String icon;
+		 
+	    	if(lemming.getDir() == Direction.LEFT) { //if it's going left, print left
+	    		icon = Messages.DIGGER_LEFT;
+	    	}
+	    	else { //if it goes right, print right
+	    		icon = Messages.DIGGER_RIGHT;
+	    	}	
+	    
+		return icon;
 	}
 	@Override 
     public boolean interactWith(Wall wall, Lemming lem) {
@@ -31,7 +41,8 @@ public class CaveDigger extends LemmingRole{
     	else{
     		lem.setAlive(lem.getForce() > lem.getCurrFall());
     		lem.setCurrFall(0);
-    		wall.setAlive(false);
+    		if (lem.isAlive()) wall.setAlive(false);
+    		else lem.setGrounded(true);
     	}
     	
 		return true;
