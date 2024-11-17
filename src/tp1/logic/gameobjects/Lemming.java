@@ -105,7 +105,7 @@ public class Lemming extends GameObject{
 		}
 	}
 	public void disableRole() {
-		LemmingRoleFactory.parse("w");
+		this.role = LemmingRoleFactory.parse("w");
 	}
 	public int getCurrFall() {
 		return currFall;
