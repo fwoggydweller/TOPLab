@@ -45,57 +45,57 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	private void Init1(int n) {
 		if(n == 1) {
-			cont.add(new Lemming(9, 0, roles.parse("w")));
-			cont.add(new Lemming(3, 3, roles.parse("w")));
-			cont.add(new Lemming(2, 3, roles.parse("w")));
-			cont.add(new Lemming(0, 8, roles.parse("w")));
+			cont.add(new Lemming(9, 0, this, roles.parse("w")));
+			cont.add(new Lemming(3, 3, this, roles.parse("w")));
+			cont.add(new Lemming(2, 3, this, roles.parse("w")));
+			cont.add(new Lemming(0, 8, this, roles.parse("w")));
 		}
 		else if(n == 2) {
-			cont.add(new Lemming(9, 0, roles.parse("w")));
-			cont.add(new Lemming(6, 0, roles.parse("p")));
-			cont.add(new Lemming(3, 3, roles.parse("w")));
-			cont.add(new Lemming(2, 3, roles.parse("w")));
-			cont.add(new Lemming(0, 8, roles.parse("w")));
+			cont.add(new Lemming(9, 0, this, roles.parse("w")));
+			cont.add(new Lemming(6, 0, this, roles.parse("p")));
+			cont.add(new Lemming(3, 3, this, roles.parse("w")));
+			cont.add(new Lemming(2, 3, this, roles.parse("w")));
+			cont.add(new Lemming(0, 8, this, roles.parse("w")));
 		}
 	}
 	private void Init2(int n) {
 		if(n == 1) {
-			cont.add(new Wall(9,1));	
-			cont.add(new Wall(8,1));	
-			cont.add(new Wall(2,4));
-			cont.add(new Wall(3,4));	
-			cont.add(new Wall(4,4));	
-			cont.add(new Wall(7,5));
-			cont.add(new Wall(7,6));	
-			cont.add(new Wall(6,6));	
-			cont.add(new Wall(5,6));
-			cont.add(new Wall(4,6));	
-			cont.add(new Wall(8,8));	
-			cont.add(new Wall(9,9));
-			cont.add(new Wall(8,9));	
-			cont.add(new Wall(0,9));	
-			cont.add(new Wall(1,9));
-			cont.add(new ExitDoor(4,5));
+			cont.add(new Wall(9,1, this));	
+			cont.add(new Wall(8,1, this));	
+			cont.add(new Wall(2,4, this));
+			cont.add(new Wall(3,4, this));	
+			cont.add(new Wall(4,4, this));	
+			cont.add(new Wall(7,5, this));
+			cont.add(new Wall(7,6, this));	
+			cont.add(new Wall(6,6, this));	
+			cont.add(new Wall(5,6, this));
+			cont.add(new Wall(4,6, this));	
+			cont.add(new Wall(8,8, this));	
+			cont.add(new Wall(9,9, this));
+			cont.add(new Wall(8,9, this));	
+			cont.add(new Wall(0,9, this));	
+			cont.add(new Wall(1,9, this));
+			cont.add(new ExitDoor(4,5, this));
 		}
 		else if(n == 2) {
-			cont.add(new MetalWall(3, 6));
-			cont.add(new ExitDoor(4,5));
-			cont.add(new Wall(9,1));	
-			cont.add(new Wall(8,1));	
-			cont.add(new Wall(2,4));
-			cont.add(new Wall(3,4));	
-			cont.add(new Wall(4,4));	
-			cont.add(new Wall(7,5));
-			cont.add(new Wall(7,6));	
-			cont.add(new Wall(6,6));	
-			cont.add(new Wall(5,6));
-			cont.add(new Wall(4,6));	
-			cont.add(new Wall(8,8));	
-			cont.add(new Wall(9,9));
-			cont.add(new Wall(8,9));	
-			cont.add(new Wall(0,9));	
-			cont.add(new Wall(1,9));
-			cont.add(new Wall(3,5));
+			cont.add(new MetalWall(3, 6, this));
+			cont.add(new ExitDoor(4,5, this));
+			cont.add(new Wall(9,1, this));	
+			cont.add(new Wall(8,1, this));	
+			cont.add(new Wall(2,4, this));
+			cont.add(new Wall(3,4, this));	
+			cont.add(new Wall(4,4, this));	
+			cont.add(new Wall(7,5, this));
+			cont.add(new Wall(7,6, this));	
+			cont.add(new Wall(6,6, this));	
+			cont.add(new Wall(5,6, this));
+			cont.add(new Wall(4,6, this));	
+			cont.add(new Wall(8,8, this));	
+			cont.add(new Wall(9,9, this));
+			cont.add(new Wall(8,9, this));	
+			cont.add(new Wall(0,9, this));	
+			cont.add(new Wall(1,9, this));
+			cont.add(new Wall(3,5, this));
 		}
 		
 	}

@@ -3,10 +3,11 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
 import tp1.view.Messages;
+import tp1.logic.GameWorld;
 
 public class ExitDoor extends GameObject{
-	public ExitDoor(int x, int y) { //costructor
-		this.pos = new Position(x,y);
+	public ExitDoor(int x, int y, GameWorld g) { //costructor
+		super(x,y,g);
 	}
 	
 	public Position getPos() {

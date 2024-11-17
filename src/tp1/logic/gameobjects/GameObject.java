@@ -1,9 +1,10 @@
 package tp1.logic.gameobjects;
 
 
+import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
-import tp1.logic.roles.LemmingRole;
+import tp1.logic.roles.LemmingRoleInterface;
 
 public class GameObject implements GameItem{
 	protected GameWorld game;
@@ -12,6 +13,13 @@ public class GameObject implements GameItem{
 	protected boolean exit;
 	protected boolean solid;
 	//Global set position for each class that extends GameObjects
+	
+	public GameObject(int x, int y, GameWorld g) {
+		pos = new Position(x, y);
+		alive = true;
+		game = g;
+	}
+	
 	public void setPosition(Position p) {
 		this.pos = p;
 	}
@@ -22,7 +30,6 @@ public class GameObject implements GameItem{
 	public boolean receiveInteraction(GameItem other) {
 		return false;
 	}
-
 
 	public boolean interactWith(Lemming lemming) {
 		return false;
@@ -66,7 +73,7 @@ public class GameObject implements GameItem{
 		return this.pos.Equals(pos.getCol(), pos.getRow());
 	}
 	
-	public boolean setRole(LemmingRole role) {
+	public boolean setRole(LemmingRoleInterface role) {
 		return false;
 	}
 	public void update() {

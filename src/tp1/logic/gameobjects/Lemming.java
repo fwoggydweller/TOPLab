@@ -1,8 +1,9 @@
 package tp1.logic.gameobjects;
 
+import tp1.logic.GameWorld;
 import tp1.logic.Game;
 import tp1.logic.Position;
-import tp1.logic.roles.LemmingRole;
+import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.MetalWall;
@@ -12,16 +13,16 @@ import tp1.logic.gameobjects.Wall;
 
 public class Lemming extends GameObject{
 	private Direction dir;
-	private LemmingRole role;
+	private LemmingRoleInterface role;
 	private boolean grounded;
 	private int force = 3;
 	private int currFall = 0;
 
-	public Lemming(int x, int y, LemmingRole role) {
-		pos = new Position(x, y);
+	public Lemming(int x, int y, GameWorld g, LemmingRoleInterface role) {
+		super(x,y,g);
 		dir = Direction.RIGHT;
 		this.role = role;
-		alive = true;
+
 		solid = false;
 	}
 	
@@ -86,11 +87,11 @@ public class Lemming extends GameObject{
 			return true;
 
 	}
-	public boolean GetRole(LemmingRole role) {
+	public boolean GetRole(LemmingRoleInterface role) {
 		return role.equals(role);
 	}
 	@Override
-	public boolean setRole(LemmingRole role) { 
+	public boolean setRole(LemmingRoleInterface role) { 
 		if(role == null) {
 			return false;
 		}

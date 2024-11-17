@@ -12,16 +12,16 @@ import Commands.UpdateCommand;
 import tp1.view.Messages;
 
 public class LemmingRoleFactory {
-	private static final List<LemmingRole> AVAILABLE_ROLES = Arrays.asList(
+	private static final List<LemmingRoleInterface> AVAILABLE_ROLES = Arrays.asList(
 			new ParachuterRole(),
 			new WalkerRole(),
 			new CaveDigger()
 	        // ...
 	    );
 	
-	public static LemmingRole parse(String input) {
-		LemmingRole role = null;
-		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++) {
+	public static LemmingRoleInterface parse(String input) {
+		LemmingRoleInterface role = null;
+		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++){
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
 		return role;

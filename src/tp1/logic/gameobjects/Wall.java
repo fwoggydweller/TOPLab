@@ -1,10 +1,10 @@
 package tp1.logic.gameobjects;
 import tp1.view.Messages;
 import tp1.logic.Position;
+import tp1.logic.GameWorld;
 public class Wall extends GameObject{
-	public Wall(int x,int y) {
-		pos = new Position(x,y);
-		alive = true;
+	public Wall(int x,int y, GameWorld g) {
+		super(x,y,g);
 	}
 	@Override
 	public String toString() {

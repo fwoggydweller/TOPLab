@@ -1,12 +1,13 @@
 package tp1.logic.roles;
 import tp1.logic.Game;
+import tp1.logic.roles.LemmingRoleInterface;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
-public abstract class LemmingRole { // change into interface with default method
+public abstract class LemmingRole implements LemmingRoleInterface{ // change into interface with default method
 	protected String name;
 	protected String shortcut;
 	protected String details;
@@ -110,7 +111,7 @@ public abstract class LemmingRole { // change into interface with default method
 	protected boolean matchRole(String name){
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
-	public LemmingRole parse(String name) {
+	public LemmingRoleInterface parse(String name) {
 		if(matchRole(name.toLowerCase())) {
 			return this;
 		}

@@ -2,10 +2,11 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
 import tp1.view.Messages;
+import tp1.logic.GameWorld;
 
 public class MetalWall extends GameObject{
-	public MetalWall(int x,int y) {
-		pos = new Position(x,y);
+	public MetalWall(int x,int y,GameWorld g) {
+		super(x,y,g);
 	}
 	@Override
 	public boolean isSolid() {
