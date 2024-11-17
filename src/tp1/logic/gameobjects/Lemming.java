@@ -82,7 +82,6 @@ public class Lemming extends GameObject{
 		}
 	}
 	public boolean isThisExit(ExitDoor exit) {
-		
 			game.numLemmingsExit();
 			return true;
 

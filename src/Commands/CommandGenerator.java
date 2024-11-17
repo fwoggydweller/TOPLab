@@ -36,7 +36,6 @@ public class CommandGenerator {
 				}
 			}
 		}
-    	System.out.print(conc);
     	return conc;
     }
 

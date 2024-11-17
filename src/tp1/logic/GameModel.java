@@ -2,7 +2,7 @@ package tp1.logic;
 
 public interface GameModel {
 	public void update();
-	public void reset();
+	public void reset(int n);
 	public void playerExits();
 	public boolean isFinished();
 	public boolean getExit();
