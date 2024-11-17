@@ -16,7 +16,9 @@ public abstract class GameView {
 	public abstract void showEndMessage();
 	public abstract void showError(String message);
 	public abstract void showMessage(String message);
-
+	
 	// get data from view methods
 	public abstract String[] getPrompt();
+
+	
 }

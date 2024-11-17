@@ -23,7 +23,7 @@ public class Main {
 		Locale.setDefault(new Locale("es", "ES"));
 		try {
 			
-			int nLevel = 1;
+			int nLevel = 2;
 			if (args.length != 0) nLevel = Integer.parseInt(args[0]);
 
 			Game game = new Game(nLevel);

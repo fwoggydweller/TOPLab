@@ -11,6 +11,8 @@ public class Messages {
 	public static final String USAGE = "Usage: %s [<level>]".formatted(GAME_NAME);
 
 	public static final String WELCOME = String.format("%s %s%n", GAME_NAME, VERSION);
+	
+	public static final String SELECT_LEVEL = "Please choose a level between 1 and 2";
 
 	public static final String LEVEL_NOT_A_NUMBER = "The level must be a number";
 
@@ -73,6 +75,7 @@ public class Messages {
 //Errors
 	public static final String POSITION_ADMISSION_ERROR= "[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)";
 	public static final String UNKNOWN_ROLE_ERROR = "[ERROR] Error: Unknown Role";
+	public static final String NOT_VALID_LEVEL_ERROR = "[ERROR] Error: Not valid level number";
 	//Commands
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";
@@ -81,8 +84,8 @@ public class Messages {
 	
 	public static final String COMMAND_RESET_NAME = "reset";
 	public static final String COMMAND_RESET_SHORTCUT = "r";
-	public static final String COMMAND_RESET_DETAILS = "[r]eset";
-	public static final String COMMAND_RESET_HELP = "start a new game";
+	public static final String COMMAND_RESET_DETAILS = " [r]eset [numLevel]";
+	public static final String COMMAND_RESET_HELP = "reset the game to initial configuration if not numLevel else load the numLevel map";
 	
 	public static final String COMMAND_EXIT_NAME = "exit";
 	public static final String COMMAND_EXIT_SHORTCUT = "e";
