@@ -1,6 +1,6 @@
 package tp1.logic.gameobjects;
 
-import tp1.view.Messages;
+
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
@@ -9,6 +9,7 @@ public class GameObject implements GameItem{
 	protected GameWorld game;
 	protected Position pos;
 	protected boolean alive;
+	protected boolean exit;
 	protected boolean solid;
 	//Global set position for each class that extends GameObjects
 	public void setPosition(Position p) {

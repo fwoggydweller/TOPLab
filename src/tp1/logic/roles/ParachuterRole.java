@@ -1,8 +1,6 @@
 package tp1.logic.roles;
-import tp1.logic.roles.LemmingRole;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.Lemming;
-import tp1.logic.Direction;
 import tp1.logic.Position;
 public class ParachuterRole extends LemmingRole{
 	private static final String NAME = Messages.ROLE_PARACHUTER_NAME;

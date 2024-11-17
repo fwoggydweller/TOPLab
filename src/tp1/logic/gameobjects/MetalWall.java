@@ -15,4 +15,8 @@ public class MetalWall extends GameObject{
 	public String toString() {
 		return Messages.METAL_WALL;
 	}
+	@Override
+	public boolean receiveInteraction(GameItem other) {
+		return other.interactWith(this);
+	}
 }

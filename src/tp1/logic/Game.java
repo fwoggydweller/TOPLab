@@ -45,17 +45,17 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	private void Init1(int n) {
 		if(n == 1) {
-			cont.add(new Lemming(9, 0, roles.parse("w"), this));
-			cont.add(new Lemming(3, 3, roles.parse("w"), this));
-			cont.add(new Lemming(2, 3, roles.parse("w"), this));
-			cont.add(new Lemming(0, 8, roles.parse("w"), this));
+			cont.add(new Lemming(9, 0, roles.parse("w")));
+			cont.add(new Lemming(3, 3, roles.parse("w")));
+			cont.add(new Lemming(2, 3, roles.parse("w")));
+			cont.add(new Lemming(0, 8, roles.parse("w")));
 		}
 		else if(n == 2) {
-			cont.add(new Lemming(9, 0, roles.parse("w"), this));
-			cont.add(new Lemming(6, 0, roles.parse("p"), this));
-			cont.add(new Lemming(3, 3, roles.parse("w"), this));
-			cont.add(new Lemming(2, 3, roles.parse("w"), this));
-			cont.add(new Lemming(0, 8, roles.parse("w"), this));
+			cont.add(new Lemming(9, 0, roles.parse("w")));
+			cont.add(new Lemming(6, 0, roles.parse("p")));
+			cont.add(new Lemming(3, 3, roles.parse("w")));
+			cont.add(new Lemming(2, 3, roles.parse("w")));
+			cont.add(new Lemming(0, 8, roles.parse("w")));
 		}
 	}
 	private void Init2(int n) {

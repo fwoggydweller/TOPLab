@@ -13,18 +13,16 @@ import tp1.logic.gameobjects.Wall;
 public class Lemming extends GameObject{
 	private Direction dir;
 	private LemmingRole role;
-	private boolean exit;
 	private boolean grounded;
 	private int force = 3;
 	private int currFall = 0;
 
-	public Lemming(int x, int y, LemmingRole role, Game g) {
+	public Lemming(int x, int y, LemmingRole role) {
 		pos = new Position(x, y);
 		dir = Direction.RIGHT;
 		this.role = role;
 		alive = true;
 		solid = false;
-		game = g;
 	}
 	
 	public void setDir(int x, int y) {
@@ -81,8 +79,10 @@ public class Lemming extends GameObject{
 			role.play(this);
 		}
 	}
-	public boolean isThisExit(ExitDoor exit) {
-			game.numLemmingsExit();
+	public boolean onExit(ExitDoor exit) {
+			game.updateExitLemmings();
+			this.exit = true;
+			this.setAlive(false);
 			return true;
 
 	}
@@ -119,7 +119,7 @@ public class Lemming extends GameObject{
 	}
 	public void setAlive(boolean value) {
 		this.alive = value;
-		if(!this.alive) {
+		if(!this.alive && !this.exit) {
 			onDeath();
 		}
 	}
@@ -151,7 +151,7 @@ public class Lemming extends GameObject{
 	}
 	@Override
 	public boolean interactWith(ExitDoor exit) {
-		return isThisExit(exit);
+		return onExit(exit);
 	}
 	@Override
 	public boolean interactWith(Wall wall) {

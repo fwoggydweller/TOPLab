@@ -1,14 +1,12 @@
 package tp1.logic;
-import tp1.logic.gameobjects.Lemming;
+
 import tp1.logic.gameobjects.GameItem;
-import tp1.logic.gameobjects.ExitDoor;
 import tp1.logic.gameobjects.GameObject;
-import tp1.logic.gameobjects.Wall;
-import tp1.logic.Game;
+
 import tp1.view.Messages;
 public class GameObjectContainer {
 	//TODO fill your code
-	private GameItem[] gO = new GameItem[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1]; // game Items?
+	private GameItem[] gO = new GameItem[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1];
 	private int objCount = 0;
 	
 	public void add(GameObject go) {
