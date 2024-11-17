@@ -7,5 +7,5 @@ public interface GameModel {
 	public boolean isFinished();
 	public boolean getExit();
 	public String help();
-	public void setRole(Position pos, String role);// debería llamarse desde aquí o gameWorld?
+	public void setRole(Position pos, String role);
 }

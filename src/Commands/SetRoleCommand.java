@@ -1,5 +1,6 @@
 package Commands;
 
+import tp1.logic.Game;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRoleFactory;
@@ -39,7 +40,17 @@ public class SetRoleCommand extends Command{
 	}
 	@Override
 	public void execute(GameModel game, GameView view) {
-		game.setRole(pos, type);
+		if(pos.getCol() >= Game.DIM_X || pos.getRow()>= Game.DIM_Y) {
+			view.showError(Messages.POSITION_ADMISSION_ERROR);
+		}
+		else {
+			if(LemmingRoleFactory.parse(type) == null) {
+				view.showError(Messages.UNKNOWN_ROLE_ERROR);
+			}
+			else {
+				game.setRole(pos, type);
+			}
+		}
 	}
 	@Override
 	public String getHelp() {

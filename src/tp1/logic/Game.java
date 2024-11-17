@@ -99,12 +99,6 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 		
 	}
-	/*public boolean searchWall(int col, int row) {
-		return (cont.whatInPos(col, row)) == m.WALL;
-	}
-	public boolean searchExit(int col, int row) {
-		return cont.whatInPos(col, row) == m.EXIT_DOOR;
-	}*/
 	public int getCycle() {
 		return cycle;
 	}
@@ -160,17 +154,12 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cycle++;
 	}
 	public void reset(int n) {
-		if(n== 1 || n == 2) {
 			cycle = 0;
 			numLemmingsDead = 0;
 			numLemmingsExit = 0;
 			cont.reset();
 			Init1(n);
 			Init2(n);
-		}
-		else {
-			System.out.print("[ERROR] Error: Not valid level number");
-		}
 	}
 	public void updateDeadLemmings() {
 		numLemmingsDead++;
@@ -188,12 +177,9 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void setRole(Position pos, String role) {
 		GameItem a;
 		a = cont.posToObject(pos);
-		if(a == null) {
-			System.out.println(Messages.POSITION_ADMISSION_ERROR);
-		}
 		if(a != null && a.isAlive()) {
 			if(!a.setRole(roles.parse(role))) {
-				System.out.println(Messages.POSITION_ADMISSION_ERROR);
+				System.out.println(Messages.POSITION_ADMISSION_ERROR); //This should not be called from here, but I don't know how to do call it from the view
 			}
 		}
 	}

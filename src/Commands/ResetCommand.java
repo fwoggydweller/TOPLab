@@ -23,6 +23,9 @@ public class ResetCommand extends Command{
 			if(name.length > 1) {
 				n = Integer.parseInt(name[1]);
 			}
+			else {
+				n = 1;
+			}
 			return this;
 		}
 		else {

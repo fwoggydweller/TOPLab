@@ -24,9 +24,6 @@ public class LemmingRoleFactory {
 		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++) {
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
-		if(role== null) {
-			System.out.println(Messages.UNKNOWN_ROLE_ERROR);
-		}
 		return role;
 	}
 	public static String commandHelp(){

@@ -18,7 +18,7 @@ public class GameObjectContainer {
 		}
 	}
 	
-	public String whatInPos(int col, int row) { // should this be removed? as to not break the interactions structure
+	public String whatInPos(int col, int row) {
 		String name = Messages.EMPTY;
 		int pos = 0;
 		//Make a loop for searching the gO of the given pos
