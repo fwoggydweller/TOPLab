@@ -21,7 +21,6 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public static final int LEMMING_THRESHOLD = 3;
 	private GameObjectContainer cont;
 	private LemmingRoleFactory roles;
-	private Messages m;
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
 	private int numLemmingsExit = 0;

@@ -1,6 +1,5 @@
 package tp1.logic.roles;
 import tp1.logic.Game;
-import Commands.Command;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
@@ -8,7 +7,6 @@ import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 import tp1.view.Messages;
 public abstract class LemmingRole { // change into interface with default method
-	private Game game;
 	protected String name;
 	protected String shortcut;
 	protected String details;
@@ -66,7 +64,7 @@ public abstract class LemmingRole { // change into interface with default method
     		flip(lemming);
     	}
     	else {
-	    	if(lemming.getPos().getCol() + lemming.getDir().getX() < 0 || lemming.getPos().getCol() + lemming.getDir().getX() >= game.DIM_X) { //must include interaction with solid obkject
+	    	if(lemming.getPos().getCol() + lemming.getDir().getX() < 0 || lemming.getPos().getCol() + lemming.getDir().getX() >= Game.DIM_X) { //must include interaction with solid obkject
 	    		flip(lemming);
 	    	}
     	}	

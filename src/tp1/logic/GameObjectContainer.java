@@ -8,7 +8,6 @@ import tp1.logic.Game;
 import tp1.view.Messages;
 public class GameObjectContainer {
 	//TODO fill your code
-	private Messages m;
 	private GameItem[] gO = new GameItem[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1]; // game Items?
 	private int objCount = 0;
 	
@@ -20,10 +19,10 @@ public class GameObjectContainer {
 	}
 	
 	public String whatInPos(int col, int row) { // should this be removed? as to not break the interactions structure
-		String name = m.EMPTY;
+		String name = Messages.EMPTY;
 		int pos = 0;
 		//Make a loop for searching the gO of the given pos
-		while(pos < gO.length && name == m.EMPTY) {
+		while(pos < gO.length && name == Messages.EMPTY) {
 			if(gO[pos].isInPosition(new Position(col,row))) {
 				name = gO[pos].toString(); //All of the game objects must have an overwritten toString method
 				}
