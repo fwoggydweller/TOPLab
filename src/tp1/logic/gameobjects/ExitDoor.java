@@ -21,6 +21,7 @@ public class ExitDoor extends GameObject{
 	public boolean interactWith(Lemming lem){ //TODO
 		return false;
 	}
+	@Override
 	public String toString() {
 		return Messages.EXIT_DOOR;
 	}

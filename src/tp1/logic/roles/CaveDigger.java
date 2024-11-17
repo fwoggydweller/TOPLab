@@ -1,6 +1,7 @@
 package tp1.logic.roles;
 
 import tp1.logic.Position;
+
 import tp1.logic.gameobjects.Lemming;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.Wall;
@@ -30,6 +31,7 @@ public class CaveDigger extends LemmingRole{
     	else{
     		lem.setAlive(lem.getForce() > lem.getCurrFall());
     		lem.setCurrFall(0);
+    		wall.setAlive(false);
     	}
     	
 		return true;

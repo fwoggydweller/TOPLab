@@ -9,7 +9,7 @@ import tp1.view.Messages;
 public class GameObjectContainer {
 	//TODO fill your code
 	private Messages m;
-	private GameObject[] gO = new GameObject[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1]; // game Items?
+	private GameItem[] gO = new GameItem[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1]; // game Items?
 	private int objCount = 0;
 	
 	public void add(GameObject go) {

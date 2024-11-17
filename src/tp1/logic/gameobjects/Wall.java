@@ -8,13 +8,17 @@ public class Wall extends GameObject{
 	WalkerRole w;
 	public Wall(int x,int y) {
 		pos = new Position(x,y);
+		alive = true;
 	}
 	@Override
 	public boolean interactWith(Lemming lem) {
 		return lem.GetRole(w);
 	}
+	@Override
 	public String toString() {
-			return Messages.WALL;
+		if (this.isAlive())return Messages.WALL;
+		else return Messages.EMPTY;
+
 	}
 	@Override
 	public boolean receiveInteraction(GameItem other) {

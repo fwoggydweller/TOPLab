@@ -12,7 +12,6 @@ import tp1.logic.gameobjects.Wall;
 public class Lemming extends GameObject{
 	private Direction dir;
 	private LemmingRole role;
-	private boolean alive;
 	private boolean exit;
 	private boolean grounded;
 	private int force = 3;
@@ -77,9 +76,6 @@ public class Lemming extends GameObject{
 		return is;
 	}
 	@Override
-	public boolean isAlive() {
-		return alive;
-	}
 	public String toString() {
 		return role.getIcon(this);
 	}

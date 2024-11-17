@@ -12,7 +12,12 @@ public interface GameItem {
 
 	public boolean isSolid();
 	public boolean isAlive();
+	public void setAlive(boolean b);
 	public boolean isExit();
 	public boolean setRole(LemmingRole role); // capaz toca cambiarlo pero necesito poder ejecutar
 	public boolean isInPosition(Position pos);
+	public void update();
+	public String toString();
+	public Position getPos();
+	
 }

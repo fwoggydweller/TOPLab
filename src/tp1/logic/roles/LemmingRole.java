@@ -77,7 +77,7 @@ public abstract class LemmingRole { // change into interface with default method
     	 uDir(lem, true);
     	}
     	
-    	else lem.setGrounded(true);// it is below
+    	else if (wall.isAlive()) lem.setGrounded(true);// it is below
     	
 		return true;
 	}

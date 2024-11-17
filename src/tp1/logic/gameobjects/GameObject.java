@@ -1,5 +1,6 @@
 package tp1.logic.gameobjects;
 
+import tp1.view.Messages;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRole;
@@ -7,6 +8,7 @@ import tp1.logic.roles.LemmingRole;
 public class GameObject implements GameItem{
 	protected GameWorld game;
 	protected Position pos;
+	protected boolean alive;
 	protected boolean solid;
 	//Global set position for each class that extends GameObjects
 	public void setPosition(Position p) {
@@ -46,7 +48,11 @@ public class GameObject implements GameItem{
 
 
 	public boolean isAlive() {
-		return false;
+		return alive;
+	}
+	
+	public void setAlive(boolean b) {
+		this.alive = b;
 	}
 
 
@@ -70,5 +76,8 @@ public class GameObject implements GameItem{
 	}
 	public void onDeath() { // in lemming?
 		
+	}
+	public String toString() {
+		return null;
 	}
 }

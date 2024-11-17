@@ -11,6 +11,7 @@ public class MetalWall extends GameObject{
 	public boolean isSolid() {
 		return true;
 	}
+	@Override
 	public String toString() {
 		return Messages.METAL_WALL;
 	}
