@@ -23,15 +23,17 @@ public class ParachuterRole extends LemmingRole{
 	 
 	 }
 	@Override
-	 public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
+	 public boolean moveY(Lemming lemming) { 
 	    	boolean ok = true;
 	    	if(lemming.IsGrounded()) {
+	    		if(lemming.getCurrFall() > 0) lemming.disableRole();
 	    		lemming.setCurrFall(0);	
 	    		ok = false;
 	    	}
 	    	else {
 	    		Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
 				lemming.setPosition(p);
+				lemming.setCurrFall(1);
 	    	}
 	    	
 	    	return ok;
