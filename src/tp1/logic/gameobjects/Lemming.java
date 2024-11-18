@@ -18,6 +18,7 @@ public class Lemming extends GameObject{
 	private boolean grounded;
 	private int force = 3;
 	private int currFall = 0;
+	private boolean flipped = false;
 
 	public Lemming(int x, int y, GameWorld g, LemmingRoleInterface role) {
 		super(x,y,g);
@@ -113,6 +114,12 @@ public class Lemming extends GameObject{
 	public int getForce() {
 		return force;
 	}
+	public boolean getFlip() {
+		return flipped;
+	}
+	public void setFlip(boolean a) {
+		this.flipped = a;
+	}
 	public void setCurrFall(int fall) {
 		this.currFall = fall;
 	}
@@ -163,4 +170,5 @@ public class Lemming extends GameObject{
 	public boolean interactWith(MetalWall mWall) {
 		return role.interactWith(mWall, this);
 	}
+	
 }

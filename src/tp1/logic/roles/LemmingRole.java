@@ -29,9 +29,12 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     }
     private void moveX(Lemming lemming) {
     	
-    		uDir(lemming, false);
+    	uDir(lemming, false);  		    
+    	if(!lemming.getFlip()) {
 			Position p = new Position (lemming.getPos().getCol() + lemming.getDir().getX(), lemming.getPos().getRow());
 			lemming.setPosition(p);
+    	}
+    	else lemming.setFlip(false);
 	}
 
     public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
@@ -62,15 +65,17 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     }
     
     public void uDir(Lemming lemming, boolean wall) {
-    	
+
     	if (wall) {
     		flip(lemming);
+    		lemming.setFlip(true);
     	}
     	else {
 	    	if(lemming.getPos().getCol() + lemming.getDir().getX() < 0 || lemming.getPos().getCol() + lemming.getDir().getX() >= Game.DIM_X) { //must include interaction with solid obkject
 	    		flip(lemming);
+	    		lemming.setFlip(true);
 	    	}
-    	}	
+    	}
     } 
     public boolean interactWith(Wall wall, Lemming lem) {
     	  	

@@ -32,18 +32,13 @@ public class CaveDigger extends LemmingRole{
 		return icon;
 	}
 	@Override 
-    public boolean interactWith(Wall wall, Lemming lem) {
-	  	
-    	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
-    	 uDir(lem, true);
-    	}
-    	
-    	else{
+    public boolean interactWith(Wall wall, Lemming lem) {	    	
+
     		lem.setAlive(lem.getForce() > lem.getCurrFall());
     		lem.setCurrFall(0);
     		if (lem.isAlive()) wall.setAlive(false);
     		else lem.setGrounded(true);
-    	}
+    		lem.disableRole();
     	
 		return true;
 	}
