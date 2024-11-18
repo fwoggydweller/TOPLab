@@ -22,6 +22,12 @@ public class ResetCommand extends Command{
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length > 1) {
 				n = Integer.parseInt(name[1]);
+				if(n == 1 || n == 2) {
+					return this;
+				}
+				else {
+					return null;
+				}
 			}
 			else {
 				n = 1;

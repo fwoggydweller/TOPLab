@@ -34,11 +34,12 @@ public class Controller {
 		    if (command != null) {
 		    	command.execute(game, view);
 		    }
-		    else 
+		    else {
 		        view.showError(Messages.UNKNOWN_COMMAND);
 		    	view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
 		    	command = CommandGenerator.parse(aux);
 		    	command.execute(game, view);
+		    }
 		}
 		view.showGame();
 		view.showEndMessage();
