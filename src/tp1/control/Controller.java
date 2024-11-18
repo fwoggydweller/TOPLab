@@ -16,6 +16,7 @@ public class Controller {
 	
 	private GameModel game;
 	private GameView view;
+	private String[] aux = {"none"};
 	public Controller(GameModel game, GameView view) {
 		this.game = game;
 		this.view = view;
@@ -35,6 +36,9 @@ public class Controller {
 		    }
 		    else 
 		        view.showError(Messages.UNKNOWN_COMMAND);
+		    	view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
+		    	command = CommandGenerator.parse(aux);
+		    	command.execute(game, view);
 		}
 		view.showGame();
 		view.showEndMessage();
