@@ -73,9 +73,9 @@ public class Messages {
 
 	public static final String POSITION = "(%s,%s)";
 //Errors
-	public static final String POSITION_ADMISSION_ERROR= "[ERROR] Error: SetRoleCommand error (Incorrect position or no object in that position admits that role)";
-	public static final String UNKNOWN_ROLE_ERROR = "[ERROR] Error: Unknown Role";
-	public static final String NOT_VALID_LEVEL_ERROR = "[ERROR] Error: Not valid level number";
+	public static final String POSITION_ADMISSION_ERROR= "SetRoleCommand error (Incorrect position or no object in that position admits that role)";
+	public static final String UNKNOWN_ROLE_ERROR = "Unknown Role";
+	public static final String NOT_VALID_LEVEL_ERROR = "Not valid level number";
 	//Commands
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";

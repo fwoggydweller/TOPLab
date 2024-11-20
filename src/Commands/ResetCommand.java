@@ -11,7 +11,8 @@ public class ResetCommand extends Command{
 	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
 	private static final String HELP = Messages.COMMAND_RESET_HELP;
 	private int  n = 1;
-	public ResetCommand() {
+	private String[] empty = { ""};
+ 	public ResetCommand() {
 		this.name = NAME;
 		this.details = DETAILS;
 		this.shortcut = SHORTCUT;
@@ -20,19 +21,8 @@ public class ResetCommand extends Command{
 	@Override
 	public Command parse(String[] name) {
 		if(matchCommand(name[0].toLowerCase())) {
-			if(name.length > 1) {
 				n = Integer.parseInt(name[1]);
-				if(n == 1 || n == 2) {
 					return this;
-				}
-				else {
-					return null;
-				}
-			}
-			else {
-				n = 1;
-			}
-			return this;
 		}
 		else {
 			return null;
@@ -48,6 +38,8 @@ public class ResetCommand extends Command{
 		}
 		else {
 			view.showError(Messages.NOT_VALID_LEVEL_ERROR);
+			view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
+			CommandGenerator.parse(empty).execute(game, view);
 		}
 	}
 }

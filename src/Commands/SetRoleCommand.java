@@ -12,6 +12,7 @@ public class SetRoleCommand extends Command{
 	String X = "";
 	String Y = "";
 	Position pos;
+	private String[] empty = { ""};
 	private static final String NAME = Messages.COMMAND_SETROLE_NAME;
 	private static final String SHORTCUT = Messages.COMMAND_SETROLE_SHORTCUT;
 	private static final String DETAILS = Messages.COMMAND_SETROLE_DETAILS;
@@ -46,10 +47,14 @@ public class SetRoleCommand extends Command{
 		else {
 			if(LemmingRoleFactory.parse(type) == null) {
 				view.showError(Messages.UNKNOWN_ROLE_ERROR);
+				view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
+				CommandGenerator.parse(empty).execute(game, view);
 			}
 			else {
 				if(!game.setRole(LemmingRoleFactory.parse(type), pos)) {
 					view.showError(Messages.POSITION_ADMISSION_ERROR);
+					view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
+					CommandGenerator.parse(empty).execute(game, view);
 				}
 			}
 		}
