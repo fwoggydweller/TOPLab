@@ -32,6 +32,13 @@ public class Messages {
 
 	public static final String HELP_DETAILS_COMMAND_HELP_SEPARATOR = ": ";
 
+	public static final String COMMAND_HELP_TEXT = "%s: %s";
+	// Other
+		public static final String SPACE = " ";
+		public static final String TAB = "   ";
+		public static final String LINE = "%s" + LINE_SEPARATOR;
+		public static final String LINE_TAB = TAB + LINE;
+		public static final String LINE_2TABS = TAB + LINE_TAB;
 	/* @formatter:off */
 	public static final String[] HELP_LINES = new String[] { "Available commands:",
 			"[n]one | \"\": skips cycle",

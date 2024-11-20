@@ -26,17 +26,12 @@ public class CommandGenerator {
     }
 
     public static String commandHelp(){
-    	String conc = "";
+    	StringBuilder commands = new StringBuilder();
     	
-    	for(int i = 0; i<AVAILABLE_COMMANDS.size(); i++) {
-			conc += AVAILABLE_COMMANDS.get(i).getDetails(conc) + ": " + AVAILABLE_COMMANDS.get(i).getHelp();
-			if(AVAILABLE_COMMANDS.size() > 1) {
-				if(i<AVAILABLE_COMMANDS.size()-1) {
-					conc += "\n";
-				}
-			}
+    	for(Command c : AVAILABLE_COMMANDS) {
+			commands.append(c.helpText());
 		}
-    	return conc;
+    	return commands.toString();
     }
 
 }

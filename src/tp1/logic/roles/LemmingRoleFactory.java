@@ -27,15 +27,11 @@ public class LemmingRoleFactory {
 		return role;
 	}
 	public static String commandHelp(){
-    	String conc = "";
+    	StringBuilder commands = new StringBuilder();
     	
-    	for(int i = 0; i<AVAILABLE_ROLES.size(); i++) {
-			conc += "   " + AVAILABLE_ROLES.get(i).getDetails(conc) + ": " + AVAILABLE_ROLES.get(i).getHelp();
-			if(AVAILABLE_ROLES.size() > 1) {
-				if(i < AVAILABLE_ROLES.size() - 1)
-				conc += "\n";
-			}
+    	for(LemmingRoleInterface c : AVAILABLE_ROLES) {
+			commands.append("    " + c.helpText());
 		}
-    	return conc;
+    	return commands.toString();
     }
 }

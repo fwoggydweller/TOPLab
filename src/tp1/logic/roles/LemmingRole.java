@@ -101,13 +101,13 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	move(lem);
     	getIcon(lem);
     }
-    public String getName(String name) {
+    public String getName() {
 		return this.name;
 	}
-	public String getShortcut(String shortcut) {
+	public String getShortcut() {
 		return this.shortcut;
 	}
-	public String getDetails(String details) {
+	public String getDetails() {
 		return this.details;
 	}
 	public String getHelp() {
@@ -123,5 +123,8 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 		else {
 			return null;
 		}
+	}
+	public String helpText(){
+		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));
 	}
 }

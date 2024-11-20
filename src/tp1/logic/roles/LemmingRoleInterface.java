@@ -11,6 +11,7 @@ public interface LemmingRoleInterface {
     public abstract String getIcon( Lemming lemming );
 	public LemmingRoleInterface parse(String name);
 	public String getHelp();
-	public String getDetails(String details);
+	public String getDetails();
+	public String helpText();
 	
 }

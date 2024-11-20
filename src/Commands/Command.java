@@ -15,17 +15,20 @@ public abstract class Command {
 		this.help = Messages.COMMAND_NONE_HELP;
 		this.shortcut = Messages.COMMAND_NONE_SHORTCUT;
 	}
-	public String getName(String name) {
+	public String getName() {
 		return this.name;
 	}
-	public String getShortcut(String shortcut) {
+	public String getShortcut() {
 		return this.shortcut;
 	}
-	public String getDetails(String details) {
+	public String getDetails() {
 		return this.details;
 	}
 	public String getHelp() {
 		return this.help;
+	}
+	public String helpText(){
+		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));
 	}
 
 	public abstract Command parse(String[] name);

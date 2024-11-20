@@ -18,6 +18,7 @@ public abstract class NoParamsCommand extends Command{
 	protected boolean matchCommand(String name){
 		return this.name.equals(name) || this.shortcut.equals(name) || name.equals(Messages.EMPTY);
 	}
+	
 	public Command parse(String[] name) {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
