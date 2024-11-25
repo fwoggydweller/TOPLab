@@ -16,4 +16,14 @@ public class UpdateCommand extends NoParamsCommand{
 	public void execute(GameModel game, GameView view) {
 		game.update();
 	}
+	@Override
+	public Command parse(String[] name) {
+		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
+			
+			return new UpdateCommand();
+		}
+		else {
+			return null;
+		}
+	}
 }

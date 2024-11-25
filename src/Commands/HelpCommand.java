@@ -16,4 +16,14 @@ public class HelpCommand extends NoParamsCommand{
 	public void execute(GameModel game, GameView view) { //it should call the help method
 		view.showMessage(game.help());
 	}
+	@Override
+	public Command parse(String[] name) {
+		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
+			
+			return new HelpCommand();
+		}
+		else {
+			return null;
+		}
+	}
 }

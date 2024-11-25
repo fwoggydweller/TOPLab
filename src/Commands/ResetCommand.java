@@ -10,19 +10,25 @@ public class ResetCommand extends Command{
 	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
 	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
 	private static final String HELP = Messages.COMMAND_RESET_HELP;
-	private int  n = 1;
+	private int  n;
 	private String[] empty = {""};
- 	public ResetCommand() {
+ 	public ResetCommand(int n) {
 		this.name = NAME;
 		this.details = DETAILS;
 		this.shortcut = SHORTCUT;
 		this.help = HELP;
+		this.n = n;
 	}
 	@Override
 	public Command parse(String[] name) {
 		if(matchCommand(name[0].toLowerCase())) {
+			if(name.length > 1) {
 				n = Integer.parseInt(name[1]);
-					return this;
+				return new ResetCommand(n);
+			}
+			else{
+				return new ResetCommand(1);
+			}
 		}
 		else {
 			return null;

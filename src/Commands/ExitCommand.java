@@ -16,5 +16,15 @@ public class ExitCommand extends NoParamsCommand{
 	public void execute(GameModel game, GameView view) { 
 		game.playerExits();
 	}
+	@Override
+	public Command parse(String[] name) {
+		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
+			
+			return new ExitCommand();
+		}
+		else {
+			return null;
+		}
+	}
 }
 

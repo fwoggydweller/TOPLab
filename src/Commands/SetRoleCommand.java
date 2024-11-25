@@ -30,7 +30,7 @@ public class SetRoleCommand extends Command{
 			Y = name[2].toUpperCase();
 			X = name[3];
 			pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
-			return this;
+			return new SetRoleCommand();
 		}
 		else {
 			return null;

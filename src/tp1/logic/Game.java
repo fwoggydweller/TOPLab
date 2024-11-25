@@ -60,7 +60,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 	}
 	private void Init2(int n) {
-		if(n == 1) {
+		if(n == 1) {	
 			cont.add(new Wall(9,1, this));	
 			cont.add(new Wall(8,1, this));	
 			cont.add(new Wall(2,4, this));
