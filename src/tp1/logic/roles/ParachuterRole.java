@@ -14,6 +14,15 @@ public class ParachuterRole extends LemmingRole{
 		this.help = HELP;
 	}
 	@Override
+	public LemmingRoleInterface parse(String name) {
+		if(matchRole(name.toLowerCase())) {
+			return new ParachuterRole();
+		}
+		else {
+			return null;
+		}
+	}
+	@Override
 	public String getIcon(Lemming lemmy) {
 		 String icon;
 		

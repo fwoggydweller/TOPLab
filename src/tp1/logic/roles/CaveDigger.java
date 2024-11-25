@@ -19,6 +19,15 @@ public class CaveDigger extends LemmingRole{
 		this.help = HELP;
 	}
 	@Override
+	public LemmingRoleInterface parse(String name) {
+		if(matchRole(name.toLowerCase())) {
+			return new CaveDigger();
+		}
+		else {
+			return null;
+		}
+	}
+	@Override
 	public String getIcon(Lemming lemming) {
 		 String icon;
 		 

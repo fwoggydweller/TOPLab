@@ -14,7 +14,15 @@ public class WalkerRole extends LemmingRole{
 			this.details = DETAILS;
 			this.help = HELP;
 		}
-
+	 @Override
+		public LemmingRoleInterface parse(String name) {
+			if(matchRole(name.toLowerCase())) {
+				return new WalkerRole();
+			}
+			else {
+				return null;
+			}
+		}
 	 @Override
 	 public String getIcon(Lemming lemmy) {
 		 String icon;
