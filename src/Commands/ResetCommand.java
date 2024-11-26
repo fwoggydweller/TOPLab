@@ -26,7 +26,12 @@ public class ResetCommand extends Command{
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length > 1) {
-				n = Integer.parseInt(name[1]);
+				try {
+					n = Integer.parseInt(name[1]);
+				}
+				catch(NumberFormatException e) {
+					throw new CommandParseException(Messages.UNKNOWN_COMMAND);
+				}
 				return new ResetCommand(n);
 			}
 			else{

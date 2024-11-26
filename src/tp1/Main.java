@@ -3,6 +3,7 @@ package tp1;
 import java.util.Locale;
 
 import tp1.control.Controller;
+import tp1.exceptions.CommandException;
 import tp1.logic.Game;
 import tp1.view.ConsoleColorsView;
 import tp1.view.ConsoleView;
@@ -15,8 +16,9 @@ public class Main {
 	 * Lemmings entry point
 	 * 
 	 * @param args Arguments for the game.
+	 * @throws CommandException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CommandException {
 		// Required to avoid issues with tests
 		// Locale.of("es", "ES");
 		// You can replace the following line by the previous line if using Java21

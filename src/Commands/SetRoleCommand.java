@@ -26,14 +26,21 @@ public class SetRoleCommand extends Command{
 		this.shortcut = SHORTCUT;
 		this.help = HELP;
 	}
+	public SetRoleCommand(int x, int y) {
+		this.name = NAME;
+		this.details = DETAILS;
+		this.shortcut = SHORTCUT;
+		this.help = HELP;
+		this.pos = new Position(x, y);
+	}
 	@Override
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase())) {
 			type = name[1];
 			Y = name[2].toUpperCase();
 			X = name[3];
-			pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
-			return new SetRoleCommand();
+			this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
+			return new SetRoleCommand(this.pos.getCol(), this.pos.getRow());
 		}
 		else {
 			return null;
@@ -44,16 +51,16 @@ public class SetRoleCommand extends Command{
 	}
 	@Override
 	public void execute(GameModel game, GameView view) throws CommandException{
-		if(pos.getCol() >= Game.DIM_X || pos.getRow()>= Game.DIM_Y) {
-			view.showError(Messages.POSITION_ADMISSION_ERROR);
+		if(this.pos.getCol() >= Game.DIM_X || this.pos.getRow()>= Game.DIM_Y || this.pos.getCol() <= 0 || this.pos.getRow()<= 0) {
+			throw new CommandExecuteException(Messages.POSITION_ADMISSION_ERROR);
 		}
 		else {
-			if(LemmingRoleFactory.parse(type) == null) {
+			if(LemmingRoleFactory.parse(type.toLowerCase()) == null) {
 				throw new CommandExecuteException(Messages.UNKNOWN_ROLE_ERROR);
 			}
 			else {
-				if(!game.setRole(LemmingRoleFactory.parse(type), pos)) {
-					view.showError(Messages.POSITION_ADMISSION_ERROR);
+				if(!game.setRole(LemmingRoleFactory.parse(type), this.pos)) {
+					throw new CommandExecuteException(Messages.POSITION_ADMISSION_ERROR);
 				}
 			}
 		}
