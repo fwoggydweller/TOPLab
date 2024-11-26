@@ -1,5 +1,7 @@
 package Commands;
 
+import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandParseException;
 import tp1.logic.Game;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
@@ -24,7 +26,7 @@ public class SetRoleCommand extends Command{
 		this.help = HELP;
 	}
 	@Override
-	public Command parse(String[] name) {
+	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase())) {
 			type = name[1];
 			Y = name[2].toUpperCase();
@@ -40,7 +42,7 @@ public class SetRoleCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	@Override
-	public void execute(GameModel game, GameView view) {
+	public void execute(GameModel game, GameView view) throws CommandException{
 		if(pos.getCol() >= Game.DIM_X || pos.getRow()>= Game.DIM_Y) {
 			view.showError(Messages.POSITION_ADMISSION_ERROR);
 		}

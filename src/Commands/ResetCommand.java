@@ -1,5 +1,7 @@
 package Commands;
 
+import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandParseException;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
 import tp1.view.GameView;
@@ -20,7 +22,7 @@ public class ResetCommand extends Command{
 		this.n = n;
 	}
 	@Override
-	public Command parse(String[] name) {
+	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length > 1) {
 				n = Integer.parseInt(name[1]);
@@ -38,14 +40,12 @@ public class ResetCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	@Override
-	public void execute(GameModel game, GameView view) { //it should call the reset method
+	public void execute(GameModel game, GameView view) throws CommandException { //it should call the reset method
 		if(n == 1 || n == 2) {
 			game.reset(n);
 		}
 		else {
-			view.showError(Messages.NOT_VALID_LEVEL_ERROR);
-			view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
-			CommandGenerator.parse(empty).execute(game, view);
+			throw new CommandParseException(Messages.NOT_VALID_LEVEL_ERROR);
 		}
 	}
 }

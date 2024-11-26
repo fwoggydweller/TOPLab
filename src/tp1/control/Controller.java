@@ -1,5 +1,6 @@
 package tp1.control;
 
+import tp1.exceptions.CommandException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -29,20 +30,19 @@ public class Controller {
 		while(!game.isFinished()) {
 			view.showGame();
 			String[] userWords = view.getPrompt();
-		    Command command = CommandGenerator.parse(userWords);
-
-		    if (command != null) {
-		    	command.execute(game, view);
+			Command command;
+		    	try {
+		    		command = CommandGenerator.parse(userWords);
+		    		command.execute(game, view);
+		    	}
+		    	catch (CommandException e) {
+		 			view.showError(e.getMessage());
+		 			Throwable cause = e.getCause();
+		 			if (cause != null) 
+		 			    view.showError(cause.getMessage());
+		 		}
 		    }
-		    else {
-		        view.showError(Messages.UNKNOWN_COMMAND);
-		    	view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
-		    	command = CommandGenerator.parse(aux);
-		    	command.execute(game, view);
-		    }
-		}
 		view.showGame();
 		view.showEndMessage();
+		}
 	}
-
-}

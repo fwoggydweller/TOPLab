@@ -1,5 +1,6 @@
 package Commands;
 
+import tp1.exceptions.CommandException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -31,7 +32,7 @@ public abstract class Command {
 		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));
 	}
 
-	public abstract Command parse(String[] name);
+	public abstract Command parse(String[] name)throws CommandException;
 
-	public abstract void execute(GameModel game, GameView view);
+	public abstract void execute(GameModel game, GameView view)throws CommandException;
 }

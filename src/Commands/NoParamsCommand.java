@@ -1,5 +1,7 @@
 package Commands;
 
+import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandParseException;
 import tp1.view.Messages;
 
 public abstract class NoParamsCommand extends Command{
@@ -19,5 +21,13 @@ public abstract class NoParamsCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name) || name.equals(Messages.EMPTY);
 	}
 	
-	public abstract Command parse(String[] name);
+	public Command parse(String[] commandWords) throws CommandException {
+	    if (commandWords.length == 1 && matchCommand(commandWords[0])) {
+	        return this; // Devuelve el comando actual
+	    }
+	    else {
+	    	 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));
+	    }
+	}
+
 }

@@ -1,6 +1,10 @@
 package Commands;
 
 import Commands.Command;
+import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandParseException;
+import tp1.view.Messages;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,14 +19,17 @@ public class CommandGenerator {
         new ExitCommand()
         // ...
     );
-    public static Command parse(String[] commandWords){
+    public static Command parse(String[] commandWords) throws CommandException{
     	Command aux = null;
     	
     	for(int i = 0; i < AVAILABLE_COMMANDS.size() && aux == null; i++) {
     		aux = AVAILABLE_COMMANDS.get(i).parse(commandWords);
     	}
-    	
-    	return aux;
+    	if (aux == null) {
+    		 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));
+        }
+
+        return aux;
     }
 
     public static String commandHelp(){
