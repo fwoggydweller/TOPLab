@@ -1,6 +1,7 @@
 package Commands;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
@@ -45,7 +46,7 @@ public class ResetCommand extends Command{
 			game.reset(n);
 		}
 		else {
-			throw new CommandParseException(Messages.NOT_VALID_LEVEL_ERROR);
+			throw new CommandExecuteException(Messages.NOT_VALID_LEVEL_ERROR);
 		}
 	}
 }

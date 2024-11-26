@@ -25,7 +25,7 @@ public class Controller {
 
 
 
-	public void run() {
+	public void run() throws CommandException {
 		view.showWelcome();
 		while(!game.isFinished()) {
 			view.showGame();
@@ -38,6 +38,8 @@ public class Controller {
 		    	catch (CommandException e) {
 		 			view.showError(e.getMessage());
 		 			Throwable cause = e.getCause();
+					view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
+					CommandGenerator.parse(aux).execute(game, view);
 		 			if (cause != null) 
 		 			    view.showError(cause.getMessage());
 		 		}

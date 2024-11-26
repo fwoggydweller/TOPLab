@@ -1,6 +1,7 @@
 package Commands;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
 import tp1.logic.Game;
 import tp1.logic.GameModel;
@@ -48,15 +49,11 @@ public class SetRoleCommand extends Command{
 		}
 		else {
 			if(LemmingRoleFactory.parse(type) == null) {
-				view.showError(Messages.UNKNOWN_ROLE_ERROR);
-				view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
-				CommandGenerator.parse(empty).execute(game, view);
+				throw new CommandExecuteException(Messages.UNKNOWN_ROLE_ERROR);
 			}
 			else {
 				if(!game.setRole(LemmingRoleFactory.parse(type), pos)) {
 					view.showError(Messages.POSITION_ADMISSION_ERROR);
-					view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
-					CommandGenerator.parse(empty).execute(game, view);
 				}
 			}
 		}
