@@ -16,7 +16,7 @@ public class WalkerRole extends LemmingRole{
 		}
 	 @Override
 		public LemmingRoleInterface parse(String name) {
-			if(matchRole(name.toLowerCase())) {
+			if(matchRole(name)) {
 				return new WalkerRole();
 			}
 			else {

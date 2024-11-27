@@ -15,7 +15,7 @@ public interface GameItem {
 	public boolean isAlive();
 	public void setAlive(boolean b);
 	public boolean isExit();
-	public boolean setRole(LemmingRoleInterface role);
+	public boolean setRole(LemmingRoleInterface role) throws CommandException;
 	public boolean isInPosition(Position pos);
 	public void update() throws CommandException;
 	public String toString();

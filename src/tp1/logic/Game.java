@@ -2,6 +2,7 @@ package tp1.logic;
 
 import Commands.CommandGenerator;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
@@ -170,19 +171,19 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void updateExitLemmings() {
 		numLemmingsExit++;
 	}
-	public GameItem posToObject (Position pos) {
+	public GameItem posToObject (Position pos) throws CommandException {
 		return cont.posToObject(pos);
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
 	public void posInBoard(Position pos) throws CommandException {
-		if(pos.getCol() >= Game.DIM_X || pos.getRow()>= Game.DIM_Y || pos.getCol() <= 0 || pos.getRow()<= 0){
-			throw new OffBoardException();
+		if(pos.getCol() >= DIM_X || pos.getRow()>= DIM_Y || pos.getCol() < 0 || pos.getRow()< 0){
+			throw new OffBoardException("Out of board hehe");
 		}
 	}
 	@Override
-	public boolean setRole(LemmingRoleInterface r, Position pos) {
+	public boolean setRole(LemmingRoleInterface r, Position pos) throws CommandException {
 		if(cont.posToObject(pos) != null) {
 			boolean res = cont.posToObject(pos).setRole(r);
 			if(res) {

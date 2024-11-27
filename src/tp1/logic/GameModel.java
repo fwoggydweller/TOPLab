@@ -11,5 +11,5 @@ public interface GameModel {
 	public boolean getExit();
 	public String help();
 	public void posInBoard(Position pos) throws CommandException;
-	public boolean setRole(LemmingRoleInterface r, Position pos);
+	public boolean setRole(LemmingRoleInterface r, Position pos) throws CommandException;
 }

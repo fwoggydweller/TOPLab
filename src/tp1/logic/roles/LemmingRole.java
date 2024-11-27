@@ -115,7 +115,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 		return this.help;
 	}
 	protected boolean matchRole(String name){
-		return this.name.equals(name) || this.shortcut.equals(name);
+		return getName().equals(name.toLowerCase()) || getShortcut().equals(name.toLowerCase());
 	}
 	public abstract LemmingRoleInterface parse(String name);
 	public String helpText(){

@@ -28,11 +28,9 @@ public class LemmingRoleFactory {
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
 		if(role == null) {
-			throw new RoleParseException(Messages.UNKNOWN_COMMAND);
+			throw new RoleParseException("Idk bro, no role");
 		}
-		else {
-			return role;
-		}
+		return role;
 	}
 	public static String commandHelp(){
     	StringBuilder commands = new StringBuilder();

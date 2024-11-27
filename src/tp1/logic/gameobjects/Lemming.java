@@ -7,6 +7,7 @@ import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.ObjectParseException;
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
@@ -94,12 +95,9 @@ public class Lemming extends GameObject{
 		return role.equals(role);
 	}
 	@Override
-	public boolean setRole(LemmingRoleInterface role) { 
-		if(role == null) {
-			return false;
-		}
-		else if(role.equals(this.role)) {
-			return false;
+	public boolean setRole(LemmingRoleInterface role) throws CommandException { 
+		if(role.getHelp().equals(role.getHelp())) {
+			throw new ObjectParseException("Bro, lemming no pue");
 		}
 		else {
 			this.role = role;
@@ -150,7 +148,7 @@ public class Lemming extends GameObject{
 	public boolean askInteraction(GameItem other) throws CommandException {
 		return other.receiveInteraction(this);
 	}
-	public GameItem posToObject (Position pos) {
+	public GameItem posToObject (Position pos) throws CommandException {
 		return game.posToObject(pos);
 	}
 	public void checkSurround() throws CommandException {

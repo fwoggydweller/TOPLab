@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
 
@@ -40,7 +41,7 @@ public class GameObjectContainer {
 		objCount = 0;
 	}
 
-	public GameItem posToObject (Position pos) {
+	public GameItem posToObject (Position pos) throws CommandException {
 		for(int i = 0; i<objCount; i++) {
 			if(gO[i].getPos().getCol() == pos.getCol() && gO[i].getPos().getRow() == pos.getRow()) {
 				 return gO[i];

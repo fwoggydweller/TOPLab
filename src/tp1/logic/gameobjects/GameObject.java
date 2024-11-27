@@ -74,7 +74,7 @@ public class GameObject implements GameItem{
 		return this.pos.Equals(pos.getCol(), pos.getRow());
 	}
 	
-	public boolean setRole(LemmingRoleInterface role) {
+	public boolean setRole(LemmingRoleInterface role) throws CommandException {
 		return false;
 	}
 	public void update() throws CommandException {

@@ -3,6 +3,7 @@ package Commands;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.exceptions.RoleParseException;
@@ -29,21 +30,27 @@ public class SetRoleCommand extends Command{
 		this.shortcut = SHORTCUT;
 		this.help = HELP;
 	}
-	public SetRoleCommand(int x, int y) {
+	public SetRoleCommand(int x, int y, String type) {
 		this.name = NAME;
 		this.details = DETAILS;
 		this.shortcut = SHORTCUT;
 		this.help = HELP;
 		this.pos = new Position(x, y);
+		this.type = type;
 	}
 	@Override
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase())) {
-			type = name[1];
-			Y = name[2].toUpperCase();
-			X = name[3];
-			this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
-			return new SetRoleCommand(this.pos.getCol(), this.pos.getRow());
+			if(name.length == 4) {
+				type = name[1];
+				Y = name[2].toUpperCase();
+				X = name[3];
+				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
+				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
+			}
+			else {
+				throw new GameParseException(Messages.UNKNOWN_ROLE_ERROR);
+			}
 		}
 		else {
 			return null;
@@ -54,19 +61,8 @@ public class SetRoleCommand extends Command{
 	}
 	@Override
 	public void execute(GameModel game, GameView view) throws CommandException{
-		try {
 			game.posInBoard(pos);
 			game.setRole(LemmingRoleFactory.parse(type), this.pos);
-		}
-		catch(OffBoardException e) { //Done
-			throw new OffBoardException(Messages.POSITION_ADMISSION_ERROR);
-		}
-		catch(RoleParseException r) { //Should be done in the lemmingRoleFactory
-			throw new RoleParseException(Messages.UNKNOWN_ROLE_ERROR);
-		}
-		catch(ObjectParseException o) { //Should be done in the lemming and in the container (if there is a lemming that does not admit the role, we will just throw it, if there is no lemming, it will be thrown from the container)
-			throw new RoleParseException(Messages.POSITION_ADMISSION_ERROR);
-		}
 	}
 	@Override
 	public String getHelp() {
