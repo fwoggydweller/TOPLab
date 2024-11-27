@@ -6,6 +6,7 @@ import tp1.logic.Position;
 import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
+import tp1.exceptions.CommandException;
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
@@ -75,7 +76,7 @@ public class Lemming extends GameObject{
 		if(this.alive) return role.getIcon(this);
 		else return Messages.EMPTY;
 	}
-	public void update() {
+	public void update() throws CommandException {
 		if(isAlive()) {
 			this.grounded = false;
 			this.checkSurround();
@@ -105,7 +106,7 @@ public class Lemming extends GameObject{
 			return true;
 		}
 	}
-	public void disableRole() {
+	public void disableRole() throws CommandException {
 		this.role = LemmingRoleFactory.parse("w");
 	}
 	public int getCurrFall() {
@@ -146,13 +147,13 @@ public class Lemming extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.interactWith(this);
 	}
-	public boolean askInteraction(GameItem other) {
+	public boolean askInteraction(GameItem other) throws CommandException {
 		return other.receiveInteraction(this);
 	}
 	public GameItem posToObject (Position pos) {
 		return game.posToObject(pos);
 	}
-	public void checkSurround() {
+	public void checkSurround() throws CommandException {
 		Position p = new Position(this.pos.getCol() + this.dir.getX(), this.pos.getRow());
 		if (posToObject(p) != null) askInteraction(posToObject(p));
 		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
@@ -163,7 +164,7 @@ public class Lemming extends GameObject{
 		return onExit(exit);
 	}
 	@Override
-	public boolean interactWith(Wall wall) {
+	public boolean interactWith(Wall wall) throws CommandException {
 		return role.interactWith(wall, this);
 	}
 	@Override

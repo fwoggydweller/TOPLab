@@ -21,7 +21,7 @@ public class ExitCommand extends NoParamsCommand{
 	@Override
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
-			return new ExitCommand();
+			return this;
 		}
 		else {
 			return null;

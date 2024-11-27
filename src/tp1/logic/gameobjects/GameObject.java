@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 
+import tp1.exceptions.CommandException;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
@@ -27,7 +28,7 @@ public class GameObject implements GameItem{
 		return this.pos;
 	}
 	
-	public boolean receiveInteraction(GameItem other) {
+	public boolean receiveInteraction(GameItem other) throws CommandException {
 		return false;
 	}
 
@@ -36,7 +37,7 @@ public class GameObject implements GameItem{
 	}
 
 
-	public boolean interactWith(Wall wall) {
+	public boolean interactWith(Wall wall) throws CommandException {
 		return false;
 	}
 	
@@ -76,7 +77,7 @@ public class GameObject implements GameItem{
 	public boolean setRole(LemmingRoleInterface role) {
 		return false;
 	}
-	public void update() {
+	public void update() throws CommandException {
 		
 	}
 	public void onExit() { // in lemming?

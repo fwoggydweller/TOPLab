@@ -3,6 +3,9 @@ package Commands;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Game;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
@@ -51,18 +54,18 @@ public class SetRoleCommand extends Command{
 	}
 	@Override
 	public void execute(GameModel game, GameView view) throws CommandException{
-		if(this.pos.getCol() >= Game.DIM_X || this.pos.getRow()>= Game.DIM_Y || this.pos.getCol() <= 0 || this.pos.getRow()<= 0) {
-			throw new CommandExecuteException(Messages.POSITION_ADMISSION_ERROR);
+		try {
+			game.posInBoard(pos);
+			game.setRole(LemmingRoleFactory.parse(type), this.pos);
 		}
-		else {
-			if(LemmingRoleFactory.parse(type.toLowerCase()) == null) {
-				throw new CommandExecuteException(Messages.UNKNOWN_ROLE_ERROR);
-			}
-			else {
-				if(!game.setRole(LemmingRoleFactory.parse(type), this.pos)) {
-					throw new CommandExecuteException(Messages.POSITION_ADMISSION_ERROR);
-				}
-			}
+		catch(OffBoardException e) { //Done
+			throw new OffBoardException(Messages.POSITION_ADMISSION_ERROR);
+		}
+		catch(RoleParseException r) { //Should be done in the lemmingRoleFactory
+			throw new RoleParseException(Messages.UNKNOWN_ROLE_ERROR);
+		}
+		catch(ObjectParseException o) { //Should be done in the lemming and in the container (if there is a lemming that does not admit the role, we will just throw it, if there is no lemming, it will be thrown from the container)
+			throw new RoleParseException(Messages.POSITION_ADMISSION_ERROR);
 		}
 	}
 	@Override

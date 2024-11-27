@@ -38,18 +38,10 @@ public class Controller {
 		    	catch (CommandException e) {
 		 			view.showError(e.getMessage());
 		 			Throwable cause = e.getCause();
-		 			try { //Idk If I have to do this
-		 				view.showMessage(Messages.PROMPT + Messages.DEBUG.formatted("none"));
-						CommandGenerator.parse(aux).execute(game, view);
-			 			if (cause != null) 
-			 			    view.showError(cause.getMessage());
-		 			}
-		 			catch (CommandException ex) {
-		 				view.showError(e.getMessage());
-			 			Throwable cause2 = e.getCause();
+			 		if (cause != null) 
+			 			view.showError(cause.getMessage());
 		 			}
 		 		}
-		    }
 		view.showGame();
 		view.showEndMessage();
 		}

@@ -1,6 +1,7 @@
 package tp1.logic.roles;
 import tp1.logic.Game;
 import tp1.logic.roles.LemmingRoleInterface;
+import tp1.exceptions.CommandException;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
@@ -20,7 +21,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	}
 	protected Messages m = new Messages();
     public abstract String getIcon( Lemming lemming );
-    public void move(Lemming lemming) {
+    public void move(Lemming lemming) throws CommandException {
     	if(lemming.isAlive()) {
 	    	if(!moveY(lemming)) {
 	    		moveX(lemming);
@@ -37,7 +38,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	else lemming.setFlip(false);
 	}
 
-    public boolean moveY(Lemming lemming) { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
+    public boolean moveY(Lemming lemming)throws CommandException { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
     	boolean ok = true;
     	if(lemming.IsGrounded()) {
     		lemming.setAlive(lemming.getForce() > lemming.getCurrFall());
@@ -77,7 +78,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	    	}
     	}
     } 
-    public boolean interactWith(Wall wall, Lemming lem) {
+    public boolean interactWith(Wall wall, Lemming lem)throws CommandException {
     	  	
     	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
     	 uDir(lem, true);
@@ -97,7 +98,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	
 		return true;
 	}
-    public void play(Lemming lem) {
+    public void play(Lemming lem) throws CommandException {
     	move(lem);
     	getIcon(lem);
     }

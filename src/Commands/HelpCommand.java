@@ -22,10 +22,10 @@ public class HelpCommand extends NoParamsCommand{
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			
-			return new HelpCommand();
+			return this;
 		}
 		else {
-			return null;
+			return null; //Ask if this is fine
 		}
 	}
 }

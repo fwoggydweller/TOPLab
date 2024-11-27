@@ -1,6 +1,7 @@
 package tp1.logic.roles;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.Lemming;
+import tp1.exceptions.CommandException;
 import tp1.logic.Position;
 public class ParachuterRole extends LemmingRole{
 	private static final String NAME = Messages.ROLE_PARACHUTER_NAME;
@@ -32,7 +33,7 @@ public class ParachuterRole extends LemmingRole{
 	 
 	 }
 	@Override
-	 public boolean moveY(Lemming lemming) { 
+	 public boolean moveY(Lemming lemming) throws CommandException { 
 	    	boolean ok = true;
 	    	if(lemming.IsGrounded()) {
 	    		if(lemming.getCurrFall() > 0) lemming.disableRole();

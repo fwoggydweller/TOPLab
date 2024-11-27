@@ -15,13 +15,13 @@ public class UpdateCommand extends NoParamsCommand{
 	public UpdateCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(GameModel game, GameView view) {
+	public void execute(GameModel game, GameView view) throws CommandException {
 		game.update();
 	}
 	@Override
 	public Command parse(String[] name) throws CommandException {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
-			return new UpdateCommand();
+			return this;
 		}
 		else {
 			return null;

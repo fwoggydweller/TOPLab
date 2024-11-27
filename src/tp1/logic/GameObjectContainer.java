@@ -1,5 +1,6 @@
 package tp1.logic;
 
+import tp1.exceptions.CommandException;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
 
@@ -29,7 +30,7 @@ public class GameObjectContainer {
 		
 		return name;
 	}
-	public void update() {
+	public void update() throws CommandException {
 		for(int i = 0; i < gO.length; i++) {
 			gO[i].update();
 		}

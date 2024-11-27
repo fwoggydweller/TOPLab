@@ -32,10 +32,10 @@ public class ResetCommand extends Command{
 				catch(NumberFormatException e) {
 					throw new CommandParseException(Messages.UNKNOWN_COMMAND);
 				}
-				return new ResetCommand(n);
+				return this;
 			}
 			else{
-				return new ResetCommand(1);
+				return this;
 			}
 		}
 		else {

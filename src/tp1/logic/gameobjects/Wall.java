@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 import tp1.view.Messages;
 import tp1.logic.Position;
+import tp1.exceptions.CommandException;
 import tp1.logic.GameWorld;
 public class Wall extends GameObject{
 	public Wall(int x,int y, GameWorld g) {
@@ -13,7 +14,7 @@ public class Wall extends GameObject{
 
 	}
 	@Override
-	public boolean receiveInteraction(GameItem other) {
+	public boolean receiveInteraction(GameItem other) throws CommandException {
 		return other.interactWith(this);
 	}
 }

@@ -1,6 +1,8 @@
 package tp1.logic;
 
 import Commands.CommandGenerator;
+import tp1.exceptions.CommandException;
+import tp1.exceptions.OffBoardException;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
@@ -27,7 +29,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	private int numLemmingsDead = 0;
 	private int numLemmingsExit = 0;
 	private boolean playerExit = false;
-	public Game(int nLevel) {
+	public Game(int nLevel) throws CommandException {
 		if(nLevel == 1) { //adds 1 of each type
 			INITIAL_LEMMING_NUM = 4;
 			NUMBER_OF_WALLS = 15;
@@ -44,7 +46,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 		
 	}
-	private void Init1(int n) {
+	private void Init1(int n) throws CommandException {
 		if(n == 1) {
 			cont.add(new Lemming(9, 0, this, roles.parse("w")));
 			cont.add(new Lemming(3, 3, this, roles.parse("w")));
@@ -150,11 +152,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 		return conc;
 	}
-	public void update() {
+	public void update() throws CommandException {
 		cont.update();
 		cycle++;
 	}
-	public void reset(int n) {
+	public void reset(int n) throws CommandException {
 			cycle = 0;
 			numLemmingsDead = 0;
 			numLemmingsExit = 0;
@@ -173,6 +175,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
+	}
+	public void posInBoard(Position pos) throws CommandException {
+		if(pos.getCol() >= Game.DIM_X || pos.getRow()>= Game.DIM_Y || pos.getCol() <= 0 || pos.getRow()<= 0){
+			throw new OffBoardException();
+		}
 	}
 	@Override
 	public boolean setRole(LemmingRoleInterface r, Position pos) {
