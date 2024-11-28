@@ -118,6 +118,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 		return getName().equals(name.toLowerCase()) || getShortcut().equals(name.toLowerCase());
 	}
 	public abstract LemmingRoleInterface parse(String name);
+	
 	public String helpText(){
 		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));
 	}

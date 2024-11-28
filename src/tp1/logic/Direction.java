@@ -26,6 +26,4 @@ public enum Direction {
 		return d.getX() == this.x && d.getY() == this.y;
 	}
 	//TODO fill your code
-	
-	
 }

@@ -89,4 +89,7 @@ public class GameObject implements GameItem{
 	public String toString() {
 		return null;
 	}
+	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role) {
+		return null;
+	}
 }

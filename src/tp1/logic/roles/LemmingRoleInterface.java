@@ -14,5 +14,4 @@ public interface LemmingRoleInterface {
 	public String getHelp();
 	public String getDetails();
 	public String helpText();
-	
 }
