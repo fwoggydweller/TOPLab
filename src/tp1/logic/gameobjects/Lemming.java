@@ -172,7 +172,7 @@ public class Lemming extends GameObject{
 	@Override
 	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role) {
 		
-		if (name.toLowerCase() == "lemming") return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role));
+		if (name.toLowerCase() == "lemming") return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role)); // wattesigma?
 		return null;
 	}
 	

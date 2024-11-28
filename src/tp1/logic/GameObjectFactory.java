@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import java.util.List;
 
+import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.*;
 import tp1.logic.roles.LemmingRoleInterface;
 
@@ -17,16 +19,16 @@ public class GameObjectFactory {
 	    );
 	
 
-	public GameObject parse(String line, GameWorld game) throws ObjectParserException, OffBoardException { // GameObject or gameItem
+	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
 		String delimiters = ")|(|,| "; // can be wrong
 		String[] sLine = line.split(delimiters);
 		
-		if(sLine.length < 3 || sLine.length > 5) throw ObjectParserException;
-		if(sLine.length == 4) throw ObjectParserException;
+		if(sLine.length < 3 || sLine.length > 5) throw new ObjectParseException();
+		if(sLine.length == 4) throw new ObjectParseException();
 		
 		int x = Integer.parseInt(sLine[0]);
 		int y = Integer.parseInt(sLine[1]);
-		if(x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y) throw OffBoardException;
+		if(x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y) throw new OffBoardException();
 		
 		Direction dir = null;
 		if(sLine.length == 5) {
@@ -36,7 +38,7 @@ public class GameObjectFactory {
 		for(int i = 0; i < AVAILABLE_OBJ.size() && obj == null; i++){
     		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, sLine[4]); // actually input the things
     	}
-		if (obj == null) throw ObjectParserException;
+		if (obj == null) throw new ObjectParseException();
 		return obj;
 	}
 	public Direction strToDir(String in) { // exception?
