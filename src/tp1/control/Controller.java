@@ -36,14 +36,8 @@ public class Controller {
 		    		command = CommandGenerator.parse(userWords);
 		    		command.execute(game, view);
 		    	}
-		    	catch (CommandExecuteException cE) {
-		    		view.showError(Messages.ERROR.formatted(Messages.EXECUTE_EXCEPTION_ERROR));
-		 			view.showError(cE.getMessage());
-		 			Throwable cause = cE.getCause();
-			 		if (cause != null) 
-			 			view.showError(cause.getMessage());
-		 			}
 				catch (CommandException e) {
+					view.showError(Messages.ERROR.formatted(Messages.EXECUTE_EXCEPTION_ERROR));
 					view.showError(e.getMessage());
 		 			Throwable cause = e.getCause();
 			 		if (cause != null) 

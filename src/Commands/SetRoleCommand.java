@@ -56,7 +56,7 @@ public class SetRoleCommand extends Command{
 				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
 			}
 			else {
-				throw new GameParseException(Messages.ERROR.formatted(Messages.UNKNOWN_ROLE_ERROR));
+				throw new GameParseException(Messages.UNKNOWN_ROLE_ERROR);
 			}
 		}
 		else {

@@ -2,6 +2,7 @@ package tp1.logic.roles;
 import tp1.logic.Game;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 import tp1.logic.gameobjects.Lemming;
@@ -117,7 +118,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	protected boolean matchRole(String name){
 		return getName().equals(name.toLowerCase()) || getShortcut().equals(name.toLowerCase());
 	}
-	public abstract LemmingRoleInterface parse(String name);
+	public abstract LemmingRoleInterface parse(String name) throws RoleParseException;
 	
 	public String helpText(){
 		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));

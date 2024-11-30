@@ -1,6 +1,6 @@
 package tp1.exceptions;
 
-public class RoleParseException extends ObjectParseException{
+public class RoleParseException extends GameParseException{
 	public RoleParseException() {
         super();
     }

@@ -2,6 +2,7 @@ package tp1.logic;
 
 import Commands.CommandGenerator;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameLoadException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.GameObjectContainer;
@@ -34,14 +35,14 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		if(nLevel == 1) { //adds 1 of each type
 			INITIAL_LEMMING_NUM = 4;
 			NUMBER_OF_WALLS = 15;
-			cont = new GameObjectContainer();
+			conf = new FileGameConfiguration();
 			Init1(nLevel);
 			Init2(nLevel);
 		}
 		else if(nLevel == 2) {
 			INITIAL_LEMMING_NUM = 5;
 			NUMBER_OF_WALLS = 17;
-			cont = new GameObjectContainer();
+			conf = new FileGameConfiguration();
 			Init1(nLevel);
 			Init2(nLevel);
 		}
@@ -49,57 +50,57 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	private void Init1(int n) throws CommandException {
 		if(n == 1) {
-			cont.add(new Lemming(9, 0, this, roles.parse("w")));
-			cont.add(new Lemming(3, 3, this, roles.parse("w")));
-			cont.add(new Lemming(2, 3, this, roles.parse("w")));
-			cont.add(new Lemming(0, 8, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w")));
 		}
 		else if(n == 2) {
-			cont.add(new Lemming(9, 0, this, roles.parse("w")));
-			cont.add(new Lemming(6, 0, this, roles.parse("p")));
-			cont.add(new Lemming(3, 3, this, roles.parse("w")));
-			cont.add(new Lemming(2, 3, this, roles.parse("w")));
-			cont.add(new Lemming(0, 8, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(6, 0, Direction.RIGHT, this, roles.parse("p")));
+			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w")));
 		}
 	}
 	private void Init2(int n) {
 		if(n == 1) {	
-			cont.add(new Wall(9,1, this));	
-			cont.add(new Wall(8,1, this));	
-			cont.add(new Wall(2,4, this));
-			cont.add(new Wall(3,4, this));	
-			cont.add(new Wall(4,4, this));	
-			cont.add(new Wall(7,5, this));
-			cont.add(new Wall(7,6, this));	
-			cont.add(new Wall(6,6, this));	
-			cont.add(new Wall(5,6, this));
-			cont.add(new Wall(4,6, this));	
-			cont.add(new Wall(8,8, this));	
-			cont.add(new Wall(9,9, this));
-			cont.add(new Wall(8,9, this));	
-			cont.add(new Wall(0,9, this));	
-			cont.add(new Wall(1,9, this));
-			cont.add(new ExitDoor(4,5, this));
+			conf.getGameObjects().add(new Wall(9,1, this));	
+			conf.getGameObjects().add(new Wall(8,1, this));	
+			conf.getGameObjects().add(new Wall(2,4, this));
+			conf.getGameObjects().add(new Wall(3,4, this));	
+			conf.getGameObjects().add(new Wall(4,4, this));	
+			conf.getGameObjects().add(new Wall(7,5, this));
+			conf.getGameObjects().add(new Wall(7,6, this));	
+			conf.getGameObjects().add(new Wall(6,6, this));	
+			conf.getGameObjects().add(new Wall(5,6, this));
+			conf.getGameObjects().add(new Wall(4,6, this));	
+			conf.getGameObjects().add(new Wall(8,8, this));	
+			conf.getGameObjects().add(new Wall(9,9, this));
+			conf.getGameObjects().add(new Wall(8,9, this));	
+			conf.getGameObjects().add(new Wall(0,9, this));	
+			conf.getGameObjects().add(new Wall(1,9, this));
+			conf.getGameObjects().add(new ExitDoor(4,5, this));
 		}
 		else if(n == 2) {
-			cont.add(new MetalWall(3, 6, this));
-			cont.add(new ExitDoor(4,5, this));
-			cont.add(new Wall(9,1, this));	
-			cont.add(new Wall(8,1, this));	
-			cont.add(new Wall(2,4, this));
-			cont.add(new Wall(3,4, this));	
-			cont.add(new Wall(4,4, this));	
-			cont.add(new Wall(7,5, this));
-			cont.add(new Wall(7,6, this));	
-			cont.add(new Wall(6,6, this));	
-			cont.add(new Wall(5,6, this));
-			cont.add(new Wall(4,6, this));	
-			cont.add(new Wall(8,8, this));	
-			cont.add(new Wall(9,9, this));
-			cont.add(new Wall(8,9, this));	
-			cont.add(new Wall(0,9, this));	
-			cont.add(new Wall(1,9, this));
-			cont.add(new Wall(3,5, this));
+			conf.getGameObjects().add(new MetalWall(3, 6, this));
+			conf.getGameObjects().add(new ExitDoor(4,5, this));
+			conf.getGameObjects().add(new Wall(9,1, this));	
+			conf.getGameObjects().add(new Wall(8,1, this));	
+			conf.getGameObjects().add(new Wall(2,4, this));
+			conf.getGameObjects().add(new Wall(3,4, this));	
+			conf.getGameObjects().add(new Wall(4,4, this));	
+			conf.getGameObjects().add(new Wall(7,5, this));
+			conf.getGameObjects().add(new Wall(7,6, this));	
+			conf.getGameObjects().add(new Wall(6,6, this));	
+			conf.getGameObjects().add(new Wall(5,6, this));
+			conf.getGameObjects().add(new Wall(4,6, this));	
+			conf.getGameObjects().add(new Wall(8,8, this));	
+			conf.getGameObjects().add(new Wall(9,9, this));
+			conf.getGameObjects().add(new Wall(8,9, this));	
+			conf.getGameObjects().add(new Wall(0,9, this));	
+			conf.getGameObjects().add(new Wall(1,9, this));
+			conf.getGameObjects().add(new Wall(3,5, this));
 		}
 		
 	}
@@ -197,8 +198,13 @@ public class Game implements GameModel, GameStatus,GameWorld{
 			return false;
 		}
 	}
-	public void readFile(String fileName){
-		this.conf = new FileGameConfiguration(fileName, this);
+	public void readFile(String fileName) throws CommandException{
+		try {
+			this.conf = new FileGameConfiguration(fileName, this);
+		}
+		catch(GameLoadException gle) {
+			throw new CommandException("No se pudo leer");
+		}
 	}
 }
 

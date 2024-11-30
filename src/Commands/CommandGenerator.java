@@ -16,7 +16,8 @@ public class CommandGenerator {
     	new UpdateCommand(),
         new ResetCommand(1),
         new HelpCommand(),
-        new ExitCommand()
+        new ExitCommand(),
+        new LoadCommand()
         // ...
     );
     public static Command parse(String[] commandWords) throws CommandException{
@@ -26,7 +27,7 @@ public class CommandGenerator {
     		aux = AVAILABLE_COMMANDS.get(i).parse(commandWords);
     	}
     	if (aux == null) {
-    		 throw new CommandParseException(Messages.ERROR.formatted(Messages.UNKNOWN_COMMAND.formatted(commandWords[0])));
+    		 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));
         }
 
         return aux;

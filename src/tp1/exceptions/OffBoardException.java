@@ -1,6 +1,6 @@
 package tp1.exceptions;
 
-public class OffBoardException extends ObjectParseException{
+public class OffBoardException extends GameModelException{
 	public OffBoardException() {
         super();
     }

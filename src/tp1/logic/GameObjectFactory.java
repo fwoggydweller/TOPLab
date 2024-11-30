@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.*;
@@ -20,7 +21,7 @@ public class GameObjectFactory {
 	    );
 	
 
-	public GameObject parse(String line, GameWorld game) throws CommandException { // GameObject or gameItem
+	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
 		String delimiters = ")|(|,| "; // can be wrong
 		String[] sLine = line.split(delimiters);
 		
