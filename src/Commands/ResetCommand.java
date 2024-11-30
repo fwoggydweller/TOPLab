@@ -30,7 +30,7 @@ public class ResetCommand extends Command{
 					n = Integer.parseInt(name[1]);
 				}
 				catch(NumberFormatException e) {
-					throw new CommandParseException(Messages.UNKNOWN_COMMAND);
+					throw new CommandParseException(Messages.ERROR.formatted(Messages.UNKNOWN_COMMAND.formatted(name[0]+" "+name[1])));
 				}
 				return this;
 			}
@@ -51,7 +51,7 @@ public class ResetCommand extends Command{
 			game.reset(n);
 		}
 		else {
-			throw new CommandExecuteException(Messages.NOT_VALID_LEVEL_ERROR);
+			throw new CommandExecuteException(Messages.ERROR.formatted(Messages.NOT_VALID_LEVEL_ERROR));
 		}
 	}
 }

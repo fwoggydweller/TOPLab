@@ -49,13 +49,13 @@ public class Messages {
 
 	public static final String HELP = String.join(LINE_SEPARATOR+"   ", HELP_LINES) + LINE_SEPARATOR;
 	
-	public static final String UNKNOWN_COMMAND = "Unknown command";
+	public static final String UNKNOWN_COMMAND = "Unknown command %s";
 
 	public static final String COMMAND_PARAMETERS_MISSING = "Missing parameters";
 
 	public static final String COMMAND_INCORRECT_PARAMETER_NUMBER = "Incorrect parameter number";
 
-	public static final String INVALID_POSITION = "Invalid position (%s, %s)";
+	public static final String INVALID_POSITION = "Position (%s, %s) off the board";
 
 	public static final String INVALID_GAME_OBJECT = String.format("Invalid object %n");
 

@@ -26,7 +26,7 @@ public class CommandGenerator {
     		aux = AVAILABLE_COMMANDS.get(i).parse(commandWords);
     	}
     	if (aux == null) {
-    		 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));
+    		 throw new CommandParseException(Messages.ERROR.formatted(Messages.UNKNOWN_COMMAND.formatted(commandWords[0])));
         }
 
         return aux;

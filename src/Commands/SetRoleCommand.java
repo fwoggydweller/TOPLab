@@ -45,11 +45,16 @@ public class SetRoleCommand extends Command{
 				type = name[1];
 				Y = name[2].toUpperCase();
 				X = name[3];
-				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
+				try {
+					this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65);
+				}
+				catch(NumberFormatException e) {
+					throw new CommandParseException(Messages.ERROR.formatted(Messages.UNKNOWN_COMMAND));
+				}
 				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
 			}
 			else {
-				throw new GameParseException(Messages.UNKNOWN_ROLE_ERROR);
+				throw new GameParseException(Messages.ERROR.formatted(Messages.UNKNOWN_ROLE_ERROR));
 			}
 		}
 		else {
