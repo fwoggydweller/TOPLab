@@ -24,7 +24,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public static int INITIAL_LEMMING_NUM;
 	public static int NUMBER_OF_WALLS;
 	public static final int LEMMING_THRESHOLD = 3;
-	private GameObjectContainer cont;
+	private GameObjectContainer cont; // exchange
 	private LemmingRoleFactory roles;
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
@@ -197,4 +197,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 			return false;
 		}
 	}
+	public void readFile(String fileName){
+		this.conf = new FileGameConfiguration(fileName, this);
+	}
 }
+

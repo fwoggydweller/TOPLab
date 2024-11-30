@@ -2,6 +2,8 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
 import tp1.view.Messages;
+import tp1.exceptions.CommandException;
+import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 
 public class MetalWall extends GameObject{
@@ -19,5 +21,11 @@ public class MetalWall extends GameObject{
 	@Override
 	public boolean receiveInteraction(GameItem other) {
 		return other.interactWith(this);
+	}
+	@Override
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role) throws CommandException {
+		
+		if (name.toLowerCase() == "wall") return new MetalWall(x, y, g);
+		return null;
 	}
 }
