@@ -179,7 +179,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	public void posInBoard(Position pos) throws CommandException {
 		if(pos.getCol() >= DIM_X || pos.getRow()>= DIM_Y || pos.getCol() < 0 || pos.getRow()< 0){
-			throw new OffBoardException("Out of board hehe");
+			throw new OffBoardException(Messages.ERROR.formatted(Messages.INVALID_POSITION.formatted(pos.getCol(), pos.getRow())));
 		}
 	}
 	@Override

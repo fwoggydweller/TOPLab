@@ -26,7 +26,7 @@ public abstract class NoParamsCommand extends Command{
 	        return this; // Devuelve el comando actual
 	    }
 	    else {
-	    	 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));
+	    	 throw new CommandParseException(Messages.ERROR.formatted(Messages.UNKNOWN_COMMAND.formatted(commandWords[0])));
 	    }
 	}
 
