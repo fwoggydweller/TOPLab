@@ -55,8 +55,6 @@ public class Messages {
 
 	public static final String COMMAND_INCORRECT_PARAMETER_NUMBER = "Incorrect parameter number";
 
-	public static final String INVALID_POSITION = "Position (%s, %s) off the board";
-
 	public static final String INVALID_GAME_OBJECT = String.format("Invalid object %n");
 
 	public static final String INVALID_COMMAND = "Invalid command";
@@ -80,7 +78,9 @@ public class Messages {
 
 	public static final String POSITION = "(%s,%s)";
 //Errors
-	public static final String POSITION_ADMISSION_ERROR= "SetRoleCommand error (Incorrect position or no object in that position admits that role)";
+	public static final String EXECUTE_EXCEPTION_ERROR = "Command execute problem";
+	public static final String INVALID_POSITION = "Position " + POSITION + " off the board";
+	public static final String ROLE_ADMISSION_ERROR="No lemming in position " + POSITION + " admits the role %s";
 	public static final String UNKNOWN_ROLE_ERROR = "Unknown Role";
 	public static final String NOT_VALID_LEVEL_ERROR = "Not valid level number";
 	//Commands

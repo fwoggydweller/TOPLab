@@ -20,7 +20,7 @@ public class GameObjectFactory {
 	    );
 	
 
-	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
+	public GameObject parse(String line, GameWorld game) throws CommandException { // GameObject or gameItem
 		String delimiters = ")|(|,| "; // can be wrong
 		String[] sLine = line.split(delimiters);
 		

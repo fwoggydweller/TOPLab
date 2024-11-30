@@ -1,6 +1,7 @@
 package tp1.control;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -35,14 +36,21 @@ public class Controller {
 		    		command = CommandGenerator.parse(userWords);
 		    		command.execute(game, view);
 		    	}
-		    	catch (CommandException e) {
-		 			view.showError(e.getMessage());
+		    	catch (CommandExecuteException cE) {
+		    		view.showError(Messages.ERROR.formatted(Messages.EXECUTE_EXCEPTION_ERROR));
+		 			view.showError(cE.getMessage());
+		 			Throwable cause = cE.getCause();
+			 		if (cause != null) 
+			 			view.showError(cause.getMessage());
+		 			}
+				catch (CommandException e) {
+					view.showError(e.getMessage());
 		 			Throwable cause = e.getCause();
 			 		if (cause != null) 
 			 			view.showError(cause.getMessage());
 		 			}
-		 		}
+				}
 		view.showGame();
 		view.showEndMessage();
 		}
-	}
+}
