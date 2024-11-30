@@ -12,4 +12,5 @@ public interface GameModel {
 	public String help();
 	public void posInBoard(Position pos) throws CommandException;
 	public boolean setRole(LemmingRoleInterface r, Position pos) throws CommandException;
+	public void readFile(String fileName);
 }

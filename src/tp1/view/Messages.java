@@ -108,6 +108,11 @@ public class Messages {
 	public static final String COMMAND_SETROLE_SHORTCUT = "sr";
 	public static final String COMMAND_SETROLE_DETAILS = "[s]et[R]ole ROLE ROW COL";
 	public static final String COMMAND_SETROLE_HELP = "sets the lemming in position (ROW,COL) to role ROLE\n";
+	
+	public static final String COMMAND_LOAD_NAME = "load" ;
+	public static final String COMMAND_LOAD_SHORTCUT = "l";
+	public static final String COMMAND_LOAD_DETAILS = "[l]load fileName";
+	public static final String COMMAND_LOAD_HELP = "loads new game configuration from file name";
 //Roles
 	public static final String ROLE_DIGGER_NAME = "digger";
 	public static final String ROLE_DIGGER_SHORTCUT = "d";

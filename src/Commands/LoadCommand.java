@@ -45,6 +45,6 @@ public class LoadCommand extends Command {
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	public void execute(GameModel game, GameView view)throws CommandException{
-		game.
+		game.readFile(fileName);
 	}
 }

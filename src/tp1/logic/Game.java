@@ -24,7 +24,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public static int INITIAL_LEMMING_NUM;
 	public static int NUMBER_OF_WALLS;
 	public static final int LEMMING_THRESHOLD = 3;
-	private GameObjectContainer cont; // exchange
+	private FileGameConfiguration conf; // exchange
 	private LemmingRoleFactory roles;
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
@@ -124,7 +124,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 
 	public String positionToString(int col, int row) {
-		return cont.whatInPos(col,row);
+		return conf.getGameObjects().whatInPos(col,row);
 	}
 
 	public boolean playerWins() {
@@ -154,14 +154,14 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return conc;
 	}
 	public void update() throws CommandException {
-		cont.update();
+		conf.getGameObjects().update();
 		cycle++;
 	}
 	public void reset(int n) throws CommandException {
 			cycle = 0;
 			numLemmingsDead = 0;
 			numLemmingsExit = 0;
-			cont.reset();
+			conf.getGameObjects().reset();
 			Init1(n);
 			Init2(n);
 	}
@@ -172,7 +172,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		numLemmingsExit++;
 	}
 	public GameItem posToObject (Position pos) throws CommandException {
-		return cont.posToObject(pos);
+		return conf.getGameObjects().posToObject(pos);
 	}
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
@@ -184,8 +184,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	@Override
 	public boolean setRole(LemmingRoleInterface r, Position pos) throws CommandException {
-		if(cont.posToObject(pos) != null) {
-			boolean res = cont.posToObject(pos).setRole(r);
+		if(conf.getGameObjects().posToObject(pos) != null) {
+			boolean res = conf.getGameObjects().posToObject(pos).setRole(r);
 			if(res) {
 				return true;
 			}
