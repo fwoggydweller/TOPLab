@@ -28,7 +28,7 @@ public class LemmingRoleFactory {
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
 		if(role == null) {
-			throw new RoleParseException("Idk bro, no role");
+			throw new RoleParseException(Messages.ERROR.formatted(Messages.UNKNOWN_ROLE_ERROR));
 		}
 		return role;
 	}
