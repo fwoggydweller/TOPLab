@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import java.util.List;
 
+import tp1.exceptions.CommandException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.*;
@@ -23,22 +24,30 @@ public class GameObjectFactory {
 		String delimiters = ")|(|,| "; // can be wrong
 		String[] sLine = line.split(delimiters);
 		
-		if(sLine.length < 3 || sLine.length > 5) throw new ObjectParseException();
-		if(sLine.length == 4) throw new ObjectParseException();
+		if(sLine.length < 3 || sLine.length > 5) throw new ObjectParseException("tas pasao");
+		if(sLine.length == 4) throw new ObjectParseException("algo has metido mal man");
 		
 		int x = Integer.parseInt(sLine[0]);
 		int y = Integer.parseInt(sLine[1]);
 		if(x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y) throw new OffBoardException();
 		
 		Direction dir = null;
+		String role = null; 
 		if(sLine.length == 5) {
 			dir = strToDir(sLine[3]);
+			role = sLine[4];
 		}	
 		GameObject obj = null;
-		for(int i = 0; i < AVAILABLE_OBJ.size() && obj == null; i++){
-    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, sLine[4]); // actually input the things
-    	}
-		if (obj == null) throw new ObjectParseException();
+		try {
+			for(int i = 0; i < AVAILABLE_OBJ.size() && obj == null; i++){
+	    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, role); // actually input the things
+	    	}
+		}
+		catch(CommandException c) {
+			throw new ObjectParseException("ese rol tu no la tiene");
+		}
+		if(obj == null) throw new ObjectParseException("ese obj tu no la tiene");
+		
 		return obj;
 	}
 	public Direction strToDir(String in) { // exception?

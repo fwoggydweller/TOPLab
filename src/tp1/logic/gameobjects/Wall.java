@@ -1,7 +1,9 @@
 package tp1.logic.gameobjects;
 import tp1.view.Messages;
 import tp1.logic.Position;
+import tp1.logic.roles.LemmingRoleFactory;
 import tp1.exceptions.CommandException;
+import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 public class Wall extends GameObject{
 	public Wall(int x,int y, GameWorld g) {
@@ -16,5 +18,11 @@ public class Wall extends GameObject{
 	@Override
 	public boolean receiveInteraction(GameItem other) throws CommandException {
 		return other.interactWith(this);
+	}
+	@Override
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role) throws CommandException {
+		
+		if (name.toLowerCase() == "wall") return new Wall(x, y, g);
+		return null;
 	}
 }
