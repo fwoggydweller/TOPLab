@@ -22,11 +22,11 @@ public class Lemming extends GameObject{
 	private int currFall = 0;
 	private boolean flipped = false;
 
-	public Lemming(int x, int y, Direction dir, GameWorld g, LemmingRoleInterface role) {
+	public Lemming(int x, int y, Direction dir, GameWorld g, LemmingRoleInterface role, int force) {
 		super(x,y,g);
 		this.dir = dir;
 		this.role = role;
-
+		this.currFall = force;
 		solid = false;
 	}
 	
@@ -170,9 +170,9 @@ public class Lemming extends GameObject{
 		return role.interactWith(mWall, this);
 	}
 	@Override
-	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role) throws CommandException {
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws CommandException {
 		
-		if (name.toLowerCase() == "lemming") return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role));
+		if (name.toLowerCase() == "lemming") return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role), force);
 		return null;
 	}
 	

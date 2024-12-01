@@ -26,7 +26,7 @@ public class GameObjectFactory {
 		String delimiters = "[), ( ,]"; // can be wrong
 		String[] sLine = line.split(delimiters);
 		
-		if(sLine.length < 3 || sLine.length > 5) throw new ObjectParseException("tas pasao");
+		if(sLine.length < 3 || sLine.length > 6) throw new ObjectParseException("line wrong length");
 		if(sLine.length == 4) throw new ObjectParseException("algo has metido mal man");
 		
 		int x = Integer.parseInt(sLine[0]);
@@ -34,15 +34,17 @@ public class GameObjectFactory {
 		if(x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y) throw new OffBoardException();
 		
 		Direction dir = null;
-		String role = null; 
-		if(sLine.length == 5) {
+		String role = null;
+		int force = 0;
+		if(sLine.length == 6) {
 			dir = strToDir(sLine[3]);
-			role = sLine[4];
+			role = sLine[5];
+			force = Integer.parseInt(sLine[4]);
 		}	
 		GameObject obj = null;
 		try {
 			for(int i = 0; i < AVAILABLE_OBJ.size() && obj == null; i++){
-	    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, role); // actually input the things
+	    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, role, force); // actually input the things
 	    	}
 		}
 		catch(CommandException c) {
