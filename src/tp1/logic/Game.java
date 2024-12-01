@@ -198,13 +198,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 			return false;
 		}
 	}
-	public void readFile(String fileName) throws CommandException{
-		try {
-			this.conf = new FileGameConfiguration(fileName, this);
-		}
-		catch(GameLoadException gle) {
-			throw new CommandException("No se pudo leer");
-		}
+	public void readFile(String fileName) throws GameLoadException{
+		this.conf = new FileGameConfiguration(fileName, this);
 	}
 }
 

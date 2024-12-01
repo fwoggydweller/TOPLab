@@ -111,7 +111,7 @@ public class Messages {
 	
 	public static final String COMMAND_LOAD_NAME = "load" ;
 	public static final String COMMAND_LOAD_SHORTCUT = "l";
-	public static final String COMMAND_LOAD_DETAILS = "[l]load fileName";
+	public static final String COMMAND_LOAD_DETAILS = "[l]load <fileName>";
 	public static final String COMMAND_LOAD_HELP = "loads new game configuration from file name";
 //Roles
 	public static final String ROLE_DIGGER_NAME = "digger";
