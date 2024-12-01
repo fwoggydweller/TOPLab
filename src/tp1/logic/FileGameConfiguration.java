@@ -17,21 +17,17 @@ public class FileGameConfiguration implements GameConfiguration {
 	private GameObjectContainer cont;
 	private GameObjectFactory fact;
 	public FileGameConfiguration() {
-		cont = new GameObjectContainer();
+		cont = new GameObjectContainer(Game.INITIAL_LEMMING_NUM+ Game.NUMBER_OF_WALLS+1);
 		fact = new GameObjectFactory();
 	}
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
-		try {
-			long lines = Files.lines(Paths.get(fileName)).count() - 1;
-		}
-		catch(IOException e){
-			throw new GameLoadException("IO problem arose, unable to properly read file when counting the lines");
-		}
-		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ 
+		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+			  long lines = Files.lines(Paths.get(fileName)).count() - 1;
+			  System.out.println(lines);
 		      String line;
 		      line = reader.readLine();
 		      String[] sLine = line.split(" ");
-		      cont = new GameObjectContainer();
+		      cont = new GameObjectContainer((int)lines);
 			  fact = new GameObjectFactory();
 		      cycle = Integer.parseInt(sLine[0]);
 		      lBoard = Integer.parseInt(sLine[1]);

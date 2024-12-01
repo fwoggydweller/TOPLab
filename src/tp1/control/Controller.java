@@ -2,6 +2,7 @@ package tp1.control;
 
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
+import tp1.exceptions.GameLoadException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -36,6 +37,13 @@ public class Controller {
 		    		command = CommandGenerator.parse(userWords);
 		    		command.execute(game, view);
 		    	}
+		    	catch (GameLoadException g) {
+		    		view.showError("Invalid file configuration");
+					view.showError(g.getMessage());
+		 			Throwable cause = g.getCause();
+			 		if (cause != null) 
+			 			view.showError(cause.getMessage());
+		 			}
 				catch (CommandException e) {
 					view.showError(Messages.EXECUTE_EXCEPTION_ERROR);
 					view.showError(e.getMessage());
