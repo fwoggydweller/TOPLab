@@ -8,8 +8,13 @@ import tp1.logic.gameobjects.GameObject;
 import tp1.view.Messages;
 public class GameObjectContainer {
 	//TODO fill your code
-	private GameItem[] gO = new GameItem[Game.INITIAL_LEMMING_NUM+Game.NUMBER_OF_WALLS+1];
+	private GameItem[] gO;
 	private int objCount = 0;
+	
+	
+	public GameObjectContainer (int listSize) {
+		gO = new GameItem[listSize];
+	}
 	
 	public void add(GameObject go) {
 		if(objCount < gO.length) {
