@@ -3,6 +3,8 @@ package tp1.logic;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameLoadException;
@@ -19,6 +21,12 @@ public class FileGameConfiguration implements GameConfiguration {
 		fact = new GameObjectFactory();
 	}
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
+		try {
+			long lines = Files.lines(Paths.get(fileName)).count() - 1;
+		}
+		catch(IOException e){
+			throw new GameLoadException("IO problem arose, unable to properly read file when counting the lines");
+		}
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ 
 		      String line;
 		      line = reader.readLine();
