@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import tp1.exceptions.CommandException;
 import tp1.exceptions.GameLoadException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
@@ -17,7 +18,7 @@ public class FileGameConfiguration implements GameConfiguration {
 		cont = new GameObjectContainer();
 		fact = new GameObjectFactory();
 	}
-	public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException{
+	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ 
 		      String line;
 		      line = reader.readLine();
@@ -43,9 +44,6 @@ public class FileGameConfiguration implements GameConfiguration {
 			catch (NumberFormatException nfe) {
 			throw new GameLoadException("Unable to properly read board state counters");
 			}
-			catch (ObjectParseException ope) {
-			throw new GameLoadException("NoObjeto");
-	    	}
 	}
 	
 	 public int getCycle() {

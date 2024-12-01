@@ -198,7 +198,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 			return false;
 		}
 	}
-	public void readFile(String fileName) throws GameLoadException{
+	public void readFile(String fileName) throws CommandException{
 		this.conf = new FileGameConfiguration(fileName, this);
 	}
 }
