@@ -22,7 +22,8 @@ public class GameObjectFactory {
 	
 
 	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
-		String delimiters = ")(,\\s"; // can be wrong
+
+		String delimiters = "[), ( ,]"; // can be wrong
 		String[] sLine = line.split(delimiters);
 		
 		if(sLine.length < 3 || sLine.length > 5) throw new ObjectParseException("tas pasao");
@@ -58,7 +59,6 @@ public class GameObjectFactory {
 			return Direction.LEFT;
 		else if(in.toUpperCase() == "NONE")
 			return Direction.NONE;
-		
 		return null;
 	}
 	

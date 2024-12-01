@@ -37,7 +37,7 @@ public class Controller {
 		    		command.execute(game, view);
 		    	}
 				catch (CommandException e) {
-					view.showError(Messages.ERROR.formatted(Messages.EXECUTE_EXCEPTION_ERROR));
+					view.showError(Messages.EXECUTE_EXCEPTION_ERROR);
 					view.showError(e.getMessage());
 		 			Throwable cause = e.getCause();
 			 		if (cause != null) 

@@ -3,7 +3,10 @@ package tp1.logic;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import tp1.exceptions.CommandException;
 import tp1.exceptions.GameLoadException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
@@ -17,7 +20,13 @@ public class FileGameConfiguration implements GameConfiguration {
 		cont = new GameObjectContainer();
 		fact = new GameObjectFactory();
 	}
-	public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException{
+	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
+		try {
+			long lines = Files.lines(Paths.get(fileName)).count() - 1;
+		}
+		catch(IOException e){
+			throw new GameLoadException("IO problem arose, unable to properly read file when counting the lines");
+		}
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){ 
 		      String line;
 		      line = reader.readLine();
@@ -43,9 +52,6 @@ public class FileGameConfiguration implements GameConfiguration {
 			catch (NumberFormatException nfe) {
 			throw new GameLoadException("Unable to properly read board state counters");
 			}
-			catch (ObjectParseException ope) {
-			throw new GameLoadException("NoObjeto");
-	    	}
 	}
 	
 	 public int getCycle() {
