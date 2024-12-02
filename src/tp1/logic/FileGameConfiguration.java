@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,10 +18,7 @@ public class FileGameConfiguration implements GameConfiguration {
 	private int cycle, lBoard, lDead, lExit, lWin;
 	private GameObjectContainer cont;
 	private GameObjectFactory fact;
-	public FileGameConfiguration() {
-		cont = new GameObjectContainer(Game.INITIAL_LEMMING_NUM+ Game.NUMBER_OF_WALLS+1);
-		fact = new GameObjectFactory();
-	}
+	
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
 			  long lines = Files.lines(Paths.get(fileName)).count() - 1;

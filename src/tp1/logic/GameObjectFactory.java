@@ -5,11 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import tp1.exceptions.CommandException;
-import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.gameobjects.*;
-import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 
 
@@ -25,7 +23,6 @@ public class GameObjectFactory {
 
 	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
 		try {
-		String delimiters = "[(,)\s]+"; // can be wrong
 		String[] sLine = line.split("[(,) ]+");
 		if(sLine.length < 4 || sLine.length > 7) throw new ObjectParseException(Messages.UNKNOWN_OBJECT.formatted(line));
 		if(sLine.length == 5) throw new ObjectParseException(Messages.UNKNOWN_OBJECT.formatted(line));
@@ -41,7 +38,7 @@ public class GameObjectFactory {
 			if(dir==null) {
 				throw new ObjectParseException(Messages.UNKNOWN_OBJECT_DIRECTION.formatted(line));
 			}
-			else if( dir.isEqual(Direction.UP) || dir.isEqual(Direction.DOWN)) {
+			else if( dir.isEqual(Direction.UP) || dir.isEqual(Direction.DOWN)|| dir.isEqual(Direction.NONE)) {
 				throw new ObjectParseException(Messages.INVALID_LEMMING_DIRECTION.formatted(line));
 			}
 			force = Integer.parseInt(sLine[5]);

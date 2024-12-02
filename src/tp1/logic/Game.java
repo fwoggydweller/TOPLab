@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import java.io.File;
+
 import Commands.CommandGenerator;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameLoadException;
@@ -25,85 +27,34 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public static int INITIAL_LEMMING_NUM;
 	public static int NUMBER_OF_WALLS;
 	public static final int LEMMING_THRESHOLD = 3;
-	private FileGameConfiguration conf; // exchange
+	private GameConfiguration conf; // exchange
 	private LemmingRoleFactory roles;
 	private int cycle = 0;
 	private int numLemmingsDead = 0;
 	private int numLemmingsExit = 0;
 	private boolean playerExit = false;
+	private String file = "";
+	private String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "ConfigOne.txt";
+	private String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "ConfigTwo.txt";
+	private GameConfiguration ONE = new FileGameConfiguration(path1, this);
+	private GameConfiguration TWO = new FileGameConfiguration(path2, this);
+	
 	public Game(int nLevel) throws CommandException {
 		if(nLevel == 1) { //adds 1 of each type
 			INITIAL_LEMMING_NUM = 4;
 			NUMBER_OF_WALLS = 15;
-			conf = new FileGameConfiguration();
-			Init1(nLevel);
-			Init2(nLevel);
+			conf = ONE;
 		}
 		else if(nLevel == 2) {
 			INITIAL_LEMMING_NUM = 5;
 			NUMBER_OF_WALLS = 17;
-			conf = new FileGameConfiguration();
-			Init1(nLevel);
-			Init2(nLevel);
+			conf = TWO;
 		}
-		
-	}
-	private void Init1(int n) throws CommandException {
-		if(n == 1) {
-			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w"), 0));
-			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w"),0));
-			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w"),0));
-			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w"),0));
-		}
-		else if(n == 2) {
-			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w"),0));
-			conf.getGameObjects().add(new Lemming(6, 0, Direction.RIGHT, this, roles.parse("p"),0));
-			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w"),0));
-			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w"),0));
-			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w"),0));
+		else {
+			throw new GameLoadException(Messages.NOT_VALID_LEVEL_ERROR);
 		}
 	}
-	private void Init2(int n) {
-		if(n == 1) {	
-			conf.getGameObjects().add(new Wall(9,1, this));	
-			conf.getGameObjects().add(new Wall(8,1, this));	
-			conf.getGameObjects().add(new Wall(2,4, this));
-			conf.getGameObjects().add(new Wall(3,4, this));	
-			conf.getGameObjects().add(new Wall(4,4, this));	
-			conf.getGameObjects().add(new Wall(7,5, this));
-			conf.getGameObjects().add(new Wall(7,6, this));	
-			conf.getGameObjects().add(new Wall(6,6, this));	
-			conf.getGameObjects().add(new Wall(5,6, this));
-			conf.getGameObjects().add(new Wall(4,6, this));	
-			conf.getGameObjects().add(new Wall(8,8, this));	
-			conf.getGameObjects().add(new Wall(9,9, this));
-			conf.getGameObjects().add(new Wall(8,9, this));	
-			conf.getGameObjects().add(new Wall(0,9, this));	
-			conf.getGameObjects().add(new Wall(1,9, this));
-			conf.getGameObjects().add(new ExitDoor(4,5, this));
-		}
-		else if(n == 2) {
-			conf.getGameObjects().add(new MetalWall(3, 6, this));
-			conf.getGameObjects().add(new ExitDoor(4,5, this));
-			conf.getGameObjects().add(new Wall(9,1, this));	
-			conf.getGameObjects().add(new Wall(8,1, this));	
-			conf.getGameObjects().add(new Wall(2,4, this));
-			conf.getGameObjects().add(new Wall(3,4, this));	
-			conf.getGameObjects().add(new Wall(4,4, this));	
-			conf.getGameObjects().add(new Wall(7,5, this));
-			conf.getGameObjects().add(new Wall(7,6, this));	
-			conf.getGameObjects().add(new Wall(6,6, this));	
-			conf.getGameObjects().add(new Wall(5,6, this));
-			conf.getGameObjects().add(new Wall(4,6, this));	
-			conf.getGameObjects().add(new Wall(8,8, this));	
-			conf.getGameObjects().add(new Wall(9,9, this));
-			conf.getGameObjects().add(new Wall(8,9, this));	
-			conf.getGameObjects().add(new Wall(0,9, this));	
-			conf.getGameObjects().add(new Wall(1,9, this));
-			conf.getGameObjects().add(new Wall(3,5, this));
-		}
-		
-	}
+	
 	public int getCycle() {
 		return cycle;
 	}
@@ -159,12 +110,15 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cycle++;
 	}
 	public void reset(int n) throws CommandException {
-			cycle = 0;
-			numLemmingsDead = 0;
-			numLemmingsExit = 0;
-			conf.getGameObjects().reset();
-			Init1(n);
-			Init2(n);
+		if(conf == ONE || n == 1) {
+			readFile(path1);
+		}
+		else if(conf == TWO || n == 2) {
+			readFile(path2);
+		}
+		else {
+			readFile(file);
+		}
 	}
 	public void updateDeadLemmings() {
 		numLemmingsDead++;
@@ -199,6 +153,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 	}
 	public void readFile(String fileName) throws CommandException{
+		file = fileName;
 		this.conf = new FileGameConfiguration(fileName, this);
 	}
 }

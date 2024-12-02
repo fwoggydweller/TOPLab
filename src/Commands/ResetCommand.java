@@ -13,7 +13,7 @@ public class ResetCommand extends Command{
 	private static final String SHORTCUT = Messages.COMMAND_RESET_SHORTCUT;
 	private static final String DETAILS = Messages.COMMAND_RESET_DETAILS;
 	private static final String HELP = Messages.COMMAND_RESET_HELP;
-	private int  n;
+	private int  n = -1;
 	private String[] empty = {""};
  	public ResetCommand(int n) {
 		this.name = NAME;
@@ -35,6 +35,7 @@ public class ResetCommand extends Command{
 				return this;
 			}
 			else{
+				n = -1;
 				return this;
 			}
 		}
@@ -47,7 +48,7 @@ public class ResetCommand extends Command{
 	}
 	@Override
 	public void execute(GameModel game, GameView view) throws CommandException { //it should call the reset method
-		if(n == 1 || n == 2) {
+		if(n == 1 || n == 2 || n == -1) {
 			game.reset(n);
 		}
 		else {
