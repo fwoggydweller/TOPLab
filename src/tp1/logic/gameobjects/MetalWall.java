@@ -25,7 +25,7 @@ public class MetalWall extends GameObject{
 	@Override
 	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws CommandException {
 		
-		if (name.toLowerCase() == "wall") return new MetalWall(x, y, g);
+		if (name.toLowerCase().equals("metalwall")) return new MetalWall(x, y, g);
 		return null;
 	}
 }

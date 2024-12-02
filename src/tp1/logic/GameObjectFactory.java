@@ -14,37 +14,37 @@ import tp1.logic.roles.LemmingRoleInterface;
 
 public class GameObjectFactory {
 	private static final List<GameObject> AVAILABLE_OBJ = Arrays.asList(
-			new Lemming(0, 0, Direction.NONE, null, null),
+			new Lemming(0, 0, Direction.NONE, null, null,0),
 			new Wall(0,0,null),
-			new MetalWall(0,0,null)
+			new MetalWall(0,0,null),
+			new ExitDoor(0,0,null)
 	        // ...
 	    );
 	
 
 	public GameObject parse(String line, GameWorld game) throws ObjectParseException, OffBoardException { // GameObject or gameItem
 
-		String delimiters = "[), ( ,]"; // can be wrong
-		String[] sLine = line.split(delimiters);
+		String delimiters = "[(,)\s]+"; // can be wrong
+		String[] sLine = line.split("[(,) ]+");
+		if(sLine.length < 4 || sLine.length > 7) throw new ObjectParseException("line wrong length");
+		if(sLine.length == 5) throw new ObjectParseException("algo has metido mal man");
 		
-		if(sLine.length < 3 || sLine.length > 6) throw new ObjectParseException("line wrong length");
-		if(sLine.length == 4) throw new ObjectParseException("algo has metido mal man");
-		
-		int x = Integer.parseInt(sLine[0]);
-		int y = Integer.parseInt(sLine[1]);
+		int x = Integer.parseInt(sLine[1]);
+		int y = Integer.parseInt(sLine[2]);
 		if(x < 0 || y < 0 || x > Game.DIM_X || y > Game.DIM_Y) throw new OffBoardException();
 		
 		Direction dir = null;
 		String role = null;
 		int force = 0;
-		if(sLine.length == 6) {
-			dir = strToDir(sLine[3]);
-			role = sLine[5];
-			force = Integer.parseInt(sLine[4]);
+		if(sLine.length == 7) {
+			dir = strToDir(sLine[4]);
+			role = sLine[6];
+			force = Integer.parseInt(sLine[5]);
 		}	
 		GameObject obj = null;
 		try {
 			for(int i = 0; i < AVAILABLE_OBJ.size() && obj == null; i++){
-	    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[2], dir, game, role, force); // actually input the things
+	    		obj = AVAILABLE_OBJ.get(i).copy(x, y, sLine[3], dir, game, role, force); // actually input the things
 	    	}
 		}
 		catch(CommandException c) {

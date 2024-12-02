@@ -50,17 +50,17 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 	private void Init1(int n) throws CommandException {
 		if(n == 1) {
-			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w"), 0));
+			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w"),0));
+			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w"),0));
+			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w"),0));
 		}
 		else if(n == 2) {
-			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(6, 0, Direction.RIGHT, this, roles.parse("p")));
-			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w")));
-			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w")));
+			conf.getGameObjects().add(new Lemming(9, 0, Direction.RIGHT, this, roles.parse("w"),0));
+			conf.getGameObjects().add(new Lemming(6, 0, Direction.RIGHT, this, roles.parse("p"),0));
+			conf.getGameObjects().add(new Lemming(3, 3, Direction.RIGHT, this, roles.parse("w"),0));
+			conf.getGameObjects().add(new Lemming(2, 3, Direction.RIGHT, this, roles.parse("w"),0));
+			conf.getGameObjects().add(new Lemming(0, 8, Direction.RIGHT, this, roles.parse("w"),0));
 		}
 	}
 	private void Init2(int n) {

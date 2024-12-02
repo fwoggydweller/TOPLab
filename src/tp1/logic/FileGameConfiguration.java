@@ -23,7 +23,6 @@ public class FileGameConfiguration implements GameConfiguration {
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
 			  long lines = Files.lines(Paths.get(fileName)).count() - 1;
-			  System.out.println(lines);
 		      String line;
 		      line = reader.readLine();
 		      String[] sLine = line.split(" ");
