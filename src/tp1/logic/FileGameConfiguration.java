@@ -11,6 +11,7 @@ import tp1.exceptions.GameLoadException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.exceptions.RoleParseException;
+import tp1.view.Messages;
 
 public class FileGameConfiguration implements GameConfiguration {
 	private int cycle, lBoard, lDead, lExit, lWin;
@@ -26,27 +27,28 @@ public class FileGameConfiguration implements GameConfiguration {
 		      String line;
 		      line = reader.readLine();
 		      String[] sLine = line.split(" ");
-		      cont = new GameObjectContainer((int)lines);
-			  fact = new GameObjectFactory();
-		      cycle = Integer.parseInt(sLine[0]);
-		      lBoard = Integer.parseInt(sLine[1]);
-		      lDead = Integer.parseInt(sLine[2]);
-		      lExit = Integer.parseInt(sLine[3]);
-		      lWin = Integer.parseInt(sLine[4]);
-		      
+		      if(sLine.length == 5) {
+		    	  cont = new GameObjectContainer((int)lines);
+				  fact = new GameObjectFactory();
+			      cycle = Integer.parseInt(sLine[0]);
+			      lBoard = Integer.parseInt(sLine[1]);
+			      lDead = Integer.parseInt(sLine[2]);
+			      lExit = Integer.parseInt(sLine[3]);
+			      lWin = Integer.parseInt(sLine[4]);
+		      }
+		      else {
+		    	  throw new GameLoadException(Messages.INCORRECT_GAME_STATUS.formatted(line));
+		      }
 		      while((line = reader.readLine()) != null) {
 		        cont.add(fact.parse(line, game));
 		      }
 		    }
 			catch (OffBoardException obe) {
-				throw new GameLoadException("Se te va");
+				throw new GameLoadException(obe.getMessage()); //Hacer que cuando detecte que se sale del board, mande el mensaje de que se sale del board
 			}
 			catch (IOException ioe) {
-				throw new GameLoadException("IO problem arose, unable to properly read file");
+				throw new GameLoadException(Messages.NO_FILE.formatted(fileName));
 		    }
-			catch (NumberFormatException nfe) {
-			throw new GameLoadException("Unable to properly read board state counters");
-			}
 	}
 	
 	 public int getCycle() {

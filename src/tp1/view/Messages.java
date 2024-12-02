@@ -83,6 +83,14 @@ public class Messages {
 	public static final String ROLE_ADMISSION_ERROR="No lemming in position " + POSITION + " admits the role %s";
 	public static final String UNKNOWN_ROLE_ERROR = "Unknown Role";
 	public static final String NOT_VALID_LEVEL_ERROR = "Not valid level number";
+	public static final String INVALID_LEMMING_ROLE = "Invalid lemming role";
+	public static final String UNKNOWN_OBJECT_DIRECTION = "Unknown object direction: ''%s''";
+	public static final String INVALID_LEMMING_DIRECTION = "Invalid lemming direction: ''%s''";
+	public static final String INVALID_OBJECT_POSITION = "Invalid object position: ''%s''";
+	public static final String OBJECT_POSITION_OFF_BOARD = "Object position is off board: ''%s''";
+	public static final String NO_FILE = "File not found: ''%s''";
+	public static final String INCORRECT_GAME_STATUS = "Incorrect game status: ''%s''";
+	public static final String UNKNOWN_OBJECT = "Unknown game object: ''%s''";
 	//Commands
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";
