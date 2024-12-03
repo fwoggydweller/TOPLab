@@ -78,6 +78,7 @@ public class Messages {
 
 	public static final String POSITION = "(%s,%s)";
 //Errors
+	public static final String LOAD_EXCEPTION_ERROR = "Invalid file configuration";
 	public static final String EXECUTE_EXCEPTION_ERROR = "Command execute problem";
 	public static final String INVALID_POSITION = "Position " + POSITION + " off the board";
 	public static final String ROLE_ADMISSION_ERROR="No lemming in position " + POSITION + " admits the role %s";

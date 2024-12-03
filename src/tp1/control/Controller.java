@@ -38,7 +38,7 @@ public class Controller {
 		    		command.execute(game, view);
 		    	}
 		    	catch (GameLoadException g) {
-		    		view.showError("Invalid file configuration");
+		    		view.showError(Messages.LOAD_EXCEPTION_ERROR);
 					view.showError(g.getMessage());
 		 			Throwable cause = g.getCause();
 			 		if (cause != null) 
