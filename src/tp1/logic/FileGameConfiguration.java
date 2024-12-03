@@ -18,9 +18,17 @@ public class FileGameConfiguration implements GameConfiguration {
 	private int cycle, lBoard, lDead, lExit, lWin;
 	private GameObjectContainer cont;
 	private GameObjectFactory fact;
+<<<<<<< Updated upstream
 	
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
 		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
+=======
+	public FileGameConfiguration() {
+		cont = new GameObjectContainer(Game.INITIAL_LEMMING_NUM+ Game.NUMBER_OF_WALLS+1);
+		fact = new GameObjectFactory();
+	}
+	public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException{
+>>>>>>> Stashed changes
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
 			  long lines = Files.lines(Paths.get(fileName)).count() - 1;
 		      String line;
@@ -43,11 +51,14 @@ public class FileGameConfiguration implements GameConfiguration {
 		      }
 		    }
 			catch (OffBoardException obe) {
-				throw new GameLoadException(obe.getMessage()); //Hacer que cuando detecte que se sale del board, mande el mensaje de que se sale del board
+				throw new GameLoadException(obe.getMessage());
 			}
 			catch (IOException ioe) {
 				throw new GameLoadException(Messages.NO_FILE.formatted(fileName));
 		    }
+			catch (ObjectParseException oe) {
+			throw new GameLoadException(oe.getMessage());
+			}
 	}
 	
 	 public int getCycle() {
