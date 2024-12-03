@@ -24,9 +24,9 @@ public class Game implements GameModel, GameStatus,GameWorld{
 
 	public static final int DIM_X = 10; 
 	public static final int DIM_Y = 10;
-	public static int INITIAL_LEMMING_NUM;
+	private int INITIAL_LEMMING_NUM;
 	public static int NUMBER_OF_WALLS;
-	public static final int LEMMING_THRESHOLD = 3;
+	private int numLemmingsToWin;
 	private GameConfiguration conf; // exchange
 	private LemmingRoleFactory roles;
 	private int cycle = 0;
@@ -34,21 +34,15 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	private int numLemmingsExit = 0;
 	private boolean playerExit = false;
 	private String file = "";
-	private String path1 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "ConfigOne.txt";
-	private String path2 = System.getProperty("user.dir") + File.separator + "src" + File.separator + "ConfigTwo.txt";
-	private GameConfiguration ONE = new FileGameConfiguration(path1, this);
-	private GameConfiguration TWO = new FileGameConfiguration(path2, this);
 	
 	public Game(int nLevel) throws CommandException {
 		if(nLevel == 1) { //adds 1 of each type
-			INITIAL_LEMMING_NUM = 4;
-			NUMBER_OF_WALLS = 15;
-			conf = ONE;
+			file = "configOne.txt";
+			readFile(file);
 		}
 		else if(nLevel == 2) {
-			INITIAL_LEMMING_NUM = 5;
-			NUMBER_OF_WALLS = 17;
-			conf = TWO;
+			file = "configTwo.txt";
+			readFile(file);
 		}
 		else {
 			throw new GameLoadException(Messages.NOT_VALID_LEVEL_ERROR);
@@ -72,7 +66,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 
 	public int numLemmingsToWin() {
-		return  LEMMING_THRESHOLD - numLemmingsExit();
+		return  numLemmingsToWin;
 	}
 
 	public String positionToString(int col, int row) {
@@ -80,11 +74,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	}
 
 	public boolean playerWins() {
-		return numLemmingsToWin() == 0;
+		return numLemmingsToWin() == numLemmingsExit;
 	}
 
 	public boolean playerLoses() { //The game will stop when it's impossible for the player to win
-		return numLemmingsDead() > INITIAL_LEMMING_NUM - LEMMING_THRESHOLD;
+		return numLemmingsDead() > numLemmingsToWin;
 	}
 	public void playerExits() {
 		playerExit=true;
@@ -110,15 +104,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		cycle++;
 	}
 	public void reset(int n) throws CommandException {
-		if(conf == ONE || n == 1) {
-			readFile(path1);
-		}
-		else if(conf == TWO || n == 2) {
-			readFile(path2);
-		}
-		else {
-			readFile(file);
-		}
+		readFile(file);
 	}
 	public void updateDeadLemmings() {
 		numLemmingsDead++;
@@ -155,6 +141,11 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void readFile(String fileName) throws CommandException{
 		file = fileName;
 		this.conf = new FileGameConfiguration(fileName, this);
+		cycle = conf.getCycle();
+		numLemmingsDead = conf.numLemmingsDead();
+		numLemmingsExit = conf.numLemingsExit();
+		INITIAL_LEMMING_NUM = conf.numLemmingsInBoard()-conf.numLemingsExit()-conf.numLemmingsDead();
+		numLemmingsToWin = conf.numLemmingToWin();
 	}
 }
 

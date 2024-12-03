@@ -1,4 +1,4 @@
-0 0 0 0 0
+0 4 0 0 2
 (9,0) Lemming RIGHT 0 w
 (3,3) Lemming RIGHT 0 w
 (2,3) Lemming RIGHT 0 w

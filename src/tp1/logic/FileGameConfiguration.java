@@ -20,6 +20,7 @@ public class FileGameConfiguration implements GameConfiguration {
 	private GameObjectFactory fact;
 	
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
+		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
 		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
 			  long lines = Files.lines(Paths.get(fileName)).count() - 1;
 		      String line;
