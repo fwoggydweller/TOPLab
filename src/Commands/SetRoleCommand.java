@@ -1,5 +1,7 @@
 package Commands;
 
+import java.util.Arrays;
+
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
@@ -50,8 +52,7 @@ public class SetRoleCommand extends Command{
 				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65); 
 				}
 				catch(NumberFormatException e) {
-					throw new CommandParseException("incorrect position input");
-
+					throw new CommandParseException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(Y,X)));
 				}
 				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
 			}

@@ -3,6 +3,7 @@ package tp1.control;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.GameLoadException;
+import tp1.exceptions.GameModelException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -37,7 +38,7 @@ public class Controller {
 		    		command = CommandGenerator.parse(userWords);
 		    		command.execute(game, view);
 		    	}
-		    	catch (GameLoadException g) {
+		    	catch (GameModelException g) {
 		    		view.showError(Messages.LOAD_EXCEPTION_ERROR);
 					view.showError(g.getMessage());
 		 			Throwable cause = g.getCause();

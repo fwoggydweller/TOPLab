@@ -56,7 +56,7 @@ public class GameObjectFactory {
 			throw new ObjectParseException(Messages.INVALID_OBJECT_POSITION.formatted(line));
 		}
 		catch(CommandException c) {
-			throw new ObjectParseException(c.getMessage().concat(": " + line));
+			throw new ObjectParseException(c.getMessage());
 		}
 		
 	}
