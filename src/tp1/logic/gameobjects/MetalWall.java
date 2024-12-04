@@ -9,6 +9,7 @@ import tp1.logic.GameWorld;
 public class MetalWall extends GameObject{
 	public MetalWall(int x,int y,GameWorld g) {
 		super(x,y,g);
+		this.name = "MetalWall";
 	}
 	@Override
 	public boolean isSolid() {

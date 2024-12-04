@@ -1,5 +1,9 @@
 package tp1.logic;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 import tp1.exceptions.CommandException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.gameobjects.GameItem;
@@ -53,6 +57,13 @@ public class GameObjectContainer {
 				}
 			}
 		return null;
+	}
+	public String stringify(String fileName) {
+		String ret = "";
+		for(GameItem g: gO) {
+			ret += System.lineSeparator() + g.stringify();
+		}
+		return ret;
 	}
 }
 

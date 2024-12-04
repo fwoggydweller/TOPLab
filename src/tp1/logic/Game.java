@@ -1,10 +1,14 @@
 package tp1.logic;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import Commands.CommandGenerator;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameLoadException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.GameObjectContainer;
@@ -147,5 +151,26 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		INITIAL_LEMMING_NUM = conf.numLemmingsInBoard()-conf.numLemingsExit()-conf.numLemmingsDead();
 		numLemmingsToWin = conf.numLemmingToWin();
 	}
+	public void saveFile(String fileName) throws GameModelException{
+		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
+		BufferedWriter writer = null;
+		try {
+		writer =  new BufferedWriter(new FileWriter(fileName));
+		writer.write(this.cycle + " " + (this.INITIAL_LEMMING_NUM - this.numLemmingsExit - this.numLemmingsDead) + " " + this.numLemmingsDead + " " + this.numLemmingsExit+ " " + this.numLemmingsToWin);
+		writer.write(conf.getGameObjects().stringify(fileName)); 
+		}
+			
+		catch (IOException ioe){
+			throw new GameModelException("unable to close output stream");
+		}
+		finally {
+			try {
+				writer.close();
+			} catch (IOException e) {
+				throw new GameModelException("unable to close output stream");
+			}
+		}
+	}
 }
+
 

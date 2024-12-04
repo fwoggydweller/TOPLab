@@ -14,5 +14,6 @@ public interface LemmingRoleInterface {
 	public LemmingRoleInterface parse(String name)throws RoleParseException;
 	public String getHelp();
 	public String getDetails();
+	public String getName();
 	public String helpText();
 }

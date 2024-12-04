@@ -8,6 +8,7 @@ import tp1.logic.GameWorld;
 public class Wall extends GameObject{
 	public Wall(int x,int y, GameWorld g) {
 		super(x,y,g);
+		this.name = "Wall";
 	}
 	@Override
 	public String toString() {

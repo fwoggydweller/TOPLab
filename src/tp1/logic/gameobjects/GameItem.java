@@ -20,5 +20,5 @@ public interface GameItem {
 	public void update() throws CommandException;
 	public String toString();
 	public Position getPos();
-	
+	public String stringify();
 }

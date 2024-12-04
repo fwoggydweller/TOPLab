@@ -13,6 +13,7 @@ public class GameObject implements GameItem{
 	protected boolean alive;
 	protected boolean exit;
 	protected boolean solid;
+	protected String name;
 	//Global set position for each class that extends GameObjects
 	
 	public GameObject(int x, int y, GameWorld g) {
@@ -91,5 +92,8 @@ public class GameObject implements GameItem{
 	}
 	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role, int force) throws CommandException {
 		return null;
+	}
+	public String stringify() {
+		return "(" + this.getPos().getCol() + "," + this.getPos().getRow() + ") " + this.name;
 	}
 }

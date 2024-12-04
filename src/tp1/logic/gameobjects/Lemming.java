@@ -27,6 +27,7 @@ public class Lemming extends GameObject{
 		this.dir = dir;
 		this.role = role;
 		this.currFall = force;
+		this.name = "Lemming";
 		solid = false;
 	}
 	
@@ -175,5 +176,10 @@ public class Lemming extends GameObject{
 		if (name.toLowerCase().equals("lemming")) return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role), force);
 		return null;
 	}
-	
+	@Override
+	public String stringify() {
+		if(this.dir == Direction.RIGHT) return "(" + this.getPos().getCol() + "," + this.getPos().getRow() + ") " + this.name + " RIGHT " + this.currFall + " " + this.role.getName();
+		return "(" + this.getPos().getCol() + "," + this.getPos().getRow() + ") " + this.name + " LEFT " + this.currFall + " " + this.role.getName();
+
+	}
 }

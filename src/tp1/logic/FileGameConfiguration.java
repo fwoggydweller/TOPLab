@@ -21,8 +21,10 @@ public class FileGameConfiguration implements GameConfiguration {
 	
 	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
 		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
-
-		try(BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+		BufferedReader reader = null;
+		
+		try{
+			  reader = new BufferedReader(new FileReader(fileName));
 			  long lines = Files.lines(Paths.get(fileName)).count() - 1;
 		      String line;
 		      line = reader.readLine();
@@ -51,6 +53,15 @@ public class FileGameConfiguration implements GameConfiguration {
 		    }
 			catch (ObjectParseException oe) {
 			throw new GameLoadException(oe.getMessage());
+			}
+			finally {
+				if(reader != null) {
+					try {
+						reader.close();
+					} catch (IOException e) {
+						throw new GameLoadException("unable to close input stream");
+					}
+				}
 			}
 	}
 	

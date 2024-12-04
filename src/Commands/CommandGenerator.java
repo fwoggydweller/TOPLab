@@ -17,7 +17,8 @@ public class CommandGenerator {
         new ResetCommand(1),
         new HelpCommand(),
         new ExitCommand(),
-        new LoadCommand()
+        new LoadCommand(),
+    	new SaveCommand()
     );
     public static Command parse(String[] commandWords) throws CommandException{
     	Command aux = null;

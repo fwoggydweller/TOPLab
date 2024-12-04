@@ -122,6 +122,12 @@ public class Messages {
 	public static final String COMMAND_LOAD_SHORTCUT = "l";
 	public static final String COMMAND_LOAD_DETAILS = "[l]load <fileName>";
 	public static final String COMMAND_LOAD_HELP = "loads new game configuration from file name";
+	
+	public static final String COMMAND_SAVE_NAME = "save" ;
+	public static final String COMMAND_SAVE_SHORTCUT = "s";
+	public static final String COMMAND_SAVE_DETAILS = "[s]ave <fileName>";
+	public static final String COMMAND_SAVE_HELP = "saves game into file with filename";
+	
 //Roles
 	public static final String ROLE_DIGGER_NAME = "digger";
 	public static final String ROLE_DIGGER_SHORTCUT = "d";

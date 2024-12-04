@@ -10,6 +10,7 @@ import tp1.logic.GameWorld;
 public class ExitDoor extends GameObject{
 	public ExitDoor(int x, int y, GameWorld g) { //costructor
 		super(x,y,g);
+		this.name = "ExitDoor";
 	}
 	
 	public Position getPos() {
