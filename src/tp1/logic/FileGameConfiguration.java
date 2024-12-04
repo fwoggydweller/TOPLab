@@ -54,7 +54,7 @@ public class FileGameConfiguration implements GameConfiguration {
 			catch (ObjectParseException oe) {
 			throw new GameLoadException(oe.getMessage());
 			}
-			finally {
+			finally { //Not needed but just in case
 				if(reader != null) {
 					try {
 						reader.close();
