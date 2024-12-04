@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.gameobjects.GameItem;
 import tp1.logic.gameobjects.GameObject;
@@ -50,7 +51,7 @@ public class GameObjectContainer {
 		objCount = 0;
 	}
 
-	public GameItem posToObject (Position pos) throws CommandException {
+	public GameItem posToObject (Position pos) throws ObjectParseException {
 		for(int i = 0; i<objCount; i++) {
 			if(gO[i].getPos().getCol() == pos.getCol() && gO[i].getPos().getRow() == pos.getRow()) {
 				 return gO[i];

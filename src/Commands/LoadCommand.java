@@ -1,7 +1,10 @@
 package Commands;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameLoadException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.GameParseException;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
@@ -27,24 +30,27 @@ public class LoadCommand extends Command {
 		this.help = HELP;
 		this.fileName = fileName;
 	}
-	public Command parse(String[] name)throws CommandException{
+	@Override
+	public Command parse(String[] name) throws CommandParseException{
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 2) {
-				
 				return new LoadCommand(name[1]);
 			}
 			else {
-				throw new GameParseException("parse wrong length");
+				throw new CommandParseException(Messages.INVALID_COMMAND);
 			}
 		}
-		else {
-			return null;
-		}
+		return null;
 	}
 	protected boolean matchCommand(String name){
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
-	public void execute(GameModel game, GameView view)throws CommandException{
-		game.readFile(fileName);
+	public void execute(GameModel game, GameView view)throws CommandExecuteException{
+		try{
+			game.readFile(fileName);
+		}
+		catch (GameLoadException l) {
+			throw new CommandExecuteException(Messages.LOAD_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(l.getMessage())));
+		}
 	}
 }

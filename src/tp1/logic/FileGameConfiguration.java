@@ -19,7 +19,7 @@ public class FileGameConfiguration implements GameConfiguration {
 	private GameObjectContainer cont;
 	private GameObjectFactory fact;
 	
-	public FileGameConfiguration(String fileName, GameWorld game) throws CommandException{
+	public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException{
 		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
 		BufferedReader reader = null;
 		

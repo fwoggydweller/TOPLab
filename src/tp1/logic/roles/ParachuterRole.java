@@ -36,8 +36,8 @@ public class ParachuterRole extends LemmingRole{
 	 public boolean moveY(Lemming lemming) throws CommandException { 
 	    	boolean ok = true;
 	    	if(lemming.IsGrounded()) {
-	    		if(lemming.getCurrFall() > 0) lemming.disableRole();
-	    		lemming.setCurrFall(0);	
+	    		lemming.setCurrFall(0);
+	    		lemming.disableRole();
 	    		ok = false;
 	    	}
 	    	else {

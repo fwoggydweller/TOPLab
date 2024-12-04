@@ -1,7 +1,10 @@
 package Commands;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameLoadException;
+import tp1.exceptions.GameModelException;
 import tp1.logic.GameModel;
 import tp1.view.GameView;
 import tp1.view.Messages;
@@ -15,11 +18,16 @@ public class UpdateCommand extends NoParamsCommand{
 	public UpdateCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(GameModel game, GameView view) throws CommandException {
-		game.update();
+	public void execute(GameModel game, GameView view) throws CommandExecuteException {
+		try{
+			game.update();
+		}
+		catch (GameModelException l) {
+			throw new CommandExecuteException(l.getMessage());
+		}
 	}
 	@Override
-	public Command parse(String[] name) throws CommandException {
+	public Command parse(String[] name) throws CommandParseException {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
 		}

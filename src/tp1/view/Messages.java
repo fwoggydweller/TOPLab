@@ -25,6 +25,7 @@ public class Messages {
 	public static final String DEBUG = "[DEBUG] Executing: %s%n";
 
 	public static final String ERROR = "[ERROR] Error: %s%n";
+	public static final String ERROR2 = "[ERROR] Error: %s";
 
 	public static final String LINE_SEPARATOR = System.lineSeparator();
 
@@ -78,8 +79,8 @@ public class Messages {
 
 	public static final String POSITION = "(%s,%s)";
 //Errors
-	public static final String LOAD_EXCEPTION_ERROR = "Invalid file configuration";
-	public static final String EXECUTE_EXCEPTION_ERROR = "Command execute problem";
+	public static final String LOAD_EXCEPTION_ERROR = "Invalid file configuration %n%s";
+	public static final String EXECUTE_EXCEPTION_ERROR = "Command execute problem %n%s";
 	public static final String INVALID_POSITION = "Position " + POSITION + " off the board";
 	public static final String ROLE_ADMISSION_ERROR="No lemming in position " + POSITION + " admits the role %s";
 	public static final String UNKNOWN_ROLE_ERROR = "Unknown Role";

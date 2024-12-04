@@ -3,6 +3,8 @@ package Commands;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameLoadException;
+import tp1.exceptions.GameModelException;
 import tp1.logic.GameModel;
 import tp1.logic.Position;
 import tp1.view.GameView;
@@ -23,7 +25,7 @@ public class ResetCommand extends Command{
 		this.n = n;
 	}
 	@Override
-	public Command parse(String[] name) throws CommandException {
+	public Command parse(String[] name) throws CommandParseException {
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length > 1) {
 				try {
@@ -47,12 +49,17 @@ public class ResetCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	@Override
-	public void execute(GameModel game, GameView view) throws CommandException { //it should call the reset method
+	public void execute(GameModel game, GameView view) throws CommandExecuteException { //it should call the reset method
 		if(n == 1 || n == 2 || n == -1) {
-			game.reset(n);
+			try{
+				game.reset(n);
+			}
+			catch(GameLoadException l) {
+				throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(l.getMessage())));
+			}
 		}
 		else {
-			throw new CommandExecuteException(Messages.ERROR.formatted(Messages.NOT_VALID_LEVEL_ERROR));
+			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(Messages.NOT_VALID_LEVEL_ERROR)));
 		}
 	}
 }

@@ -96,9 +96,9 @@ public class Lemming extends GameObject{
 		return role.equals(role);
 	}
 	@Override
-	public boolean setRole(LemmingRoleInterface role) throws CommandException { 
-		if(role.getHelp().equals(role.getHelp())) {
-			throw new ObjectParseException(Messages.ROLE_ADMISSION_ERROR.formatted(this.pos.getCol(), this.pos.getRow(), role.getDetails()));
+	public boolean setRole(LemmingRoleInterface role) { 
+		if(this.role.getName().equals(role.getName())) {
+			return false;
 		}
 		else {
 			this.role = role;

@@ -19,7 +19,7 @@ public class ExitCommand extends NoParamsCommand{
 		game.playerExits();
 	}
 	@Override
-	public Command parse(String[] name) throws CommandException {
+	public Command parse(String[] name) {
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
 		}

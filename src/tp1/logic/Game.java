@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import Commands.CommandGenerator;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.GameLoadException;
 import tp1.exceptions.GameModelException;
+import tp1.exceptions.GameParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
 import tp1.logic.GameObjectContainer;
@@ -103,12 +105,25 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		}
 		return conc;
 	}
-	public void update() throws CommandException {
-		conf.getGameObjects().update();
-		cycle++;
+	public void update() throws GameModelException {
+		try {
+			conf.getGameObjects().update();
+			cycle++;
+		}
+		catch(CommandException c) {
+			throw new GameModelException(c.getMessage());
+		}
 	}
-	public void reset(int n) throws CommandException {
-		readFile(file);
+	public void reset(int n) throws GameLoadException {
+		if(n == 1) {
+			readFile("configOne.txt");
+		}
+		if(n==2) {
+			readFile("configTwo.txt");
+		}
+		else {
+			readFile(file);
+		}
 	}
 	public void updateDeadLemmings() {
 		numLemmingsDead++;
@@ -122,27 +137,27 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public boolean isFinished() {
 		return playerLoses() || playerWins() || getExit();
 	}
-	public void posInBoard(Position pos) throws CommandException {
+	public void posInBoard(Position pos) throws OffBoardException {
 		if(pos.getCol() >= DIM_X || pos.getRow()>= DIM_Y || pos.getCol() < 0 || pos.getRow()< 0){
 			throw new OffBoardException(Messages.ERROR.formatted(Messages.INVALID_POSITION.formatted(pos.getCol(), pos.getRow())));
 		}
 	}
 	@Override
-	public boolean setRole(LemmingRoleInterface r, Position pos) throws CommandException {
-		if(conf.getGameObjects().posToObject(pos) != null) {
-			boolean res = conf.getGameObjects().posToObject(pos).setRole(r);
-			if(res) {
-				return true;
+	public boolean setRole(LemmingRoleInterface r, Position pos) throws GameModelException {
+			if(conf.getGameObjects().posToObject(pos) != null) {
+				boolean res = conf.getGameObjects().posToObject(pos).setRole(r);
+				if(res) {
+					return true;
+				}
+				else {
+					return false;
+				}
 			}
 			else {
 				return false;
 			}
-		}
-		else {
-			return false;
-		}
 	}
-	public void readFile(String fileName) throws CommandException{
+	public void readFile(String fileName) throws GameLoadException{
 		file = fileName;
 		this.conf = new FileGameConfiguration(fileName, this);
 		cycle = conf.getCycle();

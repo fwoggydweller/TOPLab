@@ -29,14 +29,14 @@ public class SaveCommand extends Command {
 		this.help = HELP;
 		this.fileName = fileName;
 	}
-	public Command parse(String[] name)throws CommandException{
+	public Command parse(String[] name)throws CommandParseException{
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 2) {
 				
 				return new SaveCommand(name[1]);
 			}
 			else {
-				throw new GameParseException("parse wrong length");
+				throw new CommandParseException(Messages.INVALID_COMMAND);
 			}
 		}
 		else {
@@ -46,13 +46,13 @@ public class SaveCommand extends Command {
 	protected boolean matchCommand(String name){
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
-	public void execute(GameModel game, GameView view)throws CommandException{
+	public void execute(GameModel game, GameView view)throws CommandExecuteException{
 		try {
 			game.saveFile(fileName);
 		}
 		catch(GameModelException gme) 
 		{
-			throw new CommandExecuteException("unable to execute save command");
+			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted("unable to execute save command")));
 		}
 		
 	}

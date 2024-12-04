@@ -2,6 +2,8 @@ package tp1.logic.gameobjects;
 
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
+import tp1.exceptions.ObjectParseException;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
@@ -75,7 +77,7 @@ public class GameObject implements GameItem{
 		return this.pos.Equals(pos.getCol(), pos.getRow());
 	}
 	
-	public boolean setRole(LemmingRoleInterface role) throws CommandException {
+	public boolean setRole(LemmingRoleInterface role) {
 		return false;
 	}
 	public void update() throws CommandException {

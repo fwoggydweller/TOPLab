@@ -3,6 +3,8 @@ package Commands;
 import Commands.Command;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameModelException;
+import tp1.exceptions.GameParseException;
 import tp1.view.Messages;
 
 import java.util.Arrays;
@@ -20,7 +22,7 @@ public class CommandGenerator {
         new LoadCommand(),
     	new SaveCommand()
     );
-    public static Command parse(String[] commandWords) throws CommandException{
+    public static Command parse(String[] commandWords) throws CommandParseException{
     	Command aux = null;
     	
     	for(int i = 0; i < AVAILABLE_COMMANDS.size() && aux == null; i++) {

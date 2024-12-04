@@ -2,6 +2,7 @@ package Commands;
 
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameModelException;
 import tp1.view.Messages;
 
 public abstract class NoParamsCommand extends Command{
@@ -21,7 +22,7 @@ public abstract class NoParamsCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name) || name.equals(Messages.EMPTY);
 	}
 	
-	public Command parse(String[] commandWords) throws CommandException {
+	public Command parse(String[] commandWords) throws CommandParseException {
 	    if (commandWords.length == 1 && matchCommand(commandWords[0])) {
 	        return this; // Devuelve el comando actual
 	    }

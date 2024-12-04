@@ -5,6 +5,7 @@ import java.util.Arrays;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandExecuteException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.GameParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.OffBoardException;
@@ -41,7 +42,7 @@ public class SetRoleCommand extends Command{
 		this.type = type;
 	}
 	@Override
-	public Command parse(String[] name) throws CommandException {
+	public Command parse(String[] name) throws CommandParseException {
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 4) {
 				type = name[1];
@@ -57,7 +58,7 @@ public class SetRoleCommand extends Command{
 				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
 			}
 			else {
-				throw new GameParseException(Messages.UNKNOWN_ROLE_ERROR);
+				throw new CommandParseException(Messages.UNKNOWN_ROLE_ERROR);
 			}
 		}
 		else {
@@ -68,9 +69,15 @@ public class SetRoleCommand extends Command{
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
 	@Override
-	public void execute(GameModel game, GameView view) throws CommandException{
-			game.posInBoard(pos);
-			game.setRole(LemmingRoleFactory.parse(type), this.pos);
+	public void execute(GameModel game, GameView view) throws CommandExecuteException{
+			try {
+				game.posInBoard(pos);
+				if(!game.setRole(LemmingRoleFactory.parse(type), this.pos)) {
+					throw new CommandExecuteException(Messages.ROLE_ADMISSION_ERROR.formatted(pos.getRow(), pos.getCol(), type));
+				}
+			} catch (CommandException e) {
+				throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(e.getMessage())));
+			}
 	}
 	@Override
 	public String getHelp() {
