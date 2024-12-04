@@ -1,6 +1,7 @@
 package tp1.logic.roles;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
 import tp1.logic.Direction;
 import tp1.logic.Position;
 
@@ -42,7 +43,7 @@ public class CaveDigger extends LemmingRole{
 		return icon;
 	}
 	@Override 
-    public boolean interactWith(Wall wall, Lemming lem) throws CommandException {
+    public boolean interactWith(Wall wall, Lemming lem){
     	  	
 	    	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
 	    	 uDir(lem, true);

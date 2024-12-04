@@ -4,6 +4,7 @@ package tp1.logic.gameobjects;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
@@ -31,7 +32,7 @@ public class GameObject implements GameItem{
 		return this.pos;
 	}
 	
-	public boolean receiveInteraction(GameItem other) throws CommandException {
+	public boolean receiveInteraction(GameItem other){
 		return false;
 	}
 
@@ -40,7 +41,7 @@ public class GameObject implements GameItem{
 	}
 
 
-	public boolean interactWith(Wall wall) throws CommandException {
+	public boolean interactWith(Wall wall){
 		return false;
 	}
 	
@@ -80,7 +81,7 @@ public class GameObject implements GameItem{
 	public boolean setRole(LemmingRoleInterface role) {
 		return false;
 	}
-	public void update() throws CommandException {
+	public void update() throws GameModelException {
 		
 	}
 	public void onExit() { // in lemming?
@@ -92,7 +93,7 @@ public class GameObject implements GameItem{
 	public String toString() {
 		return null;
 	}
-	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role, int force) throws CommandException {
+	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role, int force) throws RoleParseException {
 		return null;
 	}
 	public String stringify() {

@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import tp1.control.Controller;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameLoadException;
 import tp1.logic.Game;
 import tp1.view.ConsoleColorsView;
 import tp1.view.ConsoleView;
@@ -27,14 +28,16 @@ public class Main {
 			
 			int nLevel = 2;
 			if (args.length != 0) nLevel = Integer.parseInt(args[0]);
-
-			Game game = new Game(nLevel);
-			GameView view = new ConsoleView(game);
-			Controller controller = new Controller(game, view);
-			controller.run();
-			
-		} catch (NumberFormatException e) {
+				Game game = new Game(nLevel);
+				GameView view = new ConsoleView(game);
+				Controller controller = new Controller(game, view);
+				controller.run();
+		}
+		catch (NumberFormatException e) {
 			System.out.println(String.format(Messages.LEVEL_NOT_A_NUMBER_ERROR, args[0]));
+		}
+		catch(GameLoadException l) {
+			System.out.println(l.getMessage());
 		}
 	}
 }

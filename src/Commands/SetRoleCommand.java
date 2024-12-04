@@ -75,7 +75,7 @@ public class SetRoleCommand extends Command{
 				if(!game.setRole(LemmingRoleFactory.parse(type), this.pos)) {
 					throw new CommandExecuteException(Messages.ROLE_ADMISSION_ERROR.formatted(pos.getRow(), pos.getCol(), type));
 				}
-			} catch (CommandException e) {
+			} catch (GameModelException e) {
 				throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(e.getMessage())));
 			}
 	}

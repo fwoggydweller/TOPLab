@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.gameobjects.GameItem;
@@ -41,7 +42,7 @@ public class GameObjectContainer {
 		
 		return name;
 	}
-	public void update() throws CommandException {
+	public void update() throws GameModelException {
 		for(int i = 0; i < gO.length; i++) {
 			gO[i].update();
 		}

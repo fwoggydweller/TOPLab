@@ -17,11 +17,11 @@ public class Wall extends GameObject{
 
 	}
 	@Override
-	public boolean receiveInteraction(GameItem other) throws CommandException {
+	public boolean receiveInteraction(GameItem other){
 		return other.interactWith(this);
 	}
 	@Override
-	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws CommandException {
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force){
 		
 		if (name.toLowerCase().equals("wall")) return new Wall(x, y, g);
 		return null;

@@ -41,7 +41,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	private boolean playerExit = false;
 	private String file = "";
 	
-	public Game(int nLevel) throws CommandException {
+	public Game(int nLevel) throws GameLoadException {
 		if(nLevel == 1) { //adds 1 of each type
 			file = "configOne.txt";
 			readFile(file);
@@ -106,13 +106,8 @@ public class Game implements GameModel, GameStatus,GameWorld{
 		return conc;
 	}
 	public void update() throws GameModelException {
-		try {
 			conf.getGameObjects().update();
 			cycle++;
-		}
-		catch(CommandException c) {
-			throw new GameModelException(c.getMessage());
-		}
 	}
 	public void reset(int n) throws GameLoadException {
 		if(n == 1) {
@@ -131,7 +126,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 	public void updateExitLemmings() {
 		numLemmingsExit++;
 	}
-	public GameItem posToObject (Position pos) throws CommandException {
+	public GameItem posToObject (Position pos) throws GameModelException {
 		return conf.getGameObjects().posToObject(pos);
 	}
 	public boolean isFinished() {
@@ -154,7 +149,7 @@ public class Game implements GameModel, GameStatus,GameWorld{
 				}
 			}
 			else {
-				return false;
+				throw new GameModelException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(pos.getCol(), pos.getRow())));
 			}
 	}
 	public void readFile(String fileName) throws GameLoadException{

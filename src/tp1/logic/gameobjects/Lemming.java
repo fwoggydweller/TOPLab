@@ -7,7 +7,9 @@ import tp1.logic.roles.LemmingRoleFactory;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.ObjectParseException;
+import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
@@ -78,7 +80,7 @@ public class Lemming extends GameObject{
 		if(this.alive) return role.getIcon(this);
 		else return Messages.EMPTY;
 	}
-	public void update() throws CommandException {
+	public void update() throws GameModelException {
 		if(isAlive()) {
 			this.grounded = false;
 			this.checkSurround();
@@ -105,7 +107,7 @@ public class Lemming extends GameObject{
 			return true;
 		}
 	}
-	public void disableRole() throws CommandException {
+	public void disableRole() {
 		this.role = LemmingRoleFactory.parse("w");
 	}
 	public int getCurrFall() {
@@ -146,13 +148,13 @@ public class Lemming extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.interactWith(this);
 	}
-	public boolean askInteraction(GameItem other) throws CommandException {
+	public boolean askInteraction(GameItem other) {
 		return other.receiveInteraction(this);
 	}
-	public GameItem posToObject (Position pos) throws CommandException {
+	public GameItem posToObject (Position pos) throws GameModelException {
 		return game.posToObject(pos);
 	}
-	public void checkSurround() throws CommandException {
+	public void checkSurround() throws GameModelException {
 		Position p = new Position(this.pos.getCol() + this.dir.getX(), this.pos.getRow());
 		if (posToObject(p) != null) askInteraction(posToObject(p));
 		p = new Position(this.pos.getCol(), this.pos.getRow() + 1);
@@ -163,7 +165,7 @@ public class Lemming extends GameObject{
 		return onExit(exit);
 	}
 	@Override
-	public boolean interactWith(Wall wall) throws CommandException {
+	public boolean interactWith(Wall wall) {
 		return role.interactWith(wall, this);
 	}
 	@Override
@@ -171,7 +173,7 @@ public class Lemming extends GameObject{
 		return role.interactWith(mWall, this);
 	}
 	@Override
-	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws CommandException {
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws RoleParseException {
 		
 		if (name.toLowerCase().equals("lemming")) return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role), force);
 		return null;

@@ -33,7 +33,7 @@ public class ExitDoor extends GameObject{
 		return other.interactWith(this);
 	}
 	@Override
-	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws CommandException {
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force){
 		
 		if (name.toLowerCase().equals("exitdoor")) return new ExitDoor(x, y, g);
 		return null;

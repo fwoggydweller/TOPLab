@@ -22,14 +22,12 @@ public class LemmingRoleFactory {
 	        // ...
 	    );
 	
-	public static LemmingRoleInterface parse(String input) throws RoleParseException {
+	public static LemmingRoleInterface parse(String input){
 		LemmingRoleInterface role = null;
 		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++){
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
-		if(role == null) {
-			throw new RoleParseException(Messages.INVALID_LEMMING_ROLE);
-		}
+		
 		return role;
 	}
 	public static String commandHelp(){

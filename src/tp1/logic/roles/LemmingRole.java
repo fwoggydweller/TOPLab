@@ -2,6 +2,7 @@ package tp1.logic.roles;
 import tp1.logic.Game;
 import tp1.logic.roles.LemmingRoleInterface;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameModelException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
 import tp1.logic.Position;
@@ -22,7 +23,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	}
 	protected Messages m = new Messages();
     public abstract String getIcon( Lemming lemming );
-    public void move(Lemming lemming) throws CommandException {
+    public void move(Lemming lemming) throws GameModelException {
     	if(lemming.isAlive()) {
 	    	if(!moveY(lemming)) {
 	    		moveX(lemming);
@@ -39,7 +40,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	else lemming.setFlip(false);
 	}
 
-    public boolean moveY(Lemming lemming)throws CommandException { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
+    public boolean moveY(Lemming lemming)throws GameModelException { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
     	boolean ok = true;
     	if(lemming.IsGrounded()) {
     		lemming.setAlive(lemming.getForce() > lemming.getCurrFall());
@@ -79,7 +80,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	    	}
     	}
     } 
-    public boolean interactWith(Wall wall, Lemming lem)throws CommandException {
+    public boolean interactWith(Wall wall, Lemming lem) {
     	  	
     	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
     	 uDir(lem, true);
@@ -99,7 +100,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	
 		return true;
 	}
-    public void play(Lemming lem) throws CommandException {
+    public void play(Lemming lem) throws GameModelException {
     	move(lem);
     	getIcon(lem);
     }
@@ -118,7 +119,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	protected boolean matchRole(String name){
 		return getName().equals(name.toLowerCase()) || getShortcut().equals(name.toLowerCase());
 	}
-	public abstract LemmingRoleInterface parse(String name) throws RoleParseException;
+	public abstract LemmingRoleInterface parse(String name);
 	
 	public String helpText(){
 		return Messages.LINE_TAB.formatted(Messages.COMMAND_HELP_TEXT.formatted(getDetails(), getHelp()));
