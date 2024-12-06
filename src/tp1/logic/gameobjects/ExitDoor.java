@@ -38,4 +38,8 @@ public class ExitDoor extends GameObject{
 		if (name.toLowerCase().equals("exitdoor")) return new ExitDoor(x, y, g);
 		return null;
 	}
+	@Override
+	public GameObject returnCopy() {
+		return new ExitDoor(this.pos.getCol(), this.pos.getRow(), this.game);
+	}
 }

@@ -80,7 +80,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	    	}
     	}
     } 
-    public boolean interactWith(Wall wall, Lemming lem) {
+    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException {
     	  	
     	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
     	 uDir(lem, true);

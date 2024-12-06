@@ -23,7 +23,7 @@ public class UpdateCommand extends NoParamsCommand{
 			game.update();
 		}
 		catch (GameModelException l) {
-			throw new CommandExecuteException(l.getMessage());
+			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR,l);
 		}
 	}
 	@Override

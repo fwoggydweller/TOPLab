@@ -11,6 +11,7 @@ import Commands.SetRoleCommand;
 import Commands.UpdateCommand;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.CommandParseException;
+import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.RoleParseException;
 import tp1.view.Messages;
 
@@ -22,12 +23,14 @@ public class LemmingRoleFactory {
 	        // ...
 	    );
 	
-	public static LemmingRoleInterface parse(String input){
+	public static LemmingRoleInterface parse(String input) throws RoleParseException{
 		LemmingRoleInterface role = null;
 		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++){
     		role = AVAILABLE_ROLES.get(i).parse(input);
     	}
-		
+		if(role == null) {
+			throw new RoleParseException(Messages.UNKNOWN_ROLE_ERROR);
+		}
 		return role;
 	}
 	public static String commandHelp(){

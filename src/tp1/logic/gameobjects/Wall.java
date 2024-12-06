@@ -3,6 +3,7 @@ import tp1.view.Messages;
 import tp1.logic.Position;
 import tp1.logic.roles.LemmingRoleFactory;
 import tp1.exceptions.CommandException;
+import tp1.exceptions.GameParseException;
 import tp1.logic.Direction;
 import tp1.logic.GameWorld;
 public class Wall extends GameObject{
@@ -17,7 +18,7 @@ public class Wall extends GameObject{
 
 	}
 	@Override
-	public boolean receiveInteraction(GameItem other){
+	public boolean receiveInteraction(GameItem other) throws GameParseException{
 		return other.interactWith(this);
 	}
 	@Override
@@ -25,5 +26,9 @@ public class Wall extends GameObject{
 		
 		if (name.toLowerCase().equals("wall")) return new Wall(x, y, g);
 		return null;
+	}
+	@Override
+	public GameObject returnCopy() {
+		return new Wall(this.pos.getCol(), this.pos.getRow(), this.game);
 	}
 }

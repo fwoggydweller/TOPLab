@@ -49,11 +49,10 @@ public class SetRoleCommand extends Command{
 				Y = name[2].toUpperCase();
 				X = name[3];
 				try {
-
 				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65); 
 				}
 				catch(NumberFormatException e) {
-					throw new CommandParseException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(Y,X)));
+					throw new CommandParseException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(Y,X)), e);
 				}
 				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
 			}
@@ -73,10 +72,10 @@ public class SetRoleCommand extends Command{
 			try {
 				game.posInBoard(pos);
 				if(!game.setRole(LemmingRoleFactory.parse(type), this.pos)) {
-					throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ROLE_ADMISSION_ERROR.formatted(pos.getRow(), pos.getCol(), type)));
+					throw new CommandExecuteException(Messages.ROLE_ADMISSION_ERROR.formatted(pos.getRow(), pos.getCol(), type));
 				}
-			} catch (GameModelException e) {
-				throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(e.getMessage())));
+			} catch (Exception e) {
+				throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR, e);
 			}
 	}
 	@Override

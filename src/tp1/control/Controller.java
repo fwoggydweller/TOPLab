@@ -21,7 +21,6 @@ public class Controller {
 	
 	private GameModel game;
 	private GameView view;
-	private String[] aux = {"none"};
 	public Controller(GameModel game, GameView view) {
 		this.game = game;
 		this.view = view;
@@ -39,19 +38,14 @@ public class Controller {
 		    		command = CommandGenerator.parse(userWords);
 		    		command.execute(game, view);
 		    	}
-		    	catch (CommandParseException p) {
-		    		view.showError(p.getMessage());
-		 			Throwable cause = p.getCause();
-			 		if (cause != null) 
-			 			view.showError(cause.getMessage());
-		 			}
-		    	catch (CommandExecuteException e) {
+		    	catch (CommandException e) {
 					view.showError(e.getMessage());
-		 			Throwable cause = e.getCause();
-			 		if (cause != null) 
-			 			view.showError(cause.getMessage());
-		 			}
+					Throwable wrapped = e;
+					// display all levels of error message
+					while ( (wrapped = wrapped.getCause()) != null )
+						view.showError(wrapped.getMessage());
 				}
+		}
 		view.showGame();
 		view.showEndMessage();
 		}

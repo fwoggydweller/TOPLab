@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameModelException;
+import tp1.exceptions.GameParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
@@ -32,7 +33,7 @@ public class GameObject implements GameItem{
 		return this.pos;
 	}
 	
-	public boolean receiveInteraction(GameItem other){
+	public boolean receiveInteraction(GameItem other) throws GameParseException{
 		return false;
 	}
 
@@ -41,7 +42,7 @@ public class GameObject implements GameItem{
 	}
 
 
-	public boolean interactWith(Wall wall){
+	public boolean interactWith(Wall wall) throws GameParseException{
 		return false;
 	}
 	
@@ -93,7 +94,10 @@ public class GameObject implements GameItem{
 	public String toString() {
 		return null;
 	}
-	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role, int force) throws RoleParseException {
+	public  GameObject copy(int x, int y, String name, Direction dir, GameWorld g, String role, int force) throws GameParseException {
+		return null;
+	}
+	public GameObject returnCopy() {
 		return null;
 	}
 	public String stringify() {

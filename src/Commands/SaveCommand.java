@@ -52,7 +52,7 @@ public class SaveCommand extends Command {
 		}
 		catch(GameModelException gme) 
 		{
-			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted("unable to execute save command")));
+			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR, gme);
 		}
 		
 	}

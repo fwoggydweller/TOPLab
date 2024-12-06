@@ -10,7 +10,7 @@ import tp1.logic.gameobjects.Wall;
 public interface LemmingRoleInterface {
 	public void play(Lemming lem)throws GameModelException;
     public boolean interactWith(MetalWall mWall, Lemming lem);
-    public boolean interactWith(Wall wall, Lemming lem);
+    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException;
     public abstract String getIcon( Lemming lemming );
 	public LemmingRoleInterface parse(String name);
 	public String getHelp();

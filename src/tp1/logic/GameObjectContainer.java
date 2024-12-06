@@ -17,11 +17,12 @@ public class GameObjectContainer {
 	private GameItem[] gO;
 	private int objCount = 0;
 	
-	
-	public GameObjectContainer (int listSize) {
-		gO = new GameItem[listSize];
+	public void resetArray(int n) {
+		this.gO = new GameItem[n];
 	}
-	
+	public GameObjectContainer (int listSize) {
+		this.gO = new GameItem[listSize];
+	}
 	public void add(GameObject go) {
 		if(objCount < gO.length) {
 			gO[objCount] = go;
@@ -44,14 +45,16 @@ public class GameObjectContainer {
 	}
 	public void update() throws GameModelException {
 		for(int i = 0; i < gO.length; i++) {
-			gO[i].update();
+			this.gO[i].update();
 		}
 	}
 	
 	public void reset() {
 		objCount = 0;
 	}
-
+	public GameItem objInIndex(int i) {
+		return gO[i];
+	}
 	public GameItem posToObject (Position pos) throws ObjectParseException {
 		for(int i = 0; i<objCount; i++) {
 			if(gO[i].getPos().getCol() == pos.getCol() && gO[i].getPos().getRow() == pos.getRow()) {
@@ -66,6 +69,9 @@ public class GameObjectContainer {
 			ret += System.lineSeparator() + g.stringify();
 		}
 		return ret;
+	}
+	public int getSize() {
+		return gO.length;
 	}
 }
 

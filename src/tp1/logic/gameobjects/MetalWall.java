@@ -30,4 +30,8 @@ public class MetalWall extends GameObject{
 		if (name.toLowerCase().equals("metalwall")) return new MetalWall(x, y, g);
 		return null;
 	}
+	@Override
+	public GameObject returnCopy() {
+		return new MetalWall(this.pos.getCol(), this.pos.getRow(), this.game);
+	}
 }

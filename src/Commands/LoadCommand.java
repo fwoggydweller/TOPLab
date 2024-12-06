@@ -50,7 +50,7 @@ public class LoadCommand extends Command {
 			game.readFile(fileName);
 		}
 		catch (GameLoadException l) {
-			throw new CommandExecuteException(Messages.LOAD_EXCEPTION_ERROR.formatted(Messages.ERROR2.formatted(l.getMessage())));
+			throw new CommandExecuteException(Messages.LOAD_EXCEPTION_ERROR, l);
 		}
 	}
 }

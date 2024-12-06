@@ -18,7 +18,19 @@ public class FileGameConfiguration implements GameConfiguration {
 	private int cycle, lBoard, lDead, lExit, lWin;
 	private GameObjectContainer cont;
 	private GameObjectFactory fact;
-	
+	public void copyGameConf(GameConfiguration g) {
+		cont.reset();
+		cont.resetArray(g.getGameObjects().getSize());
+		//Should we reset the game object factory?? It stays the same through all the game
+		for(int i = 0; i < cont.getSize(); i++) {
+			cont.add(g.getGameObjects().objInIndex(i).returnCopy());
+		}
+		this.cycle = g.getCycle();
+		this.lBoard = g.numLemmingsInBoard();
+		this.lDead = g.numLemmingsDead();
+		this.lExit = g.numLemingsExit();
+		this.lWin = g.numLemmingToWin();
+	}
 	public FileGameConfiguration(String fileName, GameWorld game) throws GameLoadException{
 		fileName = System.getProperty("user.dir") + File.separator + "src" + File.separator + fileName;
 		BufferedReader reader = null;
@@ -45,15 +57,13 @@ public class FileGameConfiguration implements GameConfiguration {
 		        cont.add(fact.parse(line, game));
 		      }
 		    }
-			catch (OffBoardException obe) {
-				throw new GameLoadException(obe.getMessage());
-			}
 			catch (IOException ioe) {
-				throw new GameLoadException(Messages.NO_FILE.formatted(fileName));
+				throw new GameLoadException(Messages.NO_FILE.formatted(fileName), ioe);
 		    }
-			catch (ObjectParseException oe) {
-			throw new GameLoadException(oe.getMessage());
-			}
+		    catch (Exception e) {
+		    	throw new GameLoadException(Messages.LOAD_EXCEPTION_ERROR, e);
+		    
+		    }
 			finally { //Not needed but just in case
 				if(reader != null) {
 					try {

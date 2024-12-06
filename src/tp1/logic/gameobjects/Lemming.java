@@ -8,6 +8,7 @@ import tp1.logic.roles.LemmingRoleInterface;
 import tp1.view.Messages;
 import tp1.exceptions.CommandException;
 import tp1.exceptions.GameModelException;
+import tp1.exceptions.GameParseException;
 import tp1.exceptions.ObjectParseException;
 import tp1.exceptions.RoleParseException;
 import tp1.logic.Direction;
@@ -107,8 +108,8 @@ public class Lemming extends GameObject{
 			return true;
 		}
 	}
-	public void disableRole() {
-		this.role = LemmingRoleFactory.parse("w");
+	public void disableRole() throws RoleParseException{
+			this.role = LemmingRoleFactory.parse("w");
 	}
 	public int getCurrFall() {
 		return currFall;
@@ -148,7 +149,7 @@ public class Lemming extends GameObject{
 	public boolean receiveInteraction(GameItem other) {
 		return other.interactWith(this);
 	}
-	public boolean askInteraction(GameItem other) {
+	public boolean askInteraction(GameItem other) throws GameParseException {
 		return other.receiveInteraction(this);
 	}
 	public GameItem posToObject (Position pos) throws GameModelException {
@@ -165,7 +166,7 @@ public class Lemming extends GameObject{
 		return onExit(exit);
 	}
 	@Override
-	public boolean interactWith(Wall wall) {
+	public boolean interactWith(Wall wall) throws GameParseException {
 		return role.interactWith(wall, this);
 	}
 	@Override
@@ -173,7 +174,7 @@ public class Lemming extends GameObject{
 		return role.interactWith(mWall, this);
 	}
 	@Override
-	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws RoleParseException {
+	public GameObject copy(int x, int y, String name,  Direction dir, GameWorld g, String role, int force) throws GameParseException {
 		
 		if (name.toLowerCase().equals("lemming")) return new Lemming(x, y, dir, g, LemmingRoleFactory.parse(role), force);
 		return null;
@@ -183,5 +184,9 @@ public class Lemming extends GameObject{
 		if(this.dir == Direction.RIGHT) return "(" + this.getPos().getCol() + "," + this.getPos().getRow() + ") " + this.name + " RIGHT " + this.currFall + " " + this.role.getName();
 		return "(" + this.getPos().getCol() + "," + this.getPos().getRow() + ") " + this.name + " LEFT " + this.currFall + " " + this.role.getName();
 
+	}
+	@Override
+	public GameObject returnCopy() {
+		return new Lemming(this.pos.getCol(), this.pos.getRow(), this.dir, this.game, this.role, this.currFall);
 	}
 }
