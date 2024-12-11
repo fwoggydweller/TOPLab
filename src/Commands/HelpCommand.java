@@ -16,11 +16,11 @@ public class HelpCommand extends NoParamsCommand{
 	public HelpCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(GameModel game, GameView view) { 
+	public void execute(GameModel game, GameView view) { //Calls the help method of the game, which calls the help from the command generator
 		view.showMessage(game.help());
 	}
 	@Override
-	public Command parse(String[] name) {
+	public Command parse(String[] name) { //Checks if the input matches this command and returns a new instance of itself
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
 		}

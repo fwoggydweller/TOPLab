@@ -27,7 +27,7 @@ public class UpdateCommand extends NoParamsCommand{
 		}
 	}
 	@Override
-	public Command parse(String[] name) throws CommandParseException {
+	public Command parse(String[] name) throws CommandParseException {//Checks if the input matches this command and returns itself
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
 		}

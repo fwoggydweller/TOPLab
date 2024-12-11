@@ -5,7 +5,7 @@ import tp1.exceptions.CommandParseException;
 import tp1.exceptions.GameModelException;
 import tp1.view.Messages;
 
-public abstract class NoParamsCommand extends Command{
+public abstract class NoParamsCommand extends Command{ //All of the no parametters command inherit from this
 	public NoParamsCommand() {
 		this.name = Messages.COMMAND_NONE_NAME;
 		this.details = Messages.COMMAND_NONE_DETAILS;
@@ -18,13 +18,13 @@ public abstract class NoParamsCommand extends Command{
 		this.details = details;
 		this.help = help;
 	}
-	protected boolean matchCommand(String name){
+	protected boolean matchCommand(String name){//Checks if the input matches this command
 		return this.name.equals(name) || this.shortcut.equals(name) || name.equals(Messages.EMPTY);
 	}
 	
-	public Command parse(String[] commandWords) throws CommandParseException {
+	public Command parse(String[] commandWords) throws CommandParseException { //Checks if the input matches this command and returns a new instance of itself
 	    if (commandWords.length == 1 && matchCommand(commandWords[0])) {
-	        return this; // Devuelve el comando actual
+	        return this;
 	    }
 	    else {
 	    	 throw new CommandParseException(Messages.UNKNOWN_COMMAND.formatted(commandWords[0]));

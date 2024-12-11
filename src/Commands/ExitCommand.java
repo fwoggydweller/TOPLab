@@ -15,11 +15,11 @@ public class ExitCommand extends NoParamsCommand{
 	public ExitCommand(){
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	public void execute(GameModel game, GameView view) { 
+	public void execute(GameModel game, GameView view) { //Calls a method from the game that ends the game
 		game.playerExits();
 	}
 	@Override
-	public Command parse(String[] name) {
+	public Command parse(String[] name) { //Checks if the input matches this command and returns a new instance of itself
 		if(matchCommand(name[0].toLowerCase()) && name.length == 1) {
 			return this;
 		}

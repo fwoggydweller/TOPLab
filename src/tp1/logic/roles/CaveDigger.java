@@ -44,18 +44,18 @@ public class CaveDigger extends LemmingRole{
 		return icon;
 	}
 	@Override 
-    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException{
+    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException{ 
     	  	
 	    	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
 	    	 uDir(lem, true);
 	    	}
 	    	
-	    	else {
-	    		lem.setAlive(lem.getForce() > lem.getCurrFall());
+	    	else { // overwrites interact with wall to kill the wall below (y todas las cosas que conlleva)
+	    		lem.setAlive(lem.getForce() > lem.getCurrFall()); // hace vibe check
 	    		lem.setCurrFall(0);
-	    		if (lem.isAlive()) wall.setAlive(false);
-	    		else lem.setGrounded(true);
-	    		lem.disableRole();
+	    		if (lem.isAlive()) wall.setAlive(false); // si pasa el check mata a la pared 
+	    		else lem.setGrounded(true); // si no está grounded pa que su cadaver no atraviese la pared
+	    		lem.disableRole(); // solo cava 1 master + se podria hacer que si el currfall es > 0 entonces disable pa que cave mas 
 	    	}
 	    	
 			return true;

@@ -16,14 +16,14 @@ import tp1.exceptions.RoleParseException;
 import tp1.view.Messages;
 
 public class LemmingRoleFactory {
-	private static final List<LemmingRoleInterface> AVAILABLE_ROLES = Arrays.asList(
+	private static final List<LemmingRoleInterface> AVAILABLE_ROLES = Arrays.asList( // add here new roles if needed (que luegp no sabemos que pasa eh)
 			new ParachuterRole(),
 			new WalkerRole(),
 			new CaveDigger()
 	        // ...
 	    );
 	
-	public static LemmingRoleInterface parse(String input) throws RoleParseException{
+	public static LemmingRoleInterface parse(String input) throws RoleParseException{  // parses each role and returns it, throws expception if the role isn't found
 		LemmingRoleInterface role = null;
 		for(int i = 0; i < AVAILABLE_ROLES.size() && role == null; i++){
     		role = AVAILABLE_ROLES.get(i).parse(input);
@@ -33,7 +33,7 @@ public class LemmingRoleFactory {
 		}
 		return role;
 	}
-	public static String commandHelp(){
+	public static String commandHelp(){ // should be called roleHelp and gets the name and definition of each role for the help command
     	StringBuilder commands = new StringBuilder();
     	
     	for(LemmingRoleInterface c : AVAILABLE_ROLES) {

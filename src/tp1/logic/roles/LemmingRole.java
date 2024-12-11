@@ -30,44 +30,44 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	    	}
     	}
     }
-    private void moveX(Lemming lemming) {
+    private void moveX(Lemming lemming) { //moves the lemming horizontally 
     	
-    	uDir(lemming, false);  		    
-    	if(!lemming.getFlip()) {
+    	uDir(lemming, false);   
+    	if(!lemming.getFlip()) { // bug fix, only moves lemming if it hasn't flipped before
 			Position p = new Position (lemming.getPos().getCol() + lemming.getDir().getX(), lemming.getPos().getRow());
 			lemming.setPosition(p);
     	}
-    	else lemming.setFlip(false);
+    	else lemming.setFlip(false); // como perder 1 ciclo
 	}
 
-    public boolean moveY(Lemming lemming)throws GameModelException { // ovewrite in parachute (reset currFall) and caveDigger (falls even if isGrounded)
+    public boolean moveY(Lemming lemming)throws GameModelException { // moves lemming vertically 
     	boolean ok = true;
-    	if(lemming.IsGrounded()) {
+    	if(lemming.IsGrounded()) { // if grounded doesn't fall and does vibe checks 
     		lemming.setAlive(lemming.getForce() > lemming.getCurrFall());
     		lemming.setCurrFall(0);	
     		ok = false;
     	}
     	else {
-    		if(lemming.IsVoid()) {
+    		if(lemming.IsVoid()) { // si se ha caido al nether
     			lemming.setAlive(false);
     		}
-    		else {
+    		else { // it falls and updates currfall
     			Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
     			lemming.setPosition(p);
     			lemming.setCurrFall(lemming.getCurrFall() + 1);	
     		}
     	}
     	
-    	return ok;
+    	return ok; // if it doesn't move vertically, it moves horizontally
     }
     
-    public void flip(Lemming lemming) {
+    public void flip(Lemming lemming) { // 180 noscope
     	
     	if(lemming.getDir().isEqual(Direction.LEFT))lemming.setDir(Direction.RIGHT.getX(), Direction.RIGHT.getY());
     	else lemming.setDir(Direction.LEFT.getX(), Direction.LEFT.getY());
     }
     
-    public void uDir(Lemming lemming, boolean wall) {
+    public void uDir(Lemming lemming, boolean wall) { // if it is called by wall it flips, else it flips if it is in the edge
 
     	if (wall) {
     		flip(lemming);
@@ -80,7 +80,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	    	}
     	}
     } 
-    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException {
+    public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException { // if it is in front, it updates direction, else, it grounds the lemming (if the wall is alive)
     	  	
     	if(wall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
     	 uDir(lem, true);
@@ -90,7 +90,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
     	
 		return true;
 	}
-    public boolean interactWith(MetalWall mWall, Lemming lem) {
+    public boolean interactWith(MetalWall mWall, Lemming lem) {// doesn't check if wall is alive
     	
     	if(mWall.isInPosition(new Position (lem.getPos().getCol() + lem.getDir().getX(), lem.getPos().getRow()))) {
        	 uDir(lem, true);
@@ -116,7 +116,7 @@ public abstract class LemmingRole implements LemmingRoleInterface{ // change int
 	public String getHelp() {
 		return this.help;
 	}
-	protected boolean matchRole(String name){
+	protected boolean matchRole(String name){ // for factory purposes only
 		return getName().equals(name.toLowerCase()) || getShortcut().equals(name.toLowerCase());
 	}
 	public abstract LemmingRoleInterface parse(String name);

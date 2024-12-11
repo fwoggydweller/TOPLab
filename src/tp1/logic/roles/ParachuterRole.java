@@ -34,7 +34,7 @@ public class ParachuterRole extends LemmingRole{
 	 
 	 }
 	@Override
-	 public boolean moveY(Lemming lemming) throws GameModelException { 
+	 public boolean moveY(Lemming lemming) throws GameModelException {  // disables itself if on the ground and never increases currfall if parachuting all over the place
 	    	boolean ok = true;
 	    	if(lemming.IsGrounded()) {
 	    		lemming.setCurrFall(0);
@@ -44,7 +44,7 @@ public class ParachuterRole extends LemmingRole{
 	    	else {
 	    		Position p = new Position (lemming.getPos().getCol(), lemming.getPos().getRow() + 1);
 				lemming.setPosition(p);
-				lemming.setCurrFall(1);
+				lemming.setCurrFall(0); // si hay algun problema, esto estaba a 1 ;
 	    	}
 	    	
 	    	return ok;

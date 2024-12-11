@@ -29,7 +29,7 @@ public class SaveCommand extends Command {
 		this.help = HELP;
 		this.fileName = fileName;
 	}
-	public Command parse(String[] name)throws CommandParseException{
+	public Command parse(String[] name)throws CommandParseException{//Checks if the input matches this command and returns a new instance of itself
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 2) {
 				
@@ -46,11 +46,11 @@ public class SaveCommand extends Command {
 	protected boolean matchCommand(String name){
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
-	public void execute(GameModel game, GameView view)throws CommandExecuteException{
+	public void execute(GameModel game, GameView view)throws CommandExecuteException{ //Calls the save file from the game and tries to save it
 		try {
 			game.saveFile(fileName);
 		}
-		catch(GameModelException gme) 
+		catch(GameModelException gme) //If there's an error when saving the file
 		{
 			throw new CommandExecuteException(Messages.EXECUTE_EXCEPTION_ERROR, gme);
 		}

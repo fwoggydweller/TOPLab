@@ -7,7 +7,7 @@ import tp1.logic.gameobjects.Lemming;
 import tp1.logic.gameobjects.MetalWall;
 import tp1.logic.gameobjects.Wall;
 
-public interface LemmingRoleInterface {
+public interface LemmingRoleInterface { // eskibidi interfaz
 	public void play(Lemming lem)throws GameModelException;
     public boolean interactWith(MetalWall mWall, Lemming lem);
     public boolean interactWith(Wall wall, Lemming lem) throws RoleParseException;

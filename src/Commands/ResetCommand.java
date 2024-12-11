@@ -25,7 +25,7 @@ public class ResetCommand extends Command{
 		this.n = n;
 	}
 	@Override
-	public Command parse(String[] name) throws CommandParseException {
+	public Command parse(String[] name) throws CommandParseException {//Checks if the input matches this command and returns itself
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length > 1) {
 				try {

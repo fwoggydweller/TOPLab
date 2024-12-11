@@ -42,21 +42,21 @@ public class SetRoleCommand extends Command{
 		this.type = type;
 	}
 	@Override
-	public Command parse(String[] name) throws CommandParseException {
+	public Command parse(String[] name) throws CommandParseException {//Checks if the input matches this command and returns a new instance of itself
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 4) {
 				type = name[1];
 				Y = name[2].toUpperCase();
 				X = name[3];
 				try {
-				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65); 
+				this.pos = new Position(Integer.parseInt(X)-1, (int)Y.charAt(0)-65); //The position must be in a correcy¡t format
 				}
 				catch(NumberFormatException e) {
-					throw new CommandParseException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(Y,X)), e);
+					throw new CommandParseException(Messages.INVALID_OBJECT_POSITION.formatted(Messages.POSITION.formatted(Y,X)), e); //if not, it throws an exception
 				}
-				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type);
+				return new SetRoleCommand(this.pos.getCol(), this.pos.getRow(), this.type); 
 			}
-			else {
+			else { //If it matches the name/shortcut but not the extension
 				throw new CommandParseException(Messages.UNKNOWN_ROLE_ERROR);
 			}
 		}

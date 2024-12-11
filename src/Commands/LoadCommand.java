@@ -31,7 +31,7 @@ public class LoadCommand extends Command {
 		this.fileName = fileName;
 	}
 	@Override
-	public Command parse(String[] name) throws CommandParseException{
+	public Command parse(String[] name) throws CommandParseException{ //Checks if the input matches this command and returns a new instance of itself
 		if(matchCommand(name[0].toLowerCase())) {
 			if(name.length == 2) {
 				return new LoadCommand(name[1]);
@@ -42,14 +42,14 @@ public class LoadCommand extends Command {
 		}
 		return null;
 	}
-	protected boolean matchCommand(String name){
+	protected boolean matchCommand(String name){ //Checks if the input matches this command
 		return this.name.equals(name) || this.shortcut.equals(name);
 	}
-	public void execute(GameModel game, GameView view)throws CommandExecuteException{
+	public void execute(GameModel game, GameView view)throws CommandExecuteException{ //Calls the game's read file method with a file name and tries to load it
 		try{
 			game.readFile(fileName);
 		}
-		catch (GameLoadException l) {
+		catch (GameLoadException l) { //If there's an error in the load, it catches it and throws another exception
 			throw new CommandExecuteException(Messages.LOAD_EXCEPTION_ERROR, l);
 		}
 	}
